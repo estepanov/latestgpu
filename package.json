@@ -67,5 +67,5 @@
     "test": "npm run type-check && npm run lint",
     "lint": "eslint . --ext .ts,.tsx",
     "type-check": "tsc --noEmit"
-  },
+  }
 }

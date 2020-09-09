@@ -44,8 +44,8 @@ module.exports = {
     {
       resolve: "gatsby-plugin-manifest",
       options: {
-        name: "gatsby-starter-default",
-        short_name: "starter",
+        name: "LatestGPU",
+        short_name: "LatestGPU",
         start_url: "/",
         background_color: "#663399",
         theme_color: "#663399",
@@ -54,24 +54,32 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      resolve: "gatsby-plugin-prefetch-google-fonts",
       options: {
         fonts: [
           {
-            family: `Oswald`,
-            subsets: [`latin`],
+            family: "Oswald",
+            subsets: ["latin"],
           },
           {
-            family: `Open Sans`,
-            variants: [`400`, `700`],
+            family: "Open Sans",
+            variants: ["400", "700"],
           },
         ],
       },
     },
     {
-      resolve: `gatsby-plugin-graphql-codegen`,
+      resolve: "gatsby-plugin-graphql-codegen",
       options: {
-        fileName: `./gatsby-graphql.ts`,
+        fileName: "./src/gatsby-graphql.ts",
+      },
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "data",
+        path: `${__dirname}/src/data/`,
+        plugins: ["gatsby-transformer-json"],
       },
     },
   ],

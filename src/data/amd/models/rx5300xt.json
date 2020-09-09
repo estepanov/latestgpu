@@ -1,0 +1,32 @@
+{
+  "series": "rx5000",
+  "name":"Radeon RX 5300 XT",
+  "releaseDate": "2019-10-07T00:00:00+00:00",
+  "gpuEngine": {
+    "nvidiaCUDACores": 5888,
+    "boostClockGhz": 1.73
+  },
+  "memory": {
+    "standardConfigSizeGB": 8,
+    "standardConfigSpec": "GDDR6",
+    "interfaceBandwidthBit": 256
+  },
+  "display": {
+    "maxResolution": {
+      "width":7680,
+      "height":4320
+    },
+    "connectors": [
+      {
+        "type": "HDMI 2.1",
+        "count": 1
+      },
+      {
+        "type": "DisplayPort 1.4a",
+        "count": 3
+      }
+    ],
+    "monitorCount": 4,
+    "HDCP": "2.3"
+  }
+}

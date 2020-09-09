@@ -8,6 +8,8 @@ module.exports = {
     linearGradientColors: {
       purple: ["#b794f4", "#805ad5"],
       "purple-dark": ["#6b46c1", "#44337a"],
+      blue: ["#63b3ed", "#3182ce"],
+      "blue-dark": ["#2b6cb0", "#2a4365"],
       "light-gray": ["#f7fafc", "#cbd5e0"],
       "dark-gray": ["#4a5568", "#1a202c"],
     },

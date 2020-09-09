@@ -7,7 +7,7 @@ import Hamburger from "./Hamburger";
 import LogoLink from "./LogoLink";
 
 const NavBar = styled.nav`
-  ${tw`bg-purple-400`}
+  ${tw`bg-gradient-t-dark-gray`}
 `;
 
 interface MobileLinkProps {
@@ -18,26 +18,32 @@ const MobileLink = styled.nav<MobileLinkProps>`
   ${({ isOpen }) => (isOpen ? tw`md:block lg:hidden` : tw`hidden md:hidden`)}
 `;
 
-const MainNav = [
+interface NavLink {
+  children: string;
+  key: string;
+  to: string;
+}
+
+const MainNav: NavLink[] = [
   // {
   //   children: "Home",
   //   key: "Landing",
   //   to: "/",
   // },
-  {
-    children: "Page Two",
-    key: "Page Two",
-    to: "/page-2",
-  },
-  {
-    children: "404 Page",
-    key: "404",
-    to: "/404",
-  },
+  // {
+  //   children: "Page Two",
+  //   key: "Page Two",
+  //   to: "/page-2",
+  // },
+  // {
+  //   children: "404 Page",
+  //   key: "404",
+  //   to: "/404",
+  // },
 ];
 const logo = (
   <LogoLink to="/">
-    The Best <span tw="text-purple-800">Starter Kit</span>
+    Latest <span tw="text-gray-500">GPU</span>
   </LogoLink>
 );
 
@@ -51,7 +57,9 @@ const Header: React.FC = () => {
       <div tw="container sm:px-6 lg:px-8">
         <div tw="flex justify-between h-16">
           <div tw="flex justify-between flex-grow">
-            <Hamburger onClick={toggleMobile} isOpen={isMobileOpen} />
+            {MainNav.length >= 1 && (
+              <Hamburger onClick={toggleMobile} isOpen={isMobileOpen} />
+            )}
             <div tw="flex-shrink-0 flex items-center">
               <div tw="block lg:hidden h-8 w-auto">{logo}</div>
               <div tw="h-8 w-auto flex items-center hidden lg:block">
@@ -186,30 +194,6 @@ const Header: React.FC = () => {
               </NavBarLink>
             );
           })}
-          {/* <a
-            href="#"
-            tw="block px-3 py-2 rounded-md text-base font-medium text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out"
-          >
-            Dashboard
-          </a>
-          <a
-            href="#"
-            tw="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out"
-          >
-            Team
-          </a>
-          <a
-            href="#"
-            tw="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out"
-          >
-            Projects
-          </a>
-          <a
-            href="#"
-            tw="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out"
-          >
-            Calendar
-          </a> */}
         </div>
         {/* <div tw="pt-4 pb-3 border-t border-gray-700">
           <div tw="flex items-center px-5 sm:px-6">

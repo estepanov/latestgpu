@@ -7,7 +7,7 @@ interface HamburgerProps {
 }
 
 const StyledButton = styled.button`
-  ${tw`inline-flex items-center justify-center p-2 rounded-md text-purple-800 hover:text-white hover:bg-purple-700 focus:outline-none focus:bg-purple-800 focus:text-white transition duration-150 ease-in-out`}
+  ${tw`inline-flex items-center justify-center p-2 rounded-md text-blue-800 hover:text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-800 focus:text-white transition duration-150 ease-in-out`}
 `;
 
 const Hamburger: React.FC<HamburgerProps> = ({ onClick, isOpen }) => {

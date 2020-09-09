@@ -7,7 +7,7 @@
 
 import React from "react";
 // import { useStaticQuery, graphql } from "gatsby";
-// import { SiteTitleQuery } from "../../gatsby-graphql";
+// import { SiteTitleQuery } from "~/gatsby-graphql";
 import { Global, css } from "@emotion/core";
 
 import Header from "~/components/Header";
@@ -52,11 +52,7 @@ const Layout: React.FC<LayoutProps> = ({ children, container }) => {
         <div tw="text-center">
           © {new Date().getFullYear()}
           <br />
-          Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-          <br />
-          Starter kit by <a href="https://www.estep.nyc">estepanov</a>
+          Built by <a href="https://www.estep.nyc">estepanov</a>
         </div>
       </Footer>
     </>

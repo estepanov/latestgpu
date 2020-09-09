@@ -3,7 +3,7 @@ import tw, { styled, css } from "twin.macro";
 import GatsbyLogo from "~/images/gatsby-icon.png";
 
 const Container = styled.div`
-  ${tw`md:py-10 lg:py-20 sm:py-10 py-10 bg-gradient-b-purple`}
+  ${tw`md:py-10 lg:py-20 sm:py-10 py-10 bg-gradient-b-blue`}
 `;
 
 const Hero: React.FC = () => {
@@ -13,9 +13,9 @@ const Hero: React.FC = () => {
         css={tw`container grid xl:grid-cols-2 lg:grid-cols-2 md:grid-cols-2 grid-cols-1 lg:gap-8 lg:items-center`}
       >
         <div tw="flex-shrink-0">
-          <a
+          {/* <a
             href="#"
-            tw="outline-none inline-flex items-center text-white bg-gradient-b-purple-dark rounded-full py-1 px-1 pr-2 sm:text-base lg:text-sm xl:text-base hover:text-purple-900 focus:text-purple-900 hover:bg-gradient-b-light-gray focus:bg-gradient-b-light-gray focus:shadow-outline mb-3"
+            tw="outline-none inline-flex items-center text-white bg-gradient-b-blue-dark rounded-full py-1 px-1 pr-2 sm:text-base lg:text-sm xl:text-base hover:text-blue-900 focus:text-blue-900 hover:bg-gradient-b-light-gray focus:bg-gradient-b-light-gray focus:shadow-outline mb-3"
           >
             <span tw="px-3 py-1/2 text-white text-xs font-semibold leading-5 uppercase tracking-wide bg-red-500 rounded-full">
               hot code
@@ -28,18 +28,18 @@ const Hero: React.FC = () => {
                 clipRule="evenodd"
               />
             </svg>
-          </a>
+          </a> */}
           <h2 tw="text-4xl font-bold mb-2 text-white">
             Tailwind CSS&nbsp;
             <br tw="xl:hidden" />
-            <span tw="text-purple-800">with emotion CSS-in-JS!</span>
+            <span tw="text-blue-800">with emotion CSS-in-JS!</span>
           </h2>
-          <h3 tw="text-2xl mb-8 text-purple-200">
+          <h3 tw="text-2xl mb-8 text-blue-200">
             Now inside of a TypeScript Gatsby Project.
           </h3>
           <a
             href="https://github.com/estepanov/gatsby-typescript-tailwind-starter"
-            tw="leading-10 focus:shadow-outline bg-gradient-b-light-gray shadow-lg font-bold text-purple-600 rounded-full py-4 px-8 uppercase tracking-wider hover:shadow-sm hover:text-purple-100 hover:bg-gradient-t-purple-dark outline-none focus:text-purple-100 focus:bg-gradient-t-purple-dark transition duration-500 ease-in-out"
+            tw="leading-10 focus:shadow-outline bg-gradient-b-light-gray shadow-lg font-bold text-blue-600 rounded-full py-4 px-8 uppercase tracking-wider hover:shadow-sm hover:text-blue-100 hover:bg-gradient-t-blue-dark outline-none focus:text-blue-100 focus:bg-gradient-t-blue-dark transition duration-500 ease-in-out"
           >
             Star on GitHub
           </a>

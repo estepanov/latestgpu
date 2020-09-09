@@ -25,7 +25,7 @@
     ".cache"
   ],
   "include": [
-    "gatsby-graphql.ts",
+    "src/gatsby-graphql.ts",
     "src/**/*",
     "src/twin.d.ts"
   ],

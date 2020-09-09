@@ -394,6 +394,8 @@ export type File = Node & {
   parent?: Maybe<Node>;
   children: Array<Node>;
   internal: Internal;
+  childSeriesJson?: Maybe<SeriesJson>;
+  childModelsJson?: Maybe<ModelsJson>;
 };
 
 
@@ -690,7 +692,104 @@ export type FileFieldsEnum =
   | 'internal___ignoreType'
   | 'internal___mediaType'
   | 'internal___owner'
-  | 'internal___type';
+  | 'internal___type'
+  | 'childSeriesJson___id'
+  | 'childSeriesJson___parent___id'
+  | 'childSeriesJson___parent___parent___id'
+  | 'childSeriesJson___parent___parent___children'
+  | 'childSeriesJson___parent___children'
+  | 'childSeriesJson___parent___children___id'
+  | 'childSeriesJson___parent___children___children'
+  | 'childSeriesJson___parent___internal___content'
+  | 'childSeriesJson___parent___internal___contentDigest'
+  | 'childSeriesJson___parent___internal___description'
+  | 'childSeriesJson___parent___internal___fieldOwners'
+  | 'childSeriesJson___parent___internal___ignoreType'
+  | 'childSeriesJson___parent___internal___mediaType'
+  | 'childSeriesJson___parent___internal___owner'
+  | 'childSeriesJson___parent___internal___type'
+  | 'childSeriesJson___children'
+  | 'childSeriesJson___children___id'
+  | 'childSeriesJson___children___parent___id'
+  | 'childSeriesJson___children___parent___children'
+  | 'childSeriesJson___children___children'
+  | 'childSeriesJson___children___children___id'
+  | 'childSeriesJson___children___children___children'
+  | 'childSeriesJson___children___internal___content'
+  | 'childSeriesJson___children___internal___contentDigest'
+  | 'childSeriesJson___children___internal___description'
+  | 'childSeriesJson___children___internal___fieldOwners'
+  | 'childSeriesJson___children___internal___ignoreType'
+  | 'childSeriesJson___children___internal___mediaType'
+  | 'childSeriesJson___children___internal___owner'
+  | 'childSeriesJson___children___internal___type'
+  | 'childSeriesJson___internal___content'
+  | 'childSeriesJson___internal___contentDigest'
+  | 'childSeriesJson___internal___description'
+  | 'childSeriesJson___internal___fieldOwners'
+  | 'childSeriesJson___internal___ignoreType'
+  | 'childSeriesJson___internal___mediaType'
+  | 'childSeriesJson___internal___owner'
+  | 'childSeriesJson___internal___type'
+  | 'childSeriesJson___name'
+  | 'childSeriesJson___releaseDate'
+  | 'childSeriesJson___architecture'
+  | 'childSeriesJson___website'
+  | 'childSeriesJson___fields___designer'
+  | 'childModelsJson___id'
+  | 'childModelsJson___parent___id'
+  | 'childModelsJson___parent___parent___id'
+  | 'childModelsJson___parent___parent___children'
+  | 'childModelsJson___parent___children'
+  | 'childModelsJson___parent___children___id'
+  | 'childModelsJson___parent___children___children'
+  | 'childModelsJson___parent___internal___content'
+  | 'childModelsJson___parent___internal___contentDigest'
+  | 'childModelsJson___parent___internal___description'
+  | 'childModelsJson___parent___internal___fieldOwners'
+  | 'childModelsJson___parent___internal___ignoreType'
+  | 'childModelsJson___parent___internal___mediaType'
+  | 'childModelsJson___parent___internal___owner'
+  | 'childModelsJson___parent___internal___type'
+  | 'childModelsJson___children'
+  | 'childModelsJson___children___id'
+  | 'childModelsJson___children___parent___id'
+  | 'childModelsJson___children___parent___children'
+  | 'childModelsJson___children___children'
+  | 'childModelsJson___children___children___id'
+  | 'childModelsJson___children___children___children'
+  | 'childModelsJson___children___internal___content'
+  | 'childModelsJson___children___internal___contentDigest'
+  | 'childModelsJson___children___internal___description'
+  | 'childModelsJson___children___internal___fieldOwners'
+  | 'childModelsJson___children___internal___ignoreType'
+  | 'childModelsJson___children___internal___mediaType'
+  | 'childModelsJson___children___internal___owner'
+  | 'childModelsJson___children___internal___type'
+  | 'childModelsJson___internal___content'
+  | 'childModelsJson___internal___contentDigest'
+  | 'childModelsJson___internal___description'
+  | 'childModelsJson___internal___fieldOwners'
+  | 'childModelsJson___internal___ignoreType'
+  | 'childModelsJson___internal___mediaType'
+  | 'childModelsJson___internal___owner'
+  | 'childModelsJson___internal___type'
+  | 'childModelsJson___series'
+  | 'childModelsJson___name'
+  | 'childModelsJson___releaseDate'
+  | 'childModelsJson___gpuEngine___nvidiaCUDACores'
+  | 'childModelsJson___gpuEngine___boostClockGhz'
+  | 'childModelsJson___memory___standardConfigSizeGB'
+  | 'childModelsJson___memory___standardConfigSpec'
+  | 'childModelsJson___memory___interfaceBandwidthBit'
+  | 'childModelsJson___display___maxResolution___width'
+  | 'childModelsJson___display___maxResolution___height'
+  | 'childModelsJson___display___connectors'
+  | 'childModelsJson___display___connectors___type'
+  | 'childModelsJson___display___connectors___count'
+  | 'childModelsJson___display___monitorCount'
+  | 'childModelsJson___display___HDCP'
+  | 'childModelsJson___fields___designer';
 
 export type FileFilterInput = {
   sourceInstanceName?: Maybe<StringQueryOperatorInput>;
@@ -732,6 +831,8 @@ export type FileFilterInput = {
   parent?: Maybe<NodeFilterInput>;
   children?: Maybe<NodeFilterListInput>;
   internal?: Maybe<InternalFilterInput>;
+  childSeriesJson?: Maybe<SeriesJsonFilterInput>;
+  childModelsJson?: Maybe<ModelsJsonFilterInput>;
 };
 
 export type FileGroupConnection = {
@@ -1290,6 +1391,255 @@ export type IntQueryOperatorInput = {
 };
 
 
+export type ModelsJson = Node & {
+  id: Scalars['ID'];
+  parent?: Maybe<Node>;
+  children: Array<Node>;
+  internal: Internal;
+  series?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  releaseDate?: Maybe<Scalars['Date']>;
+  gpuEngine?: Maybe<ModelsJsonGpuEngine>;
+  memory?: Maybe<ModelsJsonMemory>;
+  display?: Maybe<ModelsJsonDisplay>;
+  fields?: Maybe<ModelsJsonFields>;
+};
+
+
+export type ModelsJsonReleaseDateArgs = {
+  formatString?: Maybe<Scalars['String']>;
+  fromNow?: Maybe<Scalars['Boolean']>;
+  difference?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+};
+
+export type ModelsJsonConnection = {
+  totalCount: Scalars['Int'];
+  edges: Array<ModelsJsonEdge>;
+  nodes: Array<ModelsJson>;
+  pageInfo: PageInfo;
+  distinct: Array<Scalars['String']>;
+  group: Array<ModelsJsonGroupConnection>;
+};
+
+
+export type ModelsJsonConnectionDistinctArgs = {
+  field: ModelsJsonFieldsEnum;
+};
+
+
+export type ModelsJsonConnectionGroupArgs = {
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+  field: ModelsJsonFieldsEnum;
+};
+
+export type ModelsJsonDisplay = {
+  maxResolution?: Maybe<ModelsJsonDisplayMaxResolution>;
+  connectors?: Maybe<Array<Maybe<ModelsJsonDisplayConnectors>>>;
+  monitorCount?: Maybe<Scalars['Int']>;
+  HDCP?: Maybe<Scalars['String']>;
+};
+
+export type ModelsJsonDisplayConnectors = {
+  type?: Maybe<Scalars['String']>;
+  count?: Maybe<Scalars['Int']>;
+};
+
+export type ModelsJsonDisplayConnectorsFilterInput = {
+  type?: Maybe<StringQueryOperatorInput>;
+  count?: Maybe<IntQueryOperatorInput>;
+};
+
+export type ModelsJsonDisplayConnectorsFilterListInput = {
+  elemMatch?: Maybe<ModelsJsonDisplayConnectorsFilterInput>;
+};
+
+export type ModelsJsonDisplayFilterInput = {
+  maxResolution?: Maybe<ModelsJsonDisplayMaxResolutionFilterInput>;
+  connectors?: Maybe<ModelsJsonDisplayConnectorsFilterListInput>;
+  monitorCount?: Maybe<IntQueryOperatorInput>;
+  HDCP?: Maybe<StringQueryOperatorInput>;
+};
+
+export type ModelsJsonDisplayMaxResolution = {
+  width?: Maybe<Scalars['Int']>;
+  height?: Maybe<Scalars['Int']>;
+};
+
+export type ModelsJsonDisplayMaxResolutionFilterInput = {
+  width?: Maybe<IntQueryOperatorInput>;
+  height?: Maybe<IntQueryOperatorInput>;
+};
+
+export type ModelsJsonEdge = {
+  next?: Maybe<ModelsJson>;
+  node: ModelsJson;
+  previous?: Maybe<ModelsJson>;
+};
+
+export type ModelsJsonFields = {
+  designer?: Maybe<Scalars['String']>;
+};
+
+export type ModelsJsonFieldsEnum = 
+  | 'id'
+  | 'parent___id'
+  | 'parent___parent___id'
+  | 'parent___parent___parent___id'
+  | 'parent___parent___parent___children'
+  | 'parent___parent___children'
+  | 'parent___parent___children___id'
+  | 'parent___parent___children___children'
+  | 'parent___parent___internal___content'
+  | 'parent___parent___internal___contentDigest'
+  | 'parent___parent___internal___description'
+  | 'parent___parent___internal___fieldOwners'
+  | 'parent___parent___internal___ignoreType'
+  | 'parent___parent___internal___mediaType'
+  | 'parent___parent___internal___owner'
+  | 'parent___parent___internal___type'
+  | 'parent___children'
+  | 'parent___children___id'
+  | 'parent___children___parent___id'
+  | 'parent___children___parent___children'
+  | 'parent___children___children'
+  | 'parent___children___children___id'
+  | 'parent___children___children___children'
+  | 'parent___children___internal___content'
+  | 'parent___children___internal___contentDigest'
+  | 'parent___children___internal___description'
+  | 'parent___children___internal___fieldOwners'
+  | 'parent___children___internal___ignoreType'
+  | 'parent___children___internal___mediaType'
+  | 'parent___children___internal___owner'
+  | 'parent___children___internal___type'
+  | 'parent___internal___content'
+  | 'parent___internal___contentDigest'
+  | 'parent___internal___description'
+  | 'parent___internal___fieldOwners'
+  | 'parent___internal___ignoreType'
+  | 'parent___internal___mediaType'
+  | 'parent___internal___owner'
+  | 'parent___internal___type'
+  | 'children'
+  | 'children___id'
+  | 'children___parent___id'
+  | 'children___parent___parent___id'
+  | 'children___parent___parent___children'
+  | 'children___parent___children'
+  | 'children___parent___children___id'
+  | 'children___parent___children___children'
+  | 'children___parent___internal___content'
+  | 'children___parent___internal___contentDigest'
+  | 'children___parent___internal___description'
+  | 'children___parent___internal___fieldOwners'
+  | 'children___parent___internal___ignoreType'
+  | 'children___parent___internal___mediaType'
+  | 'children___parent___internal___owner'
+  | 'children___parent___internal___type'
+  | 'children___children'
+  | 'children___children___id'
+  | 'children___children___parent___id'
+  | 'children___children___parent___children'
+  | 'children___children___children'
+  | 'children___children___children___id'
+  | 'children___children___children___children'
+  | 'children___children___internal___content'
+  | 'children___children___internal___contentDigest'
+  | 'children___children___internal___description'
+  | 'children___children___internal___fieldOwners'
+  | 'children___children___internal___ignoreType'
+  | 'children___children___internal___mediaType'
+  | 'children___children___internal___owner'
+  | 'children___children___internal___type'
+  | 'children___internal___content'
+  | 'children___internal___contentDigest'
+  | 'children___internal___description'
+  | 'children___internal___fieldOwners'
+  | 'children___internal___ignoreType'
+  | 'children___internal___mediaType'
+  | 'children___internal___owner'
+  | 'children___internal___type'
+  | 'internal___content'
+  | 'internal___contentDigest'
+  | 'internal___description'
+  | 'internal___fieldOwners'
+  | 'internal___ignoreType'
+  | 'internal___mediaType'
+  | 'internal___owner'
+  | 'internal___type'
+  | 'series'
+  | 'name'
+  | 'releaseDate'
+  | 'gpuEngine___nvidiaCUDACores'
+  | 'gpuEngine___boostClockGhz'
+  | 'memory___standardConfigSizeGB'
+  | 'memory___standardConfigSpec'
+  | 'memory___interfaceBandwidthBit'
+  | 'display___maxResolution___width'
+  | 'display___maxResolution___height'
+  | 'display___connectors'
+  | 'display___connectors___type'
+  | 'display___connectors___count'
+  | 'display___monitorCount'
+  | 'display___HDCP'
+  | 'fields___designer';
+
+export type ModelsJsonFieldsFilterInput = {
+  designer?: Maybe<StringQueryOperatorInput>;
+};
+
+export type ModelsJsonFilterInput = {
+  id?: Maybe<StringQueryOperatorInput>;
+  parent?: Maybe<NodeFilterInput>;
+  children?: Maybe<NodeFilterListInput>;
+  internal?: Maybe<InternalFilterInput>;
+  series?: Maybe<StringQueryOperatorInput>;
+  name?: Maybe<StringQueryOperatorInput>;
+  releaseDate?: Maybe<DateQueryOperatorInput>;
+  gpuEngine?: Maybe<ModelsJsonGpuEngineFilterInput>;
+  memory?: Maybe<ModelsJsonMemoryFilterInput>;
+  display?: Maybe<ModelsJsonDisplayFilterInput>;
+  fields?: Maybe<ModelsJsonFieldsFilterInput>;
+};
+
+export type ModelsJsonGpuEngine = {
+  nvidiaCUDACores?: Maybe<Scalars['Int']>;
+  boostClockGhz?: Maybe<Scalars['Float']>;
+};
+
+export type ModelsJsonGpuEngineFilterInput = {
+  nvidiaCUDACores?: Maybe<IntQueryOperatorInput>;
+  boostClockGhz?: Maybe<FloatQueryOperatorInput>;
+};
+
+export type ModelsJsonGroupConnection = {
+  totalCount: Scalars['Int'];
+  edges: Array<ModelsJsonEdge>;
+  nodes: Array<ModelsJson>;
+  pageInfo: PageInfo;
+  field: Scalars['String'];
+  fieldValue?: Maybe<Scalars['String']>;
+};
+
+export type ModelsJsonMemory = {
+  standardConfigSizeGB?: Maybe<Scalars['Int']>;
+  standardConfigSpec?: Maybe<Scalars['String']>;
+  interfaceBandwidthBit?: Maybe<Scalars['Int']>;
+};
+
+export type ModelsJsonMemoryFilterInput = {
+  standardConfigSizeGB?: Maybe<IntQueryOperatorInput>;
+  standardConfigSpec?: Maybe<StringQueryOperatorInput>;
+  interfaceBandwidthBit?: Maybe<IntQueryOperatorInput>;
+};
+
+export type ModelsJsonSortInput = {
+  fields?: Maybe<Array<Maybe<ModelsJsonFieldsEnum>>>;
+  order?: Maybe<Array<Maybe<SortOrderEnum>>>;
+};
+
 /** Node Interface */
 export type Node = {
   id: Scalars['ID'];
@@ -1350,6 +1700,10 @@ export type Query = {
   allSite: SiteConnection;
   imageSharp?: Maybe<ImageSharp>;
   allImageSharp: ImageSharpConnection;
+  modelsJson?: Maybe<ModelsJson>;
+  allModelsJson: ModelsJsonConnection;
+  seriesJson?: Maybe<SeriesJson>;
+  allSeriesJson: SeriesJsonConnection;
   siteBuildMetadata?: Maybe<SiteBuildMetadata>;
   allSiteBuildMetadata: SiteBuildMetadataConnection;
   sitePlugin?: Maybe<SitePlugin>;
@@ -1397,6 +1751,8 @@ export type QueryFileArgs = {
   parent?: Maybe<NodeFilterInput>;
   children?: Maybe<NodeFilterListInput>;
   internal?: Maybe<InternalFilterInput>;
+  childSeriesJson?: Maybe<SeriesJsonFilterInput>;
+  childModelsJson?: Maybe<ModelsJsonFilterInput>;
 };
 
 
@@ -1463,14 +1819,14 @@ export type QuerySitePageArgs = {
   internalComponentName?: Maybe<StringQueryOperatorInput>;
   componentChunkName?: Maybe<StringQueryOperatorInput>;
   matchPath?: Maybe<StringQueryOperatorInput>;
-  id?: Maybe<StringQueryOperatorInput>;
-  parent?: Maybe<NodeFilterInput>;
-  children?: Maybe<NodeFilterListInput>;
-  internal?: Maybe<InternalFilterInput>;
   isCreatedByStatefulCreatePages?: Maybe<BooleanQueryOperatorInput>;
   pluginCreator?: Maybe<SitePluginFilterInput>;
   pluginCreatorId?: Maybe<StringQueryOperatorInput>;
   componentPath?: Maybe<StringQueryOperatorInput>;
+  id?: Maybe<StringQueryOperatorInput>;
+  parent?: Maybe<NodeFilterInput>;
+  children?: Maybe<NodeFilterListInput>;
+  internal?: Maybe<InternalFilterInput>;
 };
 
 
@@ -1526,6 +1882,50 @@ export type QueryAllImageSharpArgs = {
 };
 
 
+export type QueryModelsJsonArgs = {
+  id?: Maybe<StringQueryOperatorInput>;
+  parent?: Maybe<NodeFilterInput>;
+  children?: Maybe<NodeFilterListInput>;
+  internal?: Maybe<InternalFilterInput>;
+  series?: Maybe<StringQueryOperatorInput>;
+  name?: Maybe<StringQueryOperatorInput>;
+  releaseDate?: Maybe<DateQueryOperatorInput>;
+  gpuEngine?: Maybe<ModelsJsonGpuEngineFilterInput>;
+  memory?: Maybe<ModelsJsonMemoryFilterInput>;
+  display?: Maybe<ModelsJsonDisplayFilterInput>;
+  fields?: Maybe<ModelsJsonFieldsFilterInput>;
+};
+
+
+export type QueryAllModelsJsonArgs = {
+  filter?: Maybe<ModelsJsonFilterInput>;
+  sort?: Maybe<ModelsJsonSortInput>;
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+};
+
+
+export type QuerySeriesJsonArgs = {
+  id?: Maybe<StringQueryOperatorInput>;
+  parent?: Maybe<NodeFilterInput>;
+  children?: Maybe<NodeFilterListInput>;
+  internal?: Maybe<InternalFilterInput>;
+  name?: Maybe<StringQueryOperatorInput>;
+  releaseDate?: Maybe<DateQueryOperatorInput>;
+  architecture?: Maybe<StringQueryOperatorInput>;
+  website?: Maybe<StringQueryOperatorInput>;
+  fields?: Maybe<SeriesJsonFieldsFilterInput>;
+};
+
+
+export type QueryAllSeriesJsonArgs = {
+  filter?: Maybe<SeriesJsonFilterInput>;
+  sort?: Maybe<SeriesJsonSortInput>;
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+};
+
+
 export type QuerySiteBuildMetadataArgs = {
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
@@ -1565,6 +1965,180 @@ export type QueryAllSitePluginArgs = {
   sort?: Maybe<SitePluginSortInput>;
   skip?: Maybe<Scalars['Int']>;
   limit?: Maybe<Scalars['Int']>;
+};
+
+export type SeriesJson = Node & {
+  id: Scalars['ID'];
+  parent?: Maybe<Node>;
+  children: Array<Node>;
+  internal: Internal;
+  name?: Maybe<Scalars['String']>;
+  releaseDate?: Maybe<Scalars['Date']>;
+  architecture?: Maybe<Scalars['String']>;
+  website?: Maybe<Scalars['String']>;
+  fields?: Maybe<SeriesJsonFields>;
+};
+
+
+export type SeriesJsonReleaseDateArgs = {
+  formatString?: Maybe<Scalars['String']>;
+  fromNow?: Maybe<Scalars['Boolean']>;
+  difference?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+};
+
+export type SeriesJsonConnection = {
+  totalCount: Scalars['Int'];
+  edges: Array<SeriesJsonEdge>;
+  nodes: Array<SeriesJson>;
+  pageInfo: PageInfo;
+  distinct: Array<Scalars['String']>;
+  group: Array<SeriesJsonGroupConnection>;
+};
+
+
+export type SeriesJsonConnectionDistinctArgs = {
+  field: SeriesJsonFieldsEnum;
+};
+
+
+export type SeriesJsonConnectionGroupArgs = {
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+  field: SeriesJsonFieldsEnum;
+};
+
+export type SeriesJsonEdge = {
+  next?: Maybe<SeriesJson>;
+  node: SeriesJson;
+  previous?: Maybe<SeriesJson>;
+};
+
+export type SeriesJsonFields = {
+  designer?: Maybe<Scalars['String']>;
+};
+
+export type SeriesJsonFieldsEnum = 
+  | 'id'
+  | 'parent___id'
+  | 'parent___parent___id'
+  | 'parent___parent___parent___id'
+  | 'parent___parent___parent___children'
+  | 'parent___parent___children'
+  | 'parent___parent___children___id'
+  | 'parent___parent___children___children'
+  | 'parent___parent___internal___content'
+  | 'parent___parent___internal___contentDigest'
+  | 'parent___parent___internal___description'
+  | 'parent___parent___internal___fieldOwners'
+  | 'parent___parent___internal___ignoreType'
+  | 'parent___parent___internal___mediaType'
+  | 'parent___parent___internal___owner'
+  | 'parent___parent___internal___type'
+  | 'parent___children'
+  | 'parent___children___id'
+  | 'parent___children___parent___id'
+  | 'parent___children___parent___children'
+  | 'parent___children___children'
+  | 'parent___children___children___id'
+  | 'parent___children___children___children'
+  | 'parent___children___internal___content'
+  | 'parent___children___internal___contentDigest'
+  | 'parent___children___internal___description'
+  | 'parent___children___internal___fieldOwners'
+  | 'parent___children___internal___ignoreType'
+  | 'parent___children___internal___mediaType'
+  | 'parent___children___internal___owner'
+  | 'parent___children___internal___type'
+  | 'parent___internal___content'
+  | 'parent___internal___contentDigest'
+  | 'parent___internal___description'
+  | 'parent___internal___fieldOwners'
+  | 'parent___internal___ignoreType'
+  | 'parent___internal___mediaType'
+  | 'parent___internal___owner'
+  | 'parent___internal___type'
+  | 'children'
+  | 'children___id'
+  | 'children___parent___id'
+  | 'children___parent___parent___id'
+  | 'children___parent___parent___children'
+  | 'children___parent___children'
+  | 'children___parent___children___id'
+  | 'children___parent___children___children'
+  | 'children___parent___internal___content'
+  | 'children___parent___internal___contentDigest'
+  | 'children___parent___internal___description'
+  | 'children___parent___internal___fieldOwners'
+  | 'children___parent___internal___ignoreType'
+  | 'children___parent___internal___mediaType'
+  | 'children___parent___internal___owner'
+  | 'children___parent___internal___type'
+  | 'children___children'
+  | 'children___children___id'
+  | 'children___children___parent___id'
+  | 'children___children___parent___children'
+  | 'children___children___children'
+  | 'children___children___children___id'
+  | 'children___children___children___children'
+  | 'children___children___internal___content'
+  | 'children___children___internal___contentDigest'
+  | 'children___children___internal___description'
+  | 'children___children___internal___fieldOwners'
+  | 'children___children___internal___ignoreType'
+  | 'children___children___internal___mediaType'
+  | 'children___children___internal___owner'
+  | 'children___children___internal___type'
+  | 'children___internal___content'
+  | 'children___internal___contentDigest'
+  | 'children___internal___description'
+  | 'children___internal___fieldOwners'
+  | 'children___internal___ignoreType'
+  | 'children___internal___mediaType'
+  | 'children___internal___owner'
+  | 'children___internal___type'
+  | 'internal___content'
+  | 'internal___contentDigest'
+  | 'internal___description'
+  | 'internal___fieldOwners'
+  | 'internal___ignoreType'
+  | 'internal___mediaType'
+  | 'internal___owner'
+  | 'internal___type'
+  | 'name'
+  | 'releaseDate'
+  | 'architecture'
+  | 'website'
+  | 'fields___designer';
+
+export type SeriesJsonFieldsFilterInput = {
+  designer?: Maybe<StringQueryOperatorInput>;
+};
+
+export type SeriesJsonFilterInput = {
+  id?: Maybe<StringQueryOperatorInput>;
+  parent?: Maybe<NodeFilterInput>;
+  children?: Maybe<NodeFilterListInput>;
+  internal?: Maybe<InternalFilterInput>;
+  name?: Maybe<StringQueryOperatorInput>;
+  releaseDate?: Maybe<DateQueryOperatorInput>;
+  architecture?: Maybe<StringQueryOperatorInput>;
+  website?: Maybe<StringQueryOperatorInput>;
+  fields?: Maybe<SeriesJsonFieldsFilterInput>;
+};
+
+export type SeriesJsonGroupConnection = {
+  totalCount: Scalars['Int'];
+  edges: Array<SeriesJsonEdge>;
+  nodes: Array<SeriesJson>;
+  pageInfo: PageInfo;
+  field: Scalars['String'];
+  fieldValue?: Maybe<Scalars['String']>;
+};
+
+export type SeriesJsonSortInput = {
+  fields?: Maybe<Array<Maybe<SeriesJsonFieldsEnum>>>;
+  order?: Maybe<Array<Maybe<SortOrderEnum>>>;
 };
 
 export type Site = Node & {
@@ -1893,14 +2467,14 @@ export type SitePage = Node & {
   internalComponentName: Scalars['String'];
   componentChunkName: Scalars['String'];
   matchPath?: Maybe<Scalars['String']>;
-  id: Scalars['ID'];
-  parent?: Maybe<Node>;
-  children: Array<Node>;
-  internal: Internal;
   isCreatedByStatefulCreatePages?: Maybe<Scalars['Boolean']>;
   pluginCreator?: Maybe<SitePlugin>;
   pluginCreatorId?: Maybe<Scalars['String']>;
   componentPath?: Maybe<Scalars['String']>;
+  id: Scalars['ID'];
+  parent?: Maybe<Node>;
+  children: Array<Node>;
+  internal: Internal;
 };
 
 export type SitePageConnection = {
@@ -1936,6 +2510,99 @@ export type SitePageFieldsEnum =
   | 'internalComponentName'
   | 'componentChunkName'
   | 'matchPath'
+  | 'isCreatedByStatefulCreatePages'
+  | 'pluginCreator___id'
+  | 'pluginCreator___parent___id'
+  | 'pluginCreator___parent___parent___id'
+  | 'pluginCreator___parent___parent___children'
+  | 'pluginCreator___parent___children'
+  | 'pluginCreator___parent___children___id'
+  | 'pluginCreator___parent___children___children'
+  | 'pluginCreator___parent___internal___content'
+  | 'pluginCreator___parent___internal___contentDigest'
+  | 'pluginCreator___parent___internal___description'
+  | 'pluginCreator___parent___internal___fieldOwners'
+  | 'pluginCreator___parent___internal___ignoreType'
+  | 'pluginCreator___parent___internal___mediaType'
+  | 'pluginCreator___parent___internal___owner'
+  | 'pluginCreator___parent___internal___type'
+  | 'pluginCreator___children'
+  | 'pluginCreator___children___id'
+  | 'pluginCreator___children___parent___id'
+  | 'pluginCreator___children___parent___children'
+  | 'pluginCreator___children___children'
+  | 'pluginCreator___children___children___id'
+  | 'pluginCreator___children___children___children'
+  | 'pluginCreator___children___internal___content'
+  | 'pluginCreator___children___internal___contentDigest'
+  | 'pluginCreator___children___internal___description'
+  | 'pluginCreator___children___internal___fieldOwners'
+  | 'pluginCreator___children___internal___ignoreType'
+  | 'pluginCreator___children___internal___mediaType'
+  | 'pluginCreator___children___internal___owner'
+  | 'pluginCreator___children___internal___type'
+  | 'pluginCreator___internal___content'
+  | 'pluginCreator___internal___contentDigest'
+  | 'pluginCreator___internal___description'
+  | 'pluginCreator___internal___fieldOwners'
+  | 'pluginCreator___internal___ignoreType'
+  | 'pluginCreator___internal___mediaType'
+  | 'pluginCreator___internal___owner'
+  | 'pluginCreator___internal___type'
+  | 'pluginCreator___resolve'
+  | 'pluginCreator___name'
+  | 'pluginCreator___version'
+  | 'pluginCreator___pluginOptions___plugins'
+  | 'pluginCreator___pluginOptions___plugins___resolve'
+  | 'pluginCreator___pluginOptions___plugins___id'
+  | 'pluginCreator___pluginOptions___plugins___name'
+  | 'pluginCreator___pluginOptions___plugins___version'
+  | 'pluginCreator___pluginOptions___plugins___nodeAPIs'
+  | 'pluginCreator___pluginOptions___plugins___pluginFilepath'
+  | 'pluginCreator___pluginOptions___aliases____'
+  | 'pluginCreator___pluginOptions___aliases____x'
+  | 'pluginCreator___pluginOptions___extensions'
+  | 'pluginCreator___pluginOptions___name'
+  | 'pluginCreator___pluginOptions___path'
+  | 'pluginCreator___pluginOptions___short_name'
+  | 'pluginCreator___pluginOptions___start_url'
+  | 'pluginCreator___pluginOptions___background_color'
+  | 'pluginCreator___pluginOptions___theme_color'
+  | 'pluginCreator___pluginOptions___display'
+  | 'pluginCreator___pluginOptions___icon'
+  | 'pluginCreator___pluginOptions___cache_busting_mode'
+  | 'pluginCreator___pluginOptions___include_favicon'
+  | 'pluginCreator___pluginOptions___legacy'
+  | 'pluginCreator___pluginOptions___theme_color_in_head'
+  | 'pluginCreator___pluginOptions___cacheDigest'
+  | 'pluginCreator___pluginOptions___fonts'
+  | 'pluginCreator___pluginOptions___fonts___family'
+  | 'pluginCreator___pluginOptions___fonts___subsets'
+  | 'pluginCreator___pluginOptions___fonts___variants'
+  | 'pluginCreator___pluginOptions___fileName'
+  | 'pluginCreator___pluginOptions___pathCheck'
+  | 'pluginCreator___nodeAPIs'
+  | 'pluginCreator___browserAPIs'
+  | 'pluginCreator___ssrAPIs'
+  | 'pluginCreator___pluginFilepath'
+  | 'pluginCreator___packageJson___name'
+  | 'pluginCreator___packageJson___description'
+  | 'pluginCreator___packageJson___version'
+  | 'pluginCreator___packageJson___main'
+  | 'pluginCreator___packageJson___author'
+  | 'pluginCreator___packageJson___license'
+  | 'pluginCreator___packageJson___dependencies'
+  | 'pluginCreator___packageJson___dependencies___name'
+  | 'pluginCreator___packageJson___dependencies___version'
+  | 'pluginCreator___packageJson___devDependencies'
+  | 'pluginCreator___packageJson___devDependencies___name'
+  | 'pluginCreator___packageJson___devDependencies___version'
+  | 'pluginCreator___packageJson___peerDependencies'
+  | 'pluginCreator___packageJson___peerDependencies___name'
+  | 'pluginCreator___packageJson___peerDependencies___version'
+  | 'pluginCreator___packageJson___keywords'
+  | 'pluginCreatorId'
+  | 'componentPath'
   | 'id'
   | 'parent___id'
   | 'parent___parent___id'
@@ -2021,93 +2688,7 @@ export type SitePageFieldsEnum =
   | 'internal___ignoreType'
   | 'internal___mediaType'
   | 'internal___owner'
-  | 'internal___type'
-  | 'isCreatedByStatefulCreatePages'
-  | 'pluginCreator___id'
-  | 'pluginCreator___parent___id'
-  | 'pluginCreator___parent___parent___id'
-  | 'pluginCreator___parent___parent___children'
-  | 'pluginCreator___parent___children'
-  | 'pluginCreator___parent___children___id'
-  | 'pluginCreator___parent___children___children'
-  | 'pluginCreator___parent___internal___content'
-  | 'pluginCreator___parent___internal___contentDigest'
-  | 'pluginCreator___parent___internal___description'
-  | 'pluginCreator___parent___internal___fieldOwners'
-  | 'pluginCreator___parent___internal___ignoreType'
-  | 'pluginCreator___parent___internal___mediaType'
-  | 'pluginCreator___parent___internal___owner'
-  | 'pluginCreator___parent___internal___type'
-  | 'pluginCreator___children'
-  | 'pluginCreator___children___id'
-  | 'pluginCreator___children___parent___id'
-  | 'pluginCreator___children___parent___children'
-  | 'pluginCreator___children___children'
-  | 'pluginCreator___children___children___id'
-  | 'pluginCreator___children___children___children'
-  | 'pluginCreator___children___internal___content'
-  | 'pluginCreator___children___internal___contentDigest'
-  | 'pluginCreator___children___internal___description'
-  | 'pluginCreator___children___internal___fieldOwners'
-  | 'pluginCreator___children___internal___ignoreType'
-  | 'pluginCreator___children___internal___mediaType'
-  | 'pluginCreator___children___internal___owner'
-  | 'pluginCreator___children___internal___type'
-  | 'pluginCreator___internal___content'
-  | 'pluginCreator___internal___contentDigest'
-  | 'pluginCreator___internal___description'
-  | 'pluginCreator___internal___fieldOwners'
-  | 'pluginCreator___internal___ignoreType'
-  | 'pluginCreator___internal___mediaType'
-  | 'pluginCreator___internal___owner'
-  | 'pluginCreator___internal___type'
-  | 'pluginCreator___resolve'
-  | 'pluginCreator___name'
-  | 'pluginCreator___version'
-  | 'pluginCreator___pluginOptions___aliases____'
-  | 'pluginCreator___pluginOptions___aliases____x'
-  | 'pluginCreator___pluginOptions___extensions'
-  | 'pluginCreator___pluginOptions___name'
-  | 'pluginCreator___pluginOptions___path'
-  | 'pluginCreator___pluginOptions___short_name'
-  | 'pluginCreator___pluginOptions___start_url'
-  | 'pluginCreator___pluginOptions___background_color'
-  | 'pluginCreator___pluginOptions___theme_color'
-  | 'pluginCreator___pluginOptions___display'
-  | 'pluginCreator___pluginOptions___icon'
-  | 'pluginCreator___pluginOptions___cache_busting_mode'
-  | 'pluginCreator___pluginOptions___include_favicon'
-  | 'pluginCreator___pluginOptions___legacy'
-  | 'pluginCreator___pluginOptions___theme_color_in_head'
-  | 'pluginCreator___pluginOptions___cacheDigest'
-  | 'pluginCreator___pluginOptions___fonts'
-  | 'pluginCreator___pluginOptions___fonts___family'
-  | 'pluginCreator___pluginOptions___fonts___subsets'
-  | 'pluginCreator___pluginOptions___fonts___variants'
-  | 'pluginCreator___pluginOptions___fileName'
-  | 'pluginCreator___pluginOptions___pathCheck'
-  | 'pluginCreator___nodeAPIs'
-  | 'pluginCreator___browserAPIs'
-  | 'pluginCreator___ssrAPIs'
-  | 'pluginCreator___pluginFilepath'
-  | 'pluginCreator___packageJson___name'
-  | 'pluginCreator___packageJson___description'
-  | 'pluginCreator___packageJson___version'
-  | 'pluginCreator___packageJson___main'
-  | 'pluginCreator___packageJson___author'
-  | 'pluginCreator___packageJson___license'
-  | 'pluginCreator___packageJson___dependencies'
-  | 'pluginCreator___packageJson___dependencies___name'
-  | 'pluginCreator___packageJson___dependencies___version'
-  | 'pluginCreator___packageJson___devDependencies'
-  | 'pluginCreator___packageJson___devDependencies___name'
-  | 'pluginCreator___packageJson___devDependencies___version'
-  | 'pluginCreator___packageJson___peerDependencies'
-  | 'pluginCreator___packageJson___peerDependencies___name'
-  | 'pluginCreator___packageJson___peerDependencies___version'
-  | 'pluginCreator___packageJson___keywords'
-  | 'pluginCreatorId'
-  | 'componentPath';
+  | 'internal___type';
 
 export type SitePageFilterInput = {
   path?: Maybe<StringQueryOperatorInput>;
@@ -2115,14 +2696,14 @@ export type SitePageFilterInput = {
   internalComponentName?: Maybe<StringQueryOperatorInput>;
   componentChunkName?: Maybe<StringQueryOperatorInput>;
   matchPath?: Maybe<StringQueryOperatorInput>;
-  id?: Maybe<StringQueryOperatorInput>;
-  parent?: Maybe<NodeFilterInput>;
-  children?: Maybe<NodeFilterListInput>;
-  internal?: Maybe<InternalFilterInput>;
   isCreatedByStatefulCreatePages?: Maybe<BooleanQueryOperatorInput>;
   pluginCreator?: Maybe<SitePluginFilterInput>;
   pluginCreatorId?: Maybe<StringQueryOperatorInput>;
   componentPath?: Maybe<StringQueryOperatorInput>;
+  id?: Maybe<StringQueryOperatorInput>;
+  parent?: Maybe<NodeFilterInput>;
+  children?: Maybe<NodeFilterListInput>;
+  internal?: Maybe<InternalFilterInput>;
 };
 
 export type SitePageGroupConnection = {
@@ -2272,6 +2853,13 @@ export type SitePluginFieldsEnum =
   | 'resolve'
   | 'name'
   | 'version'
+  | 'pluginOptions___plugins'
+  | 'pluginOptions___plugins___resolve'
+  | 'pluginOptions___plugins___id'
+  | 'pluginOptions___plugins___name'
+  | 'pluginOptions___plugins___version'
+  | 'pluginOptions___plugins___nodeAPIs'
+  | 'pluginOptions___plugins___pluginFilepath'
   | 'pluginOptions___aliases____'
   | 'pluginOptions___aliases____x'
   | 'pluginOptions___extensions'
@@ -2409,6 +2997,7 @@ export type SitePluginPackageJsonPeerDependenciesFilterListInput = {
 };
 
 export type SitePluginPluginOptions = {
+  plugins?: Maybe<Array<Maybe<SitePluginPluginOptionsPlugins>>>;
   aliases?: Maybe<SitePluginPluginOptionsAliases>;
   extensions?: Maybe<Array<Maybe<Scalars['String']>>>;
   name?: Maybe<Scalars['String']>;
@@ -2440,6 +3029,7 @@ export type SitePluginPluginOptionsAliasesFilterInput = {
 };
 
 export type SitePluginPluginOptionsFilterInput = {
+  plugins?: Maybe<SitePluginPluginOptionsPluginsFilterListInput>;
   aliases?: Maybe<SitePluginPluginOptionsAliasesFilterInput>;
   extensions?: Maybe<StringQueryOperatorInput>;
   name?: Maybe<StringQueryOperatorInput>;
@@ -2474,6 +3064,28 @@ export type SitePluginPluginOptionsFontsFilterInput = {
 
 export type SitePluginPluginOptionsFontsFilterListInput = {
   elemMatch?: Maybe<SitePluginPluginOptionsFontsFilterInput>;
+};
+
+export type SitePluginPluginOptionsPlugins = {
+  resolve?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  version?: Maybe<Scalars['String']>;
+  nodeAPIs?: Maybe<Array<Maybe<Scalars['String']>>>;
+  pluginFilepath?: Maybe<Scalars['String']>;
+};
+
+export type SitePluginPluginOptionsPluginsFilterInput = {
+  resolve?: Maybe<StringQueryOperatorInput>;
+  id?: Maybe<StringQueryOperatorInput>;
+  name?: Maybe<StringQueryOperatorInput>;
+  version?: Maybe<StringQueryOperatorInput>;
+  nodeAPIs?: Maybe<StringQueryOperatorInput>;
+  pluginFilepath?: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePluginPluginOptionsPluginsFilterListInput = {
+  elemMatch?: Maybe<SitePluginPluginOptionsPluginsFilterInput>;
 };
 
 export type SitePluginSortInput = {
@@ -2520,6 +3132,17 @@ export type Unnamed_2_QueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type Unnamed_2_Query = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'title' | 'description' | 'author'>> }> };
+
+export type IndexPageQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type IndexPageQuery = { allSeriesJson: (
+    Pick<SeriesJsonConnection, 'distinct'>
+    & { nodes: Array<(
+      Pick<SeriesJson, 'name' | 'releaseDate' | 'architecture' | 'website'>
+      & { fields?: Maybe<Pick<SeriesJsonFields, 'designer'>> }
+    )> }
+  ) };
 
 export type Unnamed_3_QueryVariables = Exact<{ [key: string]: never; }>;
 

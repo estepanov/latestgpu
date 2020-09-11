@@ -1,6 +1,7 @@
 {
-  "name": "RTX 20 Series",
-  "releaseDate": "2020-09-17T00:00:00+00:00",
-  "architecture": "Ampere",
-  "website": "https://www.nvidia.com/en-us/geforce/graphics-cards/30-series/"
+  "id": "rtx20",
+  "name": "GeForce RTX 20 Series",
+  "releaseDate": "2018-09-20T00:00:00+00:00",
+  "architecture": "Turing",
+  "website": "https://www.nvidia.com/en-us/geforce/graphics-cards/20-series/"
 }

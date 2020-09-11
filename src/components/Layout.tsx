@@ -34,7 +34,7 @@ const Layout: React.FC<LayoutProps> = ({ children, container }) => {
       <Global
         styles={css`
           body {
-            ${tw`bg-blue-100`}
+            /* ${tw`bg-gray-100`} */
             ${tw`h-screen`}
           }
           body > div,

@@ -3,6 +3,7 @@ import { graphql } from "gatsby";
 // import Image from "~/components/Image";
 import Layout from "~/components/Layout";
 import SEO from "~/components/SEO";
+import "twin.macro";
 // import Hero from "~/components/Hero";
 // import Features from "~/components/Features";
 
@@ -21,24 +22,31 @@ const IndexPage: React.FC<IndexPageProps> = ({ data }) => {
       <SEO title="Home" />
       {/* <Hero /> */}
       {/* <Features /> */}
-      <LandingPageSeries latestSeries={data.allSeriesJson.nodes} />
+      <div tw="container">
+        <LandingPageSeries latestSeries={data.allSeries.nodes} />
+      </div>
     </Layout>
   );
 };
 
 export const pageQuery = graphql`
   query IndexPage {
-    allSeriesJson(sort: { fields: releaseDate }, limit: 2) {
+    allSeries(sort: { fields: releaseDate, order: DESC }, limit: 2) {
       nodes {
-        fields {
-          designer
+        designer {
+          name
+          website
+          id
+          fullSVG {
+            publicURL
+          }
         }
         name
         releaseDate
         architecture
         website
       }
-      distinct(field: fields___designer)
+      distinct(field: designer___id)
     }
   }
 `;

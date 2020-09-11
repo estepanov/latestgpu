@@ -18,6 +18,7 @@
     "esModuleInterop": true,
     "noUnusedLocals": false,
     "allowJs": true,
+    "allowSyntheticDefaultImports": true,
   },
   "exclude": [
     "node_modules",

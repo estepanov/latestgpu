@@ -1,9 +1,11 @@
 module.exports = {
   siteMetadata: {
-    title: "Gatsby Default Starter",
-    description:
-      "Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.",
+    title: "LatestGPU",
+    description: "Easily find the latest consumer GPUs and compare the models.",
     author: "@gatsbyjs",
+  },
+  mapping: {
+    "allModelsJson.nodes.series": "seriesJson",
   },
   plugins: [
     {
@@ -79,7 +81,24 @@ module.exports = {
       options: {
         name: "data",
         path: `${__dirname}/src/data/`,
-        plugins: ["gatsby-transformer-json"],
+      },
+    },
+    {
+      resolve: `gatsby-transformer-json`,
+      options: {
+        typeName: ({ node }) => {
+          let name;
+          if (node.absolutePath.includes("/models/")) {
+            name = "Models";
+          }
+          if (node.absolutePath.includes("/series/")) {
+            name = "Series";
+          }
+          if (node.absolutePath.includes("designer.json")) {
+            name = "Designer";
+          }
+          return name;
+        },
       },
     },
   ],

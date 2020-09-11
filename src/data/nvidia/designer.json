@@ -1,0 +1,6 @@
+{
+  "id": "nvidia",
+  "name": "nVidia",
+  "website": "https://www.nvidia.com",
+  "fullSVG": "./large-svg.svg"
+}

@@ -3,7 +3,7 @@ import "twin.macro";
 
 const Footer: React.FC = ({ children }) => {
   return (
-    <footer tw="bg-gray-400">
+    <footer tw="bg-gray-200">
       {/* <div tw="container pt-10 pb-6">
         <div tw="flex flex-wrap flex-shrink-0">
           <div tw="w-full md:w-1/4 text-left">

@@ -33,6 +33,20 @@ export type BooleanQueryOperatorInput = {
   nin?: Maybe<Array<Maybe<Scalars['Boolean']>>>;
 };
 
+export type ConnectorSpec = {
+  name: Scalars['String'];
+  count: Scalars['Int'];
+};
+
+export type ConnectorSpecFilterInput = {
+  name?: Maybe<StringQueryOperatorInput>;
+  count?: Maybe<IntQueryOperatorInput>;
+};
+
+export type ConnectorSpecFilterListInput = {
+  elemMatch?: Maybe<ConnectorSpecFilterInput>;
+};
+
 
 export type DateQueryOperatorInput = {
   eq?: Maybe<Scalars['Date']>;
@@ -43,6 +57,672 @@ export type DateQueryOperatorInput = {
   lte?: Maybe<Scalars['Date']>;
   in?: Maybe<Array<Maybe<Scalars['Date']>>>;
   nin?: Maybe<Array<Maybe<Scalars['Date']>>>;
+};
+
+export type Designer = Node & {
+  id: Scalars['ID'];
+  parent?: Maybe<Node>;
+  children: Array<Node>;
+  internal: Internal;
+  name: Scalars['String'];
+  website?: Maybe<Scalars['String']>;
+  fullSVG?: Maybe<File>;
+  series?: Maybe<Array<Maybe<Series>>>;
+  models?: Maybe<Array<Maybe<Models>>>;
+};
+
+export type DesignerConnection = {
+  totalCount: Scalars['Int'];
+  edges: Array<DesignerEdge>;
+  nodes: Array<Designer>;
+  pageInfo: PageInfo;
+  distinct: Array<Scalars['String']>;
+  group: Array<DesignerGroupConnection>;
+};
+
+
+export type DesignerConnectionDistinctArgs = {
+  field: DesignerFieldsEnum;
+};
+
+
+export type DesignerConnectionGroupArgs = {
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+  field: DesignerFieldsEnum;
+};
+
+export type DesignerEdge = {
+  next?: Maybe<Designer>;
+  node: Designer;
+  previous?: Maybe<Designer>;
+};
+
+export type DesignerFieldsEnum = 
+  | 'id'
+  | 'parent___id'
+  | 'parent___parent___id'
+  | 'parent___parent___parent___id'
+  | 'parent___parent___parent___children'
+  | 'parent___parent___children'
+  | 'parent___parent___children___id'
+  | 'parent___parent___children___children'
+  | 'parent___parent___internal___content'
+  | 'parent___parent___internal___contentDigest'
+  | 'parent___parent___internal___description'
+  | 'parent___parent___internal___fieldOwners'
+  | 'parent___parent___internal___ignoreType'
+  | 'parent___parent___internal___mediaType'
+  | 'parent___parent___internal___owner'
+  | 'parent___parent___internal___type'
+  | 'parent___children'
+  | 'parent___children___id'
+  | 'parent___children___parent___id'
+  | 'parent___children___parent___children'
+  | 'parent___children___children'
+  | 'parent___children___children___id'
+  | 'parent___children___children___children'
+  | 'parent___children___internal___content'
+  | 'parent___children___internal___contentDigest'
+  | 'parent___children___internal___description'
+  | 'parent___children___internal___fieldOwners'
+  | 'parent___children___internal___ignoreType'
+  | 'parent___children___internal___mediaType'
+  | 'parent___children___internal___owner'
+  | 'parent___children___internal___type'
+  | 'parent___internal___content'
+  | 'parent___internal___contentDigest'
+  | 'parent___internal___description'
+  | 'parent___internal___fieldOwners'
+  | 'parent___internal___ignoreType'
+  | 'parent___internal___mediaType'
+  | 'parent___internal___owner'
+  | 'parent___internal___type'
+  | 'children'
+  | 'children___id'
+  | 'children___parent___id'
+  | 'children___parent___parent___id'
+  | 'children___parent___parent___children'
+  | 'children___parent___children'
+  | 'children___parent___children___id'
+  | 'children___parent___children___children'
+  | 'children___parent___internal___content'
+  | 'children___parent___internal___contentDigest'
+  | 'children___parent___internal___description'
+  | 'children___parent___internal___fieldOwners'
+  | 'children___parent___internal___ignoreType'
+  | 'children___parent___internal___mediaType'
+  | 'children___parent___internal___owner'
+  | 'children___parent___internal___type'
+  | 'children___children'
+  | 'children___children___id'
+  | 'children___children___parent___id'
+  | 'children___children___parent___children'
+  | 'children___children___children'
+  | 'children___children___children___id'
+  | 'children___children___children___children'
+  | 'children___children___internal___content'
+  | 'children___children___internal___contentDigest'
+  | 'children___children___internal___description'
+  | 'children___children___internal___fieldOwners'
+  | 'children___children___internal___ignoreType'
+  | 'children___children___internal___mediaType'
+  | 'children___children___internal___owner'
+  | 'children___children___internal___type'
+  | 'children___internal___content'
+  | 'children___internal___contentDigest'
+  | 'children___internal___description'
+  | 'children___internal___fieldOwners'
+  | 'children___internal___ignoreType'
+  | 'children___internal___mediaType'
+  | 'children___internal___owner'
+  | 'children___internal___type'
+  | 'internal___content'
+  | 'internal___contentDigest'
+  | 'internal___description'
+  | 'internal___fieldOwners'
+  | 'internal___ignoreType'
+  | 'internal___mediaType'
+  | 'internal___owner'
+  | 'internal___type'
+  | 'name'
+  | 'website'
+  | 'fullSVG___sourceInstanceName'
+  | 'fullSVG___absolutePath'
+  | 'fullSVG___relativePath'
+  | 'fullSVG___extension'
+  | 'fullSVG___size'
+  | 'fullSVG___prettySize'
+  | 'fullSVG___modifiedTime'
+  | 'fullSVG___accessTime'
+  | 'fullSVG___changeTime'
+  | 'fullSVG___birthTime'
+  | 'fullSVG___root'
+  | 'fullSVG___dir'
+  | 'fullSVG___base'
+  | 'fullSVG___ext'
+  | 'fullSVG___name'
+  | 'fullSVG___relativeDirectory'
+  | 'fullSVG___dev'
+  | 'fullSVG___mode'
+  | 'fullSVG___nlink'
+  | 'fullSVG___uid'
+  | 'fullSVG___gid'
+  | 'fullSVG___rdev'
+  | 'fullSVG___ino'
+  | 'fullSVG___atimeMs'
+  | 'fullSVG___mtimeMs'
+  | 'fullSVG___ctimeMs'
+  | 'fullSVG___atime'
+  | 'fullSVG___mtime'
+  | 'fullSVG___ctime'
+  | 'fullSVG___birthtime'
+  | 'fullSVG___birthtimeMs'
+  | 'fullSVG___blksize'
+  | 'fullSVG___blocks'
+  | 'fullSVG___publicURL'
+  | 'fullSVG___childImageSharp___fixed___base64'
+  | 'fullSVG___childImageSharp___fixed___tracedSVG'
+  | 'fullSVG___childImageSharp___fixed___aspectRatio'
+  | 'fullSVG___childImageSharp___fixed___width'
+  | 'fullSVG___childImageSharp___fixed___height'
+  | 'fullSVG___childImageSharp___fixed___src'
+  | 'fullSVG___childImageSharp___fixed___srcSet'
+  | 'fullSVG___childImageSharp___fixed___srcWebp'
+  | 'fullSVG___childImageSharp___fixed___srcSetWebp'
+  | 'fullSVG___childImageSharp___fixed___originalName'
+  | 'fullSVG___childImageSharp___resolutions___base64'
+  | 'fullSVG___childImageSharp___resolutions___tracedSVG'
+  | 'fullSVG___childImageSharp___resolutions___aspectRatio'
+  | 'fullSVG___childImageSharp___resolutions___width'
+  | 'fullSVG___childImageSharp___resolutions___height'
+  | 'fullSVG___childImageSharp___resolutions___src'
+  | 'fullSVG___childImageSharp___resolutions___srcSet'
+  | 'fullSVG___childImageSharp___resolutions___srcWebp'
+  | 'fullSVG___childImageSharp___resolutions___srcSetWebp'
+  | 'fullSVG___childImageSharp___resolutions___originalName'
+  | 'fullSVG___childImageSharp___fluid___base64'
+  | 'fullSVG___childImageSharp___fluid___tracedSVG'
+  | 'fullSVG___childImageSharp___fluid___aspectRatio'
+  | 'fullSVG___childImageSharp___fluid___src'
+  | 'fullSVG___childImageSharp___fluid___srcSet'
+  | 'fullSVG___childImageSharp___fluid___srcWebp'
+  | 'fullSVG___childImageSharp___fluid___srcSetWebp'
+  | 'fullSVG___childImageSharp___fluid___sizes'
+  | 'fullSVG___childImageSharp___fluid___originalImg'
+  | 'fullSVG___childImageSharp___fluid___originalName'
+  | 'fullSVG___childImageSharp___fluid___presentationWidth'
+  | 'fullSVG___childImageSharp___fluid___presentationHeight'
+  | 'fullSVG___childImageSharp___sizes___base64'
+  | 'fullSVG___childImageSharp___sizes___tracedSVG'
+  | 'fullSVG___childImageSharp___sizes___aspectRatio'
+  | 'fullSVG___childImageSharp___sizes___src'
+  | 'fullSVG___childImageSharp___sizes___srcSet'
+  | 'fullSVG___childImageSharp___sizes___srcWebp'
+  | 'fullSVG___childImageSharp___sizes___srcSetWebp'
+  | 'fullSVG___childImageSharp___sizes___sizes'
+  | 'fullSVG___childImageSharp___sizes___originalImg'
+  | 'fullSVG___childImageSharp___sizes___originalName'
+  | 'fullSVG___childImageSharp___sizes___presentationWidth'
+  | 'fullSVG___childImageSharp___sizes___presentationHeight'
+  | 'fullSVG___childImageSharp___original___width'
+  | 'fullSVG___childImageSharp___original___height'
+  | 'fullSVG___childImageSharp___original___src'
+  | 'fullSVG___childImageSharp___resize___src'
+  | 'fullSVG___childImageSharp___resize___tracedSVG'
+  | 'fullSVG___childImageSharp___resize___width'
+  | 'fullSVG___childImageSharp___resize___height'
+  | 'fullSVG___childImageSharp___resize___aspectRatio'
+  | 'fullSVG___childImageSharp___resize___originalName'
+  | 'fullSVG___childImageSharp___id'
+  | 'fullSVG___childImageSharp___parent___id'
+  | 'fullSVG___childImageSharp___parent___children'
+  | 'fullSVG___childImageSharp___children'
+  | 'fullSVG___childImageSharp___children___id'
+  | 'fullSVG___childImageSharp___children___children'
+  | 'fullSVG___childImageSharp___internal___content'
+  | 'fullSVG___childImageSharp___internal___contentDigest'
+  | 'fullSVG___childImageSharp___internal___description'
+  | 'fullSVG___childImageSharp___internal___fieldOwners'
+  | 'fullSVG___childImageSharp___internal___ignoreType'
+  | 'fullSVG___childImageSharp___internal___mediaType'
+  | 'fullSVG___childImageSharp___internal___owner'
+  | 'fullSVG___childImageSharp___internal___type'
+  | 'fullSVG___id'
+  | 'fullSVG___parent___id'
+  | 'fullSVG___parent___parent___id'
+  | 'fullSVG___parent___parent___children'
+  | 'fullSVG___parent___children'
+  | 'fullSVG___parent___children___id'
+  | 'fullSVG___parent___children___children'
+  | 'fullSVG___parent___internal___content'
+  | 'fullSVG___parent___internal___contentDigest'
+  | 'fullSVG___parent___internal___description'
+  | 'fullSVG___parent___internal___fieldOwners'
+  | 'fullSVG___parent___internal___ignoreType'
+  | 'fullSVG___parent___internal___mediaType'
+  | 'fullSVG___parent___internal___owner'
+  | 'fullSVG___parent___internal___type'
+  | 'fullSVG___children'
+  | 'fullSVG___children___id'
+  | 'fullSVG___children___parent___id'
+  | 'fullSVG___children___parent___children'
+  | 'fullSVG___children___children'
+  | 'fullSVG___children___children___id'
+  | 'fullSVG___children___children___children'
+  | 'fullSVG___children___internal___content'
+  | 'fullSVG___children___internal___contentDigest'
+  | 'fullSVG___children___internal___description'
+  | 'fullSVG___children___internal___fieldOwners'
+  | 'fullSVG___children___internal___ignoreType'
+  | 'fullSVG___children___internal___mediaType'
+  | 'fullSVG___children___internal___owner'
+  | 'fullSVG___children___internal___type'
+  | 'fullSVG___internal___content'
+  | 'fullSVG___internal___contentDigest'
+  | 'fullSVG___internal___description'
+  | 'fullSVG___internal___fieldOwners'
+  | 'fullSVG___internal___ignoreType'
+  | 'fullSVG___internal___mediaType'
+  | 'fullSVG___internal___owner'
+  | 'fullSVG___internal___type'
+  | 'fullSVG___childDesigner___id'
+  | 'fullSVG___childDesigner___parent___id'
+  | 'fullSVG___childDesigner___parent___children'
+  | 'fullSVG___childDesigner___children'
+  | 'fullSVG___childDesigner___children___id'
+  | 'fullSVG___childDesigner___children___children'
+  | 'fullSVG___childDesigner___internal___content'
+  | 'fullSVG___childDesigner___internal___contentDigest'
+  | 'fullSVG___childDesigner___internal___description'
+  | 'fullSVG___childDesigner___internal___fieldOwners'
+  | 'fullSVG___childDesigner___internal___ignoreType'
+  | 'fullSVG___childDesigner___internal___mediaType'
+  | 'fullSVG___childDesigner___internal___owner'
+  | 'fullSVG___childDesigner___internal___type'
+  | 'fullSVG___childDesigner___name'
+  | 'fullSVG___childDesigner___website'
+  | 'fullSVG___childDesigner___fullSVG___sourceInstanceName'
+  | 'fullSVG___childDesigner___fullSVG___absolutePath'
+  | 'fullSVG___childDesigner___fullSVG___relativePath'
+  | 'fullSVG___childDesigner___fullSVG___extension'
+  | 'fullSVG___childDesigner___fullSVG___size'
+  | 'fullSVG___childDesigner___fullSVG___prettySize'
+  | 'fullSVG___childDesigner___fullSVG___modifiedTime'
+  | 'fullSVG___childDesigner___fullSVG___accessTime'
+  | 'fullSVG___childDesigner___fullSVG___changeTime'
+  | 'fullSVG___childDesigner___fullSVG___birthTime'
+  | 'fullSVG___childDesigner___fullSVG___root'
+  | 'fullSVG___childDesigner___fullSVG___dir'
+  | 'fullSVG___childDesigner___fullSVG___base'
+  | 'fullSVG___childDesigner___fullSVG___ext'
+  | 'fullSVG___childDesigner___fullSVG___name'
+  | 'fullSVG___childDesigner___fullSVG___relativeDirectory'
+  | 'fullSVG___childDesigner___fullSVG___dev'
+  | 'fullSVG___childDesigner___fullSVG___mode'
+  | 'fullSVG___childDesigner___fullSVG___nlink'
+  | 'fullSVG___childDesigner___fullSVG___uid'
+  | 'fullSVG___childDesigner___fullSVG___gid'
+  | 'fullSVG___childDesigner___fullSVG___rdev'
+  | 'fullSVG___childDesigner___fullSVG___ino'
+  | 'fullSVG___childDesigner___fullSVG___atimeMs'
+  | 'fullSVG___childDesigner___fullSVG___mtimeMs'
+  | 'fullSVG___childDesigner___fullSVG___ctimeMs'
+  | 'fullSVG___childDesigner___fullSVG___atime'
+  | 'fullSVG___childDesigner___fullSVG___mtime'
+  | 'fullSVG___childDesigner___fullSVG___ctime'
+  | 'fullSVG___childDesigner___fullSVG___birthtime'
+  | 'fullSVG___childDesigner___fullSVG___birthtimeMs'
+  | 'fullSVG___childDesigner___fullSVG___blksize'
+  | 'fullSVG___childDesigner___fullSVG___blocks'
+  | 'fullSVG___childDesigner___fullSVG___publicURL'
+  | 'fullSVG___childDesigner___fullSVG___id'
+  | 'fullSVG___childDesigner___fullSVG___children'
+  | 'fullSVG___childDesigner___series'
+  | 'fullSVG___childDesigner___series___id'
+  | 'fullSVG___childDesigner___series___children'
+  | 'fullSVG___childDesigner___series___name'
+  | 'fullSVG___childDesigner___series___architecture'
+  | 'fullSVG___childDesigner___series___releaseDate'
+  | 'fullSVG___childDesigner___series___models'
+  | 'fullSVG___childDesigner___series___website'
+  | 'fullSVG___childDesigner___models'
+  | 'fullSVG___childDesigner___models___name'
+  | 'fullSVG___childDesigner___models___releaseDate'
+  | 'fullSVG___childDesigner___models___monitorCount'
+  | 'fullSVG___childDesigner___models___connectors'
+  | 'fullSVG___childDesigner___models___HDCP'
+  | 'fullSVG___childDesigner___models___id'
+  | 'fullSVG___childDesigner___models___children'
+  | 'fullSVG___childSeries___id'
+  | 'fullSVG___childSeries___parent___id'
+  | 'fullSVG___childSeries___parent___children'
+  | 'fullSVG___childSeries___children'
+  | 'fullSVG___childSeries___children___id'
+  | 'fullSVG___childSeries___children___children'
+  | 'fullSVG___childSeries___internal___content'
+  | 'fullSVG___childSeries___internal___contentDigest'
+  | 'fullSVG___childSeries___internal___description'
+  | 'fullSVG___childSeries___internal___fieldOwners'
+  | 'fullSVG___childSeries___internal___ignoreType'
+  | 'fullSVG___childSeries___internal___mediaType'
+  | 'fullSVG___childSeries___internal___owner'
+  | 'fullSVG___childSeries___internal___type'
+  | 'fullSVG___childSeries___name'
+  | 'fullSVG___childSeries___architecture'
+  | 'fullSVG___childSeries___releaseDate'
+  | 'fullSVG___childSeries___models'
+  | 'fullSVG___childSeries___models___name'
+  | 'fullSVG___childSeries___models___releaseDate'
+  | 'fullSVG___childSeries___models___monitorCount'
+  | 'fullSVG___childSeries___models___connectors'
+  | 'fullSVG___childSeries___models___HDCP'
+  | 'fullSVG___childSeries___models___id'
+  | 'fullSVG___childSeries___models___children'
+  | 'fullSVG___childSeries___designer___id'
+  | 'fullSVG___childSeries___designer___children'
+  | 'fullSVG___childSeries___designer___name'
+  | 'fullSVG___childSeries___designer___website'
+  | 'fullSVG___childSeries___designer___series'
+  | 'fullSVG___childSeries___designer___models'
+  | 'fullSVG___childSeries___website'
+  | 'fullSVG___childSeries___fields___designer'
+  | 'fullSVG___childModels___series___id'
+  | 'fullSVG___childModels___series___children'
+  | 'fullSVG___childModels___series___name'
+  | 'fullSVG___childModels___series___architecture'
+  | 'fullSVG___childModels___series___releaseDate'
+  | 'fullSVG___childModels___series___models'
+  | 'fullSVG___childModels___series___website'
+  | 'fullSVG___childModels___name'
+  | 'fullSVG___childModels___releaseDate'
+  | 'fullSVG___childModels___gpuEngine___nvidiaCUDACores'
+  | 'fullSVG___childModels___gpuEngine___boostClockGhz'
+  | 'fullSVG___childModels___memory___standardConfigSizeGB'
+  | 'fullSVG___childModels___memory___standardConfigSpec'
+  | 'fullSVG___childModels___memory___interfaceBandwidthBit'
+  | 'fullSVG___childModels___display___monitorCount'
+  | 'fullSVG___childModels___monitorCount'
+  | 'fullSVG___childModels___connectors'
+  | 'fullSVG___childModels___connectors___name'
+  | 'fullSVG___childModels___connectors___count'
+  | 'fullSVG___childModels___HDCP'
+  | 'fullSVG___childModels___fields___designer'
+  | 'fullSVG___childModels___id'
+  | 'fullSVG___childModels___parent___id'
+  | 'fullSVG___childModels___parent___children'
+  | 'fullSVG___childModels___children'
+  | 'fullSVG___childModels___children___id'
+  | 'fullSVG___childModels___children___children'
+  | 'fullSVG___childModels___internal___content'
+  | 'fullSVG___childModels___internal___contentDigest'
+  | 'fullSVG___childModels___internal___description'
+  | 'fullSVG___childModels___internal___fieldOwners'
+  | 'fullSVG___childModels___internal___ignoreType'
+  | 'fullSVG___childModels___internal___mediaType'
+  | 'fullSVG___childModels___internal___owner'
+  | 'fullSVG___childModels___internal___type'
+  | 'series'
+  | 'series___id'
+  | 'series___parent___id'
+  | 'series___parent___parent___id'
+  | 'series___parent___parent___children'
+  | 'series___parent___children'
+  | 'series___parent___children___id'
+  | 'series___parent___children___children'
+  | 'series___parent___internal___content'
+  | 'series___parent___internal___contentDigest'
+  | 'series___parent___internal___description'
+  | 'series___parent___internal___fieldOwners'
+  | 'series___parent___internal___ignoreType'
+  | 'series___parent___internal___mediaType'
+  | 'series___parent___internal___owner'
+  | 'series___parent___internal___type'
+  | 'series___children'
+  | 'series___children___id'
+  | 'series___children___parent___id'
+  | 'series___children___parent___children'
+  | 'series___children___children'
+  | 'series___children___children___id'
+  | 'series___children___children___children'
+  | 'series___children___internal___content'
+  | 'series___children___internal___contentDigest'
+  | 'series___children___internal___description'
+  | 'series___children___internal___fieldOwners'
+  | 'series___children___internal___ignoreType'
+  | 'series___children___internal___mediaType'
+  | 'series___children___internal___owner'
+  | 'series___children___internal___type'
+  | 'series___internal___content'
+  | 'series___internal___contentDigest'
+  | 'series___internal___description'
+  | 'series___internal___fieldOwners'
+  | 'series___internal___ignoreType'
+  | 'series___internal___mediaType'
+  | 'series___internal___owner'
+  | 'series___internal___type'
+  | 'series___name'
+  | 'series___architecture'
+  | 'series___releaseDate'
+  | 'series___models'
+  | 'series___models___series___id'
+  | 'series___models___series___children'
+  | 'series___models___series___name'
+  | 'series___models___series___architecture'
+  | 'series___models___series___releaseDate'
+  | 'series___models___series___models'
+  | 'series___models___series___website'
+  | 'series___models___name'
+  | 'series___models___releaseDate'
+  | 'series___models___gpuEngine___nvidiaCUDACores'
+  | 'series___models___gpuEngine___boostClockGhz'
+  | 'series___models___memory___standardConfigSizeGB'
+  | 'series___models___memory___standardConfigSpec'
+  | 'series___models___memory___interfaceBandwidthBit'
+  | 'series___models___display___monitorCount'
+  | 'series___models___monitorCount'
+  | 'series___models___connectors'
+  | 'series___models___connectors___name'
+  | 'series___models___connectors___count'
+  | 'series___models___HDCP'
+  | 'series___models___fields___designer'
+  | 'series___models___id'
+  | 'series___models___parent___id'
+  | 'series___models___parent___children'
+  | 'series___models___children'
+  | 'series___models___children___id'
+  | 'series___models___children___children'
+  | 'series___models___internal___content'
+  | 'series___models___internal___contentDigest'
+  | 'series___models___internal___description'
+  | 'series___models___internal___fieldOwners'
+  | 'series___models___internal___ignoreType'
+  | 'series___models___internal___mediaType'
+  | 'series___models___internal___owner'
+  | 'series___models___internal___type'
+  | 'series___designer___id'
+  | 'series___designer___parent___id'
+  | 'series___designer___parent___children'
+  | 'series___designer___children'
+  | 'series___designer___children___id'
+  | 'series___designer___children___children'
+  | 'series___designer___internal___content'
+  | 'series___designer___internal___contentDigest'
+  | 'series___designer___internal___description'
+  | 'series___designer___internal___fieldOwners'
+  | 'series___designer___internal___ignoreType'
+  | 'series___designer___internal___mediaType'
+  | 'series___designer___internal___owner'
+  | 'series___designer___internal___type'
+  | 'series___designer___name'
+  | 'series___designer___website'
+  | 'series___designer___fullSVG___sourceInstanceName'
+  | 'series___designer___fullSVG___absolutePath'
+  | 'series___designer___fullSVG___relativePath'
+  | 'series___designer___fullSVG___extension'
+  | 'series___designer___fullSVG___size'
+  | 'series___designer___fullSVG___prettySize'
+  | 'series___designer___fullSVG___modifiedTime'
+  | 'series___designer___fullSVG___accessTime'
+  | 'series___designer___fullSVG___changeTime'
+  | 'series___designer___fullSVG___birthTime'
+  | 'series___designer___fullSVG___root'
+  | 'series___designer___fullSVG___dir'
+  | 'series___designer___fullSVG___base'
+  | 'series___designer___fullSVG___ext'
+  | 'series___designer___fullSVG___name'
+  | 'series___designer___fullSVG___relativeDirectory'
+  | 'series___designer___fullSVG___dev'
+  | 'series___designer___fullSVG___mode'
+  | 'series___designer___fullSVG___nlink'
+  | 'series___designer___fullSVG___uid'
+  | 'series___designer___fullSVG___gid'
+  | 'series___designer___fullSVG___rdev'
+  | 'series___designer___fullSVG___ino'
+  | 'series___designer___fullSVG___atimeMs'
+  | 'series___designer___fullSVG___mtimeMs'
+  | 'series___designer___fullSVG___ctimeMs'
+  | 'series___designer___fullSVG___atime'
+  | 'series___designer___fullSVG___mtime'
+  | 'series___designer___fullSVG___ctime'
+  | 'series___designer___fullSVG___birthtime'
+  | 'series___designer___fullSVG___birthtimeMs'
+  | 'series___designer___fullSVG___blksize'
+  | 'series___designer___fullSVG___blocks'
+  | 'series___designer___fullSVG___publicURL'
+  | 'series___designer___fullSVG___id'
+  | 'series___designer___fullSVG___children'
+  | 'series___designer___series'
+  | 'series___designer___series___id'
+  | 'series___designer___series___children'
+  | 'series___designer___series___name'
+  | 'series___designer___series___architecture'
+  | 'series___designer___series___releaseDate'
+  | 'series___designer___series___models'
+  | 'series___designer___series___website'
+  | 'series___designer___models'
+  | 'series___designer___models___name'
+  | 'series___designer___models___releaseDate'
+  | 'series___designer___models___monitorCount'
+  | 'series___designer___models___connectors'
+  | 'series___designer___models___HDCP'
+  | 'series___designer___models___id'
+  | 'series___designer___models___children'
+  | 'series___website'
+  | 'series___fields___designer'
+  | 'models'
+  | 'models___series___id'
+  | 'models___series___parent___id'
+  | 'models___series___parent___children'
+  | 'models___series___children'
+  | 'models___series___children___id'
+  | 'models___series___children___children'
+  | 'models___series___internal___content'
+  | 'models___series___internal___contentDigest'
+  | 'models___series___internal___description'
+  | 'models___series___internal___fieldOwners'
+  | 'models___series___internal___ignoreType'
+  | 'models___series___internal___mediaType'
+  | 'models___series___internal___owner'
+  | 'models___series___internal___type'
+  | 'models___series___name'
+  | 'models___series___architecture'
+  | 'models___series___releaseDate'
+  | 'models___series___models'
+  | 'models___series___models___name'
+  | 'models___series___models___releaseDate'
+  | 'models___series___models___monitorCount'
+  | 'models___series___models___connectors'
+  | 'models___series___models___HDCP'
+  | 'models___series___models___id'
+  | 'models___series___models___children'
+  | 'models___series___designer___id'
+  | 'models___series___designer___children'
+  | 'models___series___designer___name'
+  | 'models___series___designer___website'
+  | 'models___series___designer___series'
+  | 'models___series___designer___models'
+  | 'models___series___website'
+  | 'models___series___fields___designer'
+  | 'models___name'
+  | 'models___releaseDate'
+  | 'models___gpuEngine___nvidiaCUDACores'
+  | 'models___gpuEngine___boostClockGhz'
+  | 'models___memory___standardConfigSizeGB'
+  | 'models___memory___standardConfigSpec'
+  | 'models___memory___interfaceBandwidthBit'
+  | 'models___display___maxResolution___width'
+  | 'models___display___maxResolution___height'
+  | 'models___display___monitorCount'
+  | 'models___monitorCount'
+  | 'models___connectors'
+  | 'models___connectors___name'
+  | 'models___connectors___count'
+  | 'models___HDCP'
+  | 'models___fields___designer'
+  | 'models___id'
+  | 'models___parent___id'
+  | 'models___parent___parent___id'
+  | 'models___parent___parent___children'
+  | 'models___parent___children'
+  | 'models___parent___children___id'
+  | 'models___parent___children___children'
+  | 'models___parent___internal___content'
+  | 'models___parent___internal___contentDigest'
+  | 'models___parent___internal___description'
+  | 'models___parent___internal___fieldOwners'
+  | 'models___parent___internal___ignoreType'
+  | 'models___parent___internal___mediaType'
+  | 'models___parent___internal___owner'
+  | 'models___parent___internal___type'
+  | 'models___children'
+  | 'models___children___id'
+  | 'models___children___parent___id'
+  | 'models___children___parent___children'
+  | 'models___children___children'
+  | 'models___children___children___id'
+  | 'models___children___children___children'
+  | 'models___children___internal___content'
+  | 'models___children___internal___contentDigest'
+  | 'models___children___internal___description'
+  | 'models___children___internal___fieldOwners'
+  | 'models___children___internal___ignoreType'
+  | 'models___children___internal___mediaType'
+  | 'models___children___internal___owner'
+  | 'models___children___internal___type'
+  | 'models___internal___content'
+  | 'models___internal___contentDigest'
+  | 'models___internal___description'
+  | 'models___internal___fieldOwners'
+  | 'models___internal___ignoreType'
+  | 'models___internal___mediaType'
+  | 'models___internal___owner'
+  | 'models___internal___type';
+
+export type DesignerFilterInput = {
+  id?: Maybe<StringQueryOperatorInput>;
+  parent?: Maybe<NodeFilterInput>;
+  children?: Maybe<NodeFilterListInput>;
+  internal?: Maybe<InternalFilterInput>;
+  name?: Maybe<StringQueryOperatorInput>;
+  website?: Maybe<StringQueryOperatorInput>;
+  fullSVG?: Maybe<FileFilterInput>;
+  series?: Maybe<SeriesFilterListInput>;
+  models?: Maybe<ModelsFilterListInput>;
+};
+
+export type DesignerGroupConnection = {
+  totalCount: Scalars['Int'];
+  edges: Array<DesignerEdge>;
+  nodes: Array<Designer>;
+  pageInfo: PageInfo;
+  field: Scalars['String'];
+  fieldValue?: Maybe<Scalars['String']>;
+};
+
+export type DesignerSortInput = {
+  fields?: Maybe<Array<Maybe<DesignerFieldsEnum>>>;
+  order?: Maybe<Array<Maybe<SortOrderEnum>>>;
 };
 
 export type Directory = Node & {
@@ -345,6 +1025,16 @@ export type DirectorySortInput = {
   order?: Maybe<Array<Maybe<SortOrderEnum>>>;
 };
 
+export type DisplaySpec = {
+  maxResolution?: Maybe<MaxResolutionSpec>;
+  monitorCount?: Maybe<Scalars['Int']>;
+};
+
+export type DisplaySpecFilterInput = {
+  maxResolution?: Maybe<MaxResolutionSpecFilterInput>;
+  monitorCount?: Maybe<IntQueryOperatorInput>;
+};
+
 export type DuotoneGradient = {
   highlight: Scalars['String'];
   shadow: Scalars['String'];
@@ -394,8 +1084,9 @@ export type File = Node & {
   parent?: Maybe<Node>;
   children: Array<Node>;
   internal: Internal;
-  childSeriesJson?: Maybe<SeriesJson>;
-  childModelsJson?: Maybe<ModelsJson>;
+  childDesigner?: Maybe<Designer>;
+  childSeries?: Maybe<Series>;
+  childModels?: Maybe<Models>;
 };
 
 
@@ -693,103 +1384,420 @@ export type FileFieldsEnum =
   | 'internal___mediaType'
   | 'internal___owner'
   | 'internal___type'
-  | 'childSeriesJson___id'
-  | 'childSeriesJson___parent___id'
-  | 'childSeriesJson___parent___parent___id'
-  | 'childSeriesJson___parent___parent___children'
-  | 'childSeriesJson___parent___children'
-  | 'childSeriesJson___parent___children___id'
-  | 'childSeriesJson___parent___children___children'
-  | 'childSeriesJson___parent___internal___content'
-  | 'childSeriesJson___parent___internal___contentDigest'
-  | 'childSeriesJson___parent___internal___description'
-  | 'childSeriesJson___parent___internal___fieldOwners'
-  | 'childSeriesJson___parent___internal___ignoreType'
-  | 'childSeriesJson___parent___internal___mediaType'
-  | 'childSeriesJson___parent___internal___owner'
-  | 'childSeriesJson___parent___internal___type'
-  | 'childSeriesJson___children'
-  | 'childSeriesJson___children___id'
-  | 'childSeriesJson___children___parent___id'
-  | 'childSeriesJson___children___parent___children'
-  | 'childSeriesJson___children___children'
-  | 'childSeriesJson___children___children___id'
-  | 'childSeriesJson___children___children___children'
-  | 'childSeriesJson___children___internal___content'
-  | 'childSeriesJson___children___internal___contentDigest'
-  | 'childSeriesJson___children___internal___description'
-  | 'childSeriesJson___children___internal___fieldOwners'
-  | 'childSeriesJson___children___internal___ignoreType'
-  | 'childSeriesJson___children___internal___mediaType'
-  | 'childSeriesJson___children___internal___owner'
-  | 'childSeriesJson___children___internal___type'
-  | 'childSeriesJson___internal___content'
-  | 'childSeriesJson___internal___contentDigest'
-  | 'childSeriesJson___internal___description'
-  | 'childSeriesJson___internal___fieldOwners'
-  | 'childSeriesJson___internal___ignoreType'
-  | 'childSeriesJson___internal___mediaType'
-  | 'childSeriesJson___internal___owner'
-  | 'childSeriesJson___internal___type'
-  | 'childSeriesJson___name'
-  | 'childSeriesJson___releaseDate'
-  | 'childSeriesJson___architecture'
-  | 'childSeriesJson___website'
-  | 'childSeriesJson___fields___designer'
-  | 'childModelsJson___id'
-  | 'childModelsJson___parent___id'
-  | 'childModelsJson___parent___parent___id'
-  | 'childModelsJson___parent___parent___children'
-  | 'childModelsJson___parent___children'
-  | 'childModelsJson___parent___children___id'
-  | 'childModelsJson___parent___children___children'
-  | 'childModelsJson___parent___internal___content'
-  | 'childModelsJson___parent___internal___contentDigest'
-  | 'childModelsJson___parent___internal___description'
-  | 'childModelsJson___parent___internal___fieldOwners'
-  | 'childModelsJson___parent___internal___ignoreType'
-  | 'childModelsJson___parent___internal___mediaType'
-  | 'childModelsJson___parent___internal___owner'
-  | 'childModelsJson___parent___internal___type'
-  | 'childModelsJson___children'
-  | 'childModelsJson___children___id'
-  | 'childModelsJson___children___parent___id'
-  | 'childModelsJson___children___parent___children'
-  | 'childModelsJson___children___children'
-  | 'childModelsJson___children___children___id'
-  | 'childModelsJson___children___children___children'
-  | 'childModelsJson___children___internal___content'
-  | 'childModelsJson___children___internal___contentDigest'
-  | 'childModelsJson___children___internal___description'
-  | 'childModelsJson___children___internal___fieldOwners'
-  | 'childModelsJson___children___internal___ignoreType'
-  | 'childModelsJson___children___internal___mediaType'
-  | 'childModelsJson___children___internal___owner'
-  | 'childModelsJson___children___internal___type'
-  | 'childModelsJson___internal___content'
-  | 'childModelsJson___internal___contentDigest'
-  | 'childModelsJson___internal___description'
-  | 'childModelsJson___internal___fieldOwners'
-  | 'childModelsJson___internal___ignoreType'
-  | 'childModelsJson___internal___mediaType'
-  | 'childModelsJson___internal___owner'
-  | 'childModelsJson___internal___type'
-  | 'childModelsJson___series'
-  | 'childModelsJson___name'
-  | 'childModelsJson___releaseDate'
-  | 'childModelsJson___gpuEngine___nvidiaCUDACores'
-  | 'childModelsJson___gpuEngine___boostClockGhz'
-  | 'childModelsJson___memory___standardConfigSizeGB'
-  | 'childModelsJson___memory___standardConfigSpec'
-  | 'childModelsJson___memory___interfaceBandwidthBit'
-  | 'childModelsJson___display___maxResolution___width'
-  | 'childModelsJson___display___maxResolution___height'
-  | 'childModelsJson___display___connectors'
-  | 'childModelsJson___display___connectors___type'
-  | 'childModelsJson___display___connectors___count'
-  | 'childModelsJson___display___monitorCount'
-  | 'childModelsJson___display___HDCP'
-  | 'childModelsJson___fields___designer';
+  | 'childDesigner___id'
+  | 'childDesigner___parent___id'
+  | 'childDesigner___parent___parent___id'
+  | 'childDesigner___parent___parent___children'
+  | 'childDesigner___parent___children'
+  | 'childDesigner___parent___children___id'
+  | 'childDesigner___parent___children___children'
+  | 'childDesigner___parent___internal___content'
+  | 'childDesigner___parent___internal___contentDigest'
+  | 'childDesigner___parent___internal___description'
+  | 'childDesigner___parent___internal___fieldOwners'
+  | 'childDesigner___parent___internal___ignoreType'
+  | 'childDesigner___parent___internal___mediaType'
+  | 'childDesigner___parent___internal___owner'
+  | 'childDesigner___parent___internal___type'
+  | 'childDesigner___children'
+  | 'childDesigner___children___id'
+  | 'childDesigner___children___parent___id'
+  | 'childDesigner___children___parent___children'
+  | 'childDesigner___children___children'
+  | 'childDesigner___children___children___id'
+  | 'childDesigner___children___children___children'
+  | 'childDesigner___children___internal___content'
+  | 'childDesigner___children___internal___contentDigest'
+  | 'childDesigner___children___internal___description'
+  | 'childDesigner___children___internal___fieldOwners'
+  | 'childDesigner___children___internal___ignoreType'
+  | 'childDesigner___children___internal___mediaType'
+  | 'childDesigner___children___internal___owner'
+  | 'childDesigner___children___internal___type'
+  | 'childDesigner___internal___content'
+  | 'childDesigner___internal___contentDigest'
+  | 'childDesigner___internal___description'
+  | 'childDesigner___internal___fieldOwners'
+  | 'childDesigner___internal___ignoreType'
+  | 'childDesigner___internal___mediaType'
+  | 'childDesigner___internal___owner'
+  | 'childDesigner___internal___type'
+  | 'childDesigner___name'
+  | 'childDesigner___website'
+  | 'childDesigner___fullSVG___sourceInstanceName'
+  | 'childDesigner___fullSVG___absolutePath'
+  | 'childDesigner___fullSVG___relativePath'
+  | 'childDesigner___fullSVG___extension'
+  | 'childDesigner___fullSVG___size'
+  | 'childDesigner___fullSVG___prettySize'
+  | 'childDesigner___fullSVG___modifiedTime'
+  | 'childDesigner___fullSVG___accessTime'
+  | 'childDesigner___fullSVG___changeTime'
+  | 'childDesigner___fullSVG___birthTime'
+  | 'childDesigner___fullSVG___root'
+  | 'childDesigner___fullSVG___dir'
+  | 'childDesigner___fullSVG___base'
+  | 'childDesigner___fullSVG___ext'
+  | 'childDesigner___fullSVG___name'
+  | 'childDesigner___fullSVG___relativeDirectory'
+  | 'childDesigner___fullSVG___dev'
+  | 'childDesigner___fullSVG___mode'
+  | 'childDesigner___fullSVG___nlink'
+  | 'childDesigner___fullSVG___uid'
+  | 'childDesigner___fullSVG___gid'
+  | 'childDesigner___fullSVG___rdev'
+  | 'childDesigner___fullSVG___ino'
+  | 'childDesigner___fullSVG___atimeMs'
+  | 'childDesigner___fullSVG___mtimeMs'
+  | 'childDesigner___fullSVG___ctimeMs'
+  | 'childDesigner___fullSVG___atime'
+  | 'childDesigner___fullSVG___mtime'
+  | 'childDesigner___fullSVG___ctime'
+  | 'childDesigner___fullSVG___birthtime'
+  | 'childDesigner___fullSVG___birthtimeMs'
+  | 'childDesigner___fullSVG___blksize'
+  | 'childDesigner___fullSVG___blocks'
+  | 'childDesigner___fullSVG___publicURL'
+  | 'childDesigner___fullSVG___childImageSharp___id'
+  | 'childDesigner___fullSVG___childImageSharp___children'
+  | 'childDesigner___fullSVG___id'
+  | 'childDesigner___fullSVG___parent___id'
+  | 'childDesigner___fullSVG___parent___children'
+  | 'childDesigner___fullSVG___children'
+  | 'childDesigner___fullSVG___children___id'
+  | 'childDesigner___fullSVG___children___children'
+  | 'childDesigner___fullSVG___internal___content'
+  | 'childDesigner___fullSVG___internal___contentDigest'
+  | 'childDesigner___fullSVG___internal___description'
+  | 'childDesigner___fullSVG___internal___fieldOwners'
+  | 'childDesigner___fullSVG___internal___ignoreType'
+  | 'childDesigner___fullSVG___internal___mediaType'
+  | 'childDesigner___fullSVG___internal___owner'
+  | 'childDesigner___fullSVG___internal___type'
+  | 'childDesigner___fullSVG___childDesigner___id'
+  | 'childDesigner___fullSVG___childDesigner___children'
+  | 'childDesigner___fullSVG___childDesigner___name'
+  | 'childDesigner___fullSVG___childDesigner___website'
+  | 'childDesigner___fullSVG___childDesigner___series'
+  | 'childDesigner___fullSVG___childDesigner___models'
+  | 'childDesigner___fullSVG___childSeries___id'
+  | 'childDesigner___fullSVG___childSeries___children'
+  | 'childDesigner___fullSVG___childSeries___name'
+  | 'childDesigner___fullSVG___childSeries___architecture'
+  | 'childDesigner___fullSVG___childSeries___releaseDate'
+  | 'childDesigner___fullSVG___childSeries___models'
+  | 'childDesigner___fullSVG___childSeries___website'
+  | 'childDesigner___fullSVG___childModels___name'
+  | 'childDesigner___fullSVG___childModels___releaseDate'
+  | 'childDesigner___fullSVG___childModels___monitorCount'
+  | 'childDesigner___fullSVG___childModels___connectors'
+  | 'childDesigner___fullSVG___childModels___HDCP'
+  | 'childDesigner___fullSVG___childModels___id'
+  | 'childDesigner___fullSVG___childModels___children'
+  | 'childDesigner___series'
+  | 'childDesigner___series___id'
+  | 'childDesigner___series___parent___id'
+  | 'childDesigner___series___parent___children'
+  | 'childDesigner___series___children'
+  | 'childDesigner___series___children___id'
+  | 'childDesigner___series___children___children'
+  | 'childDesigner___series___internal___content'
+  | 'childDesigner___series___internal___contentDigest'
+  | 'childDesigner___series___internal___description'
+  | 'childDesigner___series___internal___fieldOwners'
+  | 'childDesigner___series___internal___ignoreType'
+  | 'childDesigner___series___internal___mediaType'
+  | 'childDesigner___series___internal___owner'
+  | 'childDesigner___series___internal___type'
+  | 'childDesigner___series___name'
+  | 'childDesigner___series___architecture'
+  | 'childDesigner___series___releaseDate'
+  | 'childDesigner___series___models'
+  | 'childDesigner___series___models___name'
+  | 'childDesigner___series___models___releaseDate'
+  | 'childDesigner___series___models___monitorCount'
+  | 'childDesigner___series___models___connectors'
+  | 'childDesigner___series___models___HDCP'
+  | 'childDesigner___series___models___id'
+  | 'childDesigner___series___models___children'
+  | 'childDesigner___series___designer___id'
+  | 'childDesigner___series___designer___children'
+  | 'childDesigner___series___designer___name'
+  | 'childDesigner___series___designer___website'
+  | 'childDesigner___series___designer___series'
+  | 'childDesigner___series___designer___models'
+  | 'childDesigner___series___website'
+  | 'childDesigner___series___fields___designer'
+  | 'childDesigner___models'
+  | 'childDesigner___models___series___id'
+  | 'childDesigner___models___series___children'
+  | 'childDesigner___models___series___name'
+  | 'childDesigner___models___series___architecture'
+  | 'childDesigner___models___series___releaseDate'
+  | 'childDesigner___models___series___models'
+  | 'childDesigner___models___series___website'
+  | 'childDesigner___models___name'
+  | 'childDesigner___models___releaseDate'
+  | 'childDesigner___models___gpuEngine___nvidiaCUDACores'
+  | 'childDesigner___models___gpuEngine___boostClockGhz'
+  | 'childDesigner___models___memory___standardConfigSizeGB'
+  | 'childDesigner___models___memory___standardConfigSpec'
+  | 'childDesigner___models___memory___interfaceBandwidthBit'
+  | 'childDesigner___models___display___monitorCount'
+  | 'childDesigner___models___monitorCount'
+  | 'childDesigner___models___connectors'
+  | 'childDesigner___models___connectors___name'
+  | 'childDesigner___models___connectors___count'
+  | 'childDesigner___models___HDCP'
+  | 'childDesigner___models___fields___designer'
+  | 'childDesigner___models___id'
+  | 'childDesigner___models___parent___id'
+  | 'childDesigner___models___parent___children'
+  | 'childDesigner___models___children'
+  | 'childDesigner___models___children___id'
+  | 'childDesigner___models___children___children'
+  | 'childDesigner___models___internal___content'
+  | 'childDesigner___models___internal___contentDigest'
+  | 'childDesigner___models___internal___description'
+  | 'childDesigner___models___internal___fieldOwners'
+  | 'childDesigner___models___internal___ignoreType'
+  | 'childDesigner___models___internal___mediaType'
+  | 'childDesigner___models___internal___owner'
+  | 'childDesigner___models___internal___type'
+  | 'childSeries___id'
+  | 'childSeries___parent___id'
+  | 'childSeries___parent___parent___id'
+  | 'childSeries___parent___parent___children'
+  | 'childSeries___parent___children'
+  | 'childSeries___parent___children___id'
+  | 'childSeries___parent___children___children'
+  | 'childSeries___parent___internal___content'
+  | 'childSeries___parent___internal___contentDigest'
+  | 'childSeries___parent___internal___description'
+  | 'childSeries___parent___internal___fieldOwners'
+  | 'childSeries___parent___internal___ignoreType'
+  | 'childSeries___parent___internal___mediaType'
+  | 'childSeries___parent___internal___owner'
+  | 'childSeries___parent___internal___type'
+  | 'childSeries___children'
+  | 'childSeries___children___id'
+  | 'childSeries___children___parent___id'
+  | 'childSeries___children___parent___children'
+  | 'childSeries___children___children'
+  | 'childSeries___children___children___id'
+  | 'childSeries___children___children___children'
+  | 'childSeries___children___internal___content'
+  | 'childSeries___children___internal___contentDigest'
+  | 'childSeries___children___internal___description'
+  | 'childSeries___children___internal___fieldOwners'
+  | 'childSeries___children___internal___ignoreType'
+  | 'childSeries___children___internal___mediaType'
+  | 'childSeries___children___internal___owner'
+  | 'childSeries___children___internal___type'
+  | 'childSeries___internal___content'
+  | 'childSeries___internal___contentDigest'
+  | 'childSeries___internal___description'
+  | 'childSeries___internal___fieldOwners'
+  | 'childSeries___internal___ignoreType'
+  | 'childSeries___internal___mediaType'
+  | 'childSeries___internal___owner'
+  | 'childSeries___internal___type'
+  | 'childSeries___name'
+  | 'childSeries___architecture'
+  | 'childSeries___releaseDate'
+  | 'childSeries___models'
+  | 'childSeries___models___series___id'
+  | 'childSeries___models___series___children'
+  | 'childSeries___models___series___name'
+  | 'childSeries___models___series___architecture'
+  | 'childSeries___models___series___releaseDate'
+  | 'childSeries___models___series___models'
+  | 'childSeries___models___series___website'
+  | 'childSeries___models___name'
+  | 'childSeries___models___releaseDate'
+  | 'childSeries___models___gpuEngine___nvidiaCUDACores'
+  | 'childSeries___models___gpuEngine___boostClockGhz'
+  | 'childSeries___models___memory___standardConfigSizeGB'
+  | 'childSeries___models___memory___standardConfigSpec'
+  | 'childSeries___models___memory___interfaceBandwidthBit'
+  | 'childSeries___models___display___monitorCount'
+  | 'childSeries___models___monitorCount'
+  | 'childSeries___models___connectors'
+  | 'childSeries___models___connectors___name'
+  | 'childSeries___models___connectors___count'
+  | 'childSeries___models___HDCP'
+  | 'childSeries___models___fields___designer'
+  | 'childSeries___models___id'
+  | 'childSeries___models___parent___id'
+  | 'childSeries___models___parent___children'
+  | 'childSeries___models___children'
+  | 'childSeries___models___children___id'
+  | 'childSeries___models___children___children'
+  | 'childSeries___models___internal___content'
+  | 'childSeries___models___internal___contentDigest'
+  | 'childSeries___models___internal___description'
+  | 'childSeries___models___internal___fieldOwners'
+  | 'childSeries___models___internal___ignoreType'
+  | 'childSeries___models___internal___mediaType'
+  | 'childSeries___models___internal___owner'
+  | 'childSeries___models___internal___type'
+  | 'childSeries___designer___id'
+  | 'childSeries___designer___parent___id'
+  | 'childSeries___designer___parent___children'
+  | 'childSeries___designer___children'
+  | 'childSeries___designer___children___id'
+  | 'childSeries___designer___children___children'
+  | 'childSeries___designer___internal___content'
+  | 'childSeries___designer___internal___contentDigest'
+  | 'childSeries___designer___internal___description'
+  | 'childSeries___designer___internal___fieldOwners'
+  | 'childSeries___designer___internal___ignoreType'
+  | 'childSeries___designer___internal___mediaType'
+  | 'childSeries___designer___internal___owner'
+  | 'childSeries___designer___internal___type'
+  | 'childSeries___designer___name'
+  | 'childSeries___designer___website'
+  | 'childSeries___designer___fullSVG___sourceInstanceName'
+  | 'childSeries___designer___fullSVG___absolutePath'
+  | 'childSeries___designer___fullSVG___relativePath'
+  | 'childSeries___designer___fullSVG___extension'
+  | 'childSeries___designer___fullSVG___size'
+  | 'childSeries___designer___fullSVG___prettySize'
+  | 'childSeries___designer___fullSVG___modifiedTime'
+  | 'childSeries___designer___fullSVG___accessTime'
+  | 'childSeries___designer___fullSVG___changeTime'
+  | 'childSeries___designer___fullSVG___birthTime'
+  | 'childSeries___designer___fullSVG___root'
+  | 'childSeries___designer___fullSVG___dir'
+  | 'childSeries___designer___fullSVG___base'
+  | 'childSeries___designer___fullSVG___ext'
+  | 'childSeries___designer___fullSVG___name'
+  | 'childSeries___designer___fullSVG___relativeDirectory'
+  | 'childSeries___designer___fullSVG___dev'
+  | 'childSeries___designer___fullSVG___mode'
+  | 'childSeries___designer___fullSVG___nlink'
+  | 'childSeries___designer___fullSVG___uid'
+  | 'childSeries___designer___fullSVG___gid'
+  | 'childSeries___designer___fullSVG___rdev'
+  | 'childSeries___designer___fullSVG___ino'
+  | 'childSeries___designer___fullSVG___atimeMs'
+  | 'childSeries___designer___fullSVG___mtimeMs'
+  | 'childSeries___designer___fullSVG___ctimeMs'
+  | 'childSeries___designer___fullSVG___atime'
+  | 'childSeries___designer___fullSVG___mtime'
+  | 'childSeries___designer___fullSVG___ctime'
+  | 'childSeries___designer___fullSVG___birthtime'
+  | 'childSeries___designer___fullSVG___birthtimeMs'
+  | 'childSeries___designer___fullSVG___blksize'
+  | 'childSeries___designer___fullSVG___blocks'
+  | 'childSeries___designer___fullSVG___publicURL'
+  | 'childSeries___designer___fullSVG___id'
+  | 'childSeries___designer___fullSVG___children'
+  | 'childSeries___designer___series'
+  | 'childSeries___designer___series___id'
+  | 'childSeries___designer___series___children'
+  | 'childSeries___designer___series___name'
+  | 'childSeries___designer___series___architecture'
+  | 'childSeries___designer___series___releaseDate'
+  | 'childSeries___designer___series___models'
+  | 'childSeries___designer___series___website'
+  | 'childSeries___designer___models'
+  | 'childSeries___designer___models___name'
+  | 'childSeries___designer___models___releaseDate'
+  | 'childSeries___designer___models___monitorCount'
+  | 'childSeries___designer___models___connectors'
+  | 'childSeries___designer___models___HDCP'
+  | 'childSeries___designer___models___id'
+  | 'childSeries___designer___models___children'
+  | 'childSeries___website'
+  | 'childSeries___fields___designer'
+  | 'childModels___series___id'
+  | 'childModels___series___parent___id'
+  | 'childModels___series___parent___children'
+  | 'childModels___series___children'
+  | 'childModels___series___children___id'
+  | 'childModels___series___children___children'
+  | 'childModels___series___internal___content'
+  | 'childModels___series___internal___contentDigest'
+  | 'childModels___series___internal___description'
+  | 'childModels___series___internal___fieldOwners'
+  | 'childModels___series___internal___ignoreType'
+  | 'childModels___series___internal___mediaType'
+  | 'childModels___series___internal___owner'
+  | 'childModels___series___internal___type'
+  | 'childModels___series___name'
+  | 'childModels___series___architecture'
+  | 'childModels___series___releaseDate'
+  | 'childModels___series___models'
+  | 'childModels___series___models___name'
+  | 'childModels___series___models___releaseDate'
+  | 'childModels___series___models___monitorCount'
+  | 'childModels___series___models___connectors'
+  | 'childModels___series___models___HDCP'
+  | 'childModels___series___models___id'
+  | 'childModels___series___models___children'
+  | 'childModels___series___designer___id'
+  | 'childModels___series___designer___children'
+  | 'childModels___series___designer___name'
+  | 'childModels___series___designer___website'
+  | 'childModels___series___designer___series'
+  | 'childModels___series___designer___models'
+  | 'childModels___series___website'
+  | 'childModels___series___fields___designer'
+  | 'childModels___name'
+  | 'childModels___releaseDate'
+  | 'childModels___gpuEngine___nvidiaCUDACores'
+  | 'childModels___gpuEngine___boostClockGhz'
+  | 'childModels___memory___standardConfigSizeGB'
+  | 'childModels___memory___standardConfigSpec'
+  | 'childModels___memory___interfaceBandwidthBit'
+  | 'childModels___display___maxResolution___width'
+  | 'childModels___display___maxResolution___height'
+  | 'childModels___display___monitorCount'
+  | 'childModels___monitorCount'
+  | 'childModels___connectors'
+  | 'childModels___connectors___name'
+  | 'childModels___connectors___count'
+  | 'childModels___HDCP'
+  | 'childModels___fields___designer'
+  | 'childModels___id'
+  | 'childModels___parent___id'
+  | 'childModels___parent___parent___id'
+  | 'childModels___parent___parent___children'
+  | 'childModels___parent___children'
+  | 'childModels___parent___children___id'
+  | 'childModels___parent___children___children'
+  | 'childModels___parent___internal___content'
+  | 'childModels___parent___internal___contentDigest'
+  | 'childModels___parent___internal___description'
+  | 'childModels___parent___internal___fieldOwners'
+  | 'childModels___parent___internal___ignoreType'
+  | 'childModels___parent___internal___mediaType'
+  | 'childModels___parent___internal___owner'
+  | 'childModels___parent___internal___type'
+  | 'childModels___children'
+  | 'childModels___children___id'
+  | 'childModels___children___parent___id'
+  | 'childModels___children___parent___children'
+  | 'childModels___children___children'
+  | 'childModels___children___children___id'
+  | 'childModels___children___children___children'
+  | 'childModels___children___internal___content'
+  | 'childModels___children___internal___contentDigest'
+  | 'childModels___children___internal___description'
+  | 'childModels___children___internal___fieldOwners'
+  | 'childModels___children___internal___ignoreType'
+  | 'childModels___children___internal___mediaType'
+  | 'childModels___children___internal___owner'
+  | 'childModels___children___internal___type'
+  | 'childModels___internal___content'
+  | 'childModels___internal___contentDigest'
+  | 'childModels___internal___description'
+  | 'childModels___internal___fieldOwners'
+  | 'childModels___internal___ignoreType'
+  | 'childModels___internal___mediaType'
+  | 'childModels___internal___owner'
+  | 'childModels___internal___type';
 
 export type FileFilterInput = {
   sourceInstanceName?: Maybe<StringQueryOperatorInput>;
@@ -831,8 +1839,9 @@ export type FileFilterInput = {
   parent?: Maybe<NodeFilterInput>;
   children?: Maybe<NodeFilterListInput>;
   internal?: Maybe<InternalFilterInput>;
-  childSeriesJson?: Maybe<SeriesJsonFilterInput>;
-  childModelsJson?: Maybe<ModelsJsonFilterInput>;
+  childDesigner?: Maybe<DesignerFilterInput>;
+  childSeries?: Maybe<SeriesFilterInput>;
+  childModels?: Maybe<ModelsFilterInput>;
 };
 
 export type FileGroupConnection = {
@@ -858,6 +1867,16 @@ export type FloatQueryOperatorInput = {
   lte?: Maybe<Scalars['Float']>;
   in?: Maybe<Array<Maybe<Scalars['Float']>>>;
   nin?: Maybe<Array<Maybe<Scalars['Float']>>>;
+};
+
+export type GpuEngineSpec = {
+  nvidiaCUDACores?: Maybe<Scalars['Int']>;
+  boostClockGhz?: Maybe<Scalars['Float']>;
+};
+
+export type GpuEngineSpecFilterInput = {
+  nvidiaCUDACores?: Maybe<IntQueryOperatorInput>;
+  boostClockGhz?: Maybe<FloatQueryOperatorInput>;
 };
 
 export type ImageCropFocus = 
@@ -1391,98 +2410,248 @@ export type IntQueryOperatorInput = {
 };
 
 
-export type ModelsJson = Node & {
+export type MaxResolutionSpec = {
+  width?: Maybe<Scalars['Int']>;
+  height?: Maybe<Scalars['Int']>;
+};
+
+export type MaxResolutionSpecFilterInput = {
+  width?: Maybe<IntQueryOperatorInput>;
+  height?: Maybe<IntQueryOperatorInput>;
+};
+
+export type MemorySpec = {
+  standardConfigSizeGB?: Maybe<Scalars['Int']>;
+  standardConfigSpec?: Maybe<Scalars['String']>;
+  interfaceBandwidthBit?: Maybe<Scalars['Int']>;
+};
+
+export type MemorySpecFilterInput = {
+  standardConfigSizeGB?: Maybe<IntQueryOperatorInput>;
+  standardConfigSpec?: Maybe<StringQueryOperatorInput>;
+  interfaceBandwidthBit?: Maybe<IntQueryOperatorInput>;
+};
+
+export type Models = Node & {
+  series?: Maybe<Series>;
+  name?: Maybe<Scalars['String']>;
+  releaseDate?: Maybe<Scalars['Date']>;
+  gpuEngine?: Maybe<GpuEngineSpec>;
+  memory?: Maybe<MemorySpec>;
+  display?: Maybe<DisplaySpec>;
+  monitorCount?: Maybe<Scalars['Int']>;
+  connectors?: Maybe<Array<Maybe<ConnectorSpec>>>;
+  HDCP?: Maybe<Scalars['String']>;
+  fields?: Maybe<ModelsFields>;
   id: Scalars['ID'];
   parent?: Maybe<Node>;
   children: Array<Node>;
   internal: Internal;
-  series?: Maybe<Scalars['String']>;
-  name?: Maybe<Scalars['String']>;
-  releaseDate?: Maybe<Scalars['Date']>;
-  gpuEngine?: Maybe<ModelsJsonGpuEngine>;
-  memory?: Maybe<ModelsJsonMemory>;
-  display?: Maybe<ModelsJsonDisplay>;
-  fields?: Maybe<ModelsJsonFields>;
 };
 
 
-export type ModelsJsonReleaseDateArgs = {
+export type ModelsReleaseDateArgs = {
   formatString?: Maybe<Scalars['String']>;
   fromNow?: Maybe<Scalars['Boolean']>;
   difference?: Maybe<Scalars['String']>;
   locale?: Maybe<Scalars['String']>;
 };
 
-export type ModelsJsonConnection = {
+export type ModelsConnection = {
   totalCount: Scalars['Int'];
-  edges: Array<ModelsJsonEdge>;
-  nodes: Array<ModelsJson>;
+  edges: Array<ModelsEdge>;
+  nodes: Array<Models>;
   pageInfo: PageInfo;
   distinct: Array<Scalars['String']>;
-  group: Array<ModelsJsonGroupConnection>;
+  group: Array<ModelsGroupConnection>;
 };
 
 
-export type ModelsJsonConnectionDistinctArgs = {
-  field: ModelsJsonFieldsEnum;
+export type ModelsConnectionDistinctArgs = {
+  field: ModelsFieldsEnum;
 };
 
 
-export type ModelsJsonConnectionGroupArgs = {
+export type ModelsConnectionGroupArgs = {
   skip?: Maybe<Scalars['Int']>;
   limit?: Maybe<Scalars['Int']>;
-  field: ModelsJsonFieldsEnum;
+  field: ModelsFieldsEnum;
 };
 
-export type ModelsJsonDisplay = {
-  maxResolution?: Maybe<ModelsJsonDisplayMaxResolution>;
-  connectors?: Maybe<Array<Maybe<ModelsJsonDisplayConnectors>>>;
-  monitorCount?: Maybe<Scalars['Int']>;
-  HDCP?: Maybe<Scalars['String']>;
+export type ModelsEdge = {
+  next?: Maybe<Models>;
+  node: Models;
+  previous?: Maybe<Models>;
 };
 
-export type ModelsJsonDisplayConnectors = {
-  type?: Maybe<Scalars['String']>;
-  count?: Maybe<Scalars['Int']>;
-};
-
-export type ModelsJsonDisplayConnectorsFilterInput = {
-  type?: Maybe<StringQueryOperatorInput>;
-  count?: Maybe<IntQueryOperatorInput>;
-};
-
-export type ModelsJsonDisplayConnectorsFilterListInput = {
-  elemMatch?: Maybe<ModelsJsonDisplayConnectorsFilterInput>;
-};
-
-export type ModelsJsonDisplayFilterInput = {
-  maxResolution?: Maybe<ModelsJsonDisplayMaxResolutionFilterInput>;
-  connectors?: Maybe<ModelsJsonDisplayConnectorsFilterListInput>;
-  monitorCount?: Maybe<IntQueryOperatorInput>;
-  HDCP?: Maybe<StringQueryOperatorInput>;
-};
-
-export type ModelsJsonDisplayMaxResolution = {
-  width?: Maybe<Scalars['Int']>;
-  height?: Maybe<Scalars['Int']>;
-};
-
-export type ModelsJsonDisplayMaxResolutionFilterInput = {
-  width?: Maybe<IntQueryOperatorInput>;
-  height?: Maybe<IntQueryOperatorInput>;
-};
-
-export type ModelsJsonEdge = {
-  next?: Maybe<ModelsJson>;
-  node: ModelsJson;
-  previous?: Maybe<ModelsJson>;
-};
-
-export type ModelsJsonFields = {
+export type ModelsFields = {
   designer?: Maybe<Scalars['String']>;
 };
 
-export type ModelsJsonFieldsEnum = 
+export type ModelsFieldsEnum = 
+  | 'series___id'
+  | 'series___parent___id'
+  | 'series___parent___parent___id'
+  | 'series___parent___parent___children'
+  | 'series___parent___children'
+  | 'series___parent___children___id'
+  | 'series___parent___children___children'
+  | 'series___parent___internal___content'
+  | 'series___parent___internal___contentDigest'
+  | 'series___parent___internal___description'
+  | 'series___parent___internal___fieldOwners'
+  | 'series___parent___internal___ignoreType'
+  | 'series___parent___internal___mediaType'
+  | 'series___parent___internal___owner'
+  | 'series___parent___internal___type'
+  | 'series___children'
+  | 'series___children___id'
+  | 'series___children___parent___id'
+  | 'series___children___parent___children'
+  | 'series___children___children'
+  | 'series___children___children___id'
+  | 'series___children___children___children'
+  | 'series___children___internal___content'
+  | 'series___children___internal___contentDigest'
+  | 'series___children___internal___description'
+  | 'series___children___internal___fieldOwners'
+  | 'series___children___internal___ignoreType'
+  | 'series___children___internal___mediaType'
+  | 'series___children___internal___owner'
+  | 'series___children___internal___type'
+  | 'series___internal___content'
+  | 'series___internal___contentDigest'
+  | 'series___internal___description'
+  | 'series___internal___fieldOwners'
+  | 'series___internal___ignoreType'
+  | 'series___internal___mediaType'
+  | 'series___internal___owner'
+  | 'series___internal___type'
+  | 'series___name'
+  | 'series___architecture'
+  | 'series___releaseDate'
+  | 'series___models'
+  | 'series___models___series___id'
+  | 'series___models___series___children'
+  | 'series___models___series___name'
+  | 'series___models___series___architecture'
+  | 'series___models___series___releaseDate'
+  | 'series___models___series___models'
+  | 'series___models___series___website'
+  | 'series___models___name'
+  | 'series___models___releaseDate'
+  | 'series___models___gpuEngine___nvidiaCUDACores'
+  | 'series___models___gpuEngine___boostClockGhz'
+  | 'series___models___memory___standardConfigSizeGB'
+  | 'series___models___memory___standardConfigSpec'
+  | 'series___models___memory___interfaceBandwidthBit'
+  | 'series___models___display___monitorCount'
+  | 'series___models___monitorCount'
+  | 'series___models___connectors'
+  | 'series___models___connectors___name'
+  | 'series___models___connectors___count'
+  | 'series___models___HDCP'
+  | 'series___models___fields___designer'
+  | 'series___models___id'
+  | 'series___models___parent___id'
+  | 'series___models___parent___children'
+  | 'series___models___children'
+  | 'series___models___children___id'
+  | 'series___models___children___children'
+  | 'series___models___internal___content'
+  | 'series___models___internal___contentDigest'
+  | 'series___models___internal___description'
+  | 'series___models___internal___fieldOwners'
+  | 'series___models___internal___ignoreType'
+  | 'series___models___internal___mediaType'
+  | 'series___models___internal___owner'
+  | 'series___models___internal___type'
+  | 'series___designer___id'
+  | 'series___designer___parent___id'
+  | 'series___designer___parent___children'
+  | 'series___designer___children'
+  | 'series___designer___children___id'
+  | 'series___designer___children___children'
+  | 'series___designer___internal___content'
+  | 'series___designer___internal___contentDigest'
+  | 'series___designer___internal___description'
+  | 'series___designer___internal___fieldOwners'
+  | 'series___designer___internal___ignoreType'
+  | 'series___designer___internal___mediaType'
+  | 'series___designer___internal___owner'
+  | 'series___designer___internal___type'
+  | 'series___designer___name'
+  | 'series___designer___website'
+  | 'series___designer___fullSVG___sourceInstanceName'
+  | 'series___designer___fullSVG___absolutePath'
+  | 'series___designer___fullSVG___relativePath'
+  | 'series___designer___fullSVG___extension'
+  | 'series___designer___fullSVG___size'
+  | 'series___designer___fullSVG___prettySize'
+  | 'series___designer___fullSVG___modifiedTime'
+  | 'series___designer___fullSVG___accessTime'
+  | 'series___designer___fullSVG___changeTime'
+  | 'series___designer___fullSVG___birthTime'
+  | 'series___designer___fullSVG___root'
+  | 'series___designer___fullSVG___dir'
+  | 'series___designer___fullSVG___base'
+  | 'series___designer___fullSVG___ext'
+  | 'series___designer___fullSVG___name'
+  | 'series___designer___fullSVG___relativeDirectory'
+  | 'series___designer___fullSVG___dev'
+  | 'series___designer___fullSVG___mode'
+  | 'series___designer___fullSVG___nlink'
+  | 'series___designer___fullSVG___uid'
+  | 'series___designer___fullSVG___gid'
+  | 'series___designer___fullSVG___rdev'
+  | 'series___designer___fullSVG___ino'
+  | 'series___designer___fullSVG___atimeMs'
+  | 'series___designer___fullSVG___mtimeMs'
+  | 'series___designer___fullSVG___ctimeMs'
+  | 'series___designer___fullSVG___atime'
+  | 'series___designer___fullSVG___mtime'
+  | 'series___designer___fullSVG___ctime'
+  | 'series___designer___fullSVG___birthtime'
+  | 'series___designer___fullSVG___birthtimeMs'
+  | 'series___designer___fullSVG___blksize'
+  | 'series___designer___fullSVG___blocks'
+  | 'series___designer___fullSVG___publicURL'
+  | 'series___designer___fullSVG___id'
+  | 'series___designer___fullSVG___children'
+  | 'series___designer___series'
+  | 'series___designer___series___id'
+  | 'series___designer___series___children'
+  | 'series___designer___series___name'
+  | 'series___designer___series___architecture'
+  | 'series___designer___series___releaseDate'
+  | 'series___designer___series___models'
+  | 'series___designer___series___website'
+  | 'series___designer___models'
+  | 'series___designer___models___name'
+  | 'series___designer___models___releaseDate'
+  | 'series___designer___models___monitorCount'
+  | 'series___designer___models___connectors'
+  | 'series___designer___models___HDCP'
+  | 'series___designer___models___id'
+  | 'series___designer___models___children'
+  | 'series___website'
+  | 'series___fields___designer'
+  | 'name'
+  | 'releaseDate'
+  | 'gpuEngine___nvidiaCUDACores'
+  | 'gpuEngine___boostClockGhz'
+  | 'memory___standardConfigSizeGB'
+  | 'memory___standardConfigSpec'
+  | 'memory___interfaceBandwidthBit'
+  | 'display___maxResolution___width'
+  | 'display___maxResolution___height'
+  | 'display___monitorCount'
+  | 'monitorCount'
+  | 'connectors'
+  | 'connectors___name'
+  | 'connectors___count'
+  | 'HDCP'
+  | 'fields___designer'
   | 'id'
   | 'parent___id'
   | 'parent___parent___id'
@@ -1568,75 +2737,44 @@ export type ModelsJsonFieldsEnum =
   | 'internal___ignoreType'
   | 'internal___mediaType'
   | 'internal___owner'
-  | 'internal___type'
-  | 'series'
-  | 'name'
-  | 'releaseDate'
-  | 'gpuEngine___nvidiaCUDACores'
-  | 'gpuEngine___boostClockGhz'
-  | 'memory___standardConfigSizeGB'
-  | 'memory___standardConfigSpec'
-  | 'memory___interfaceBandwidthBit'
-  | 'display___maxResolution___width'
-  | 'display___maxResolution___height'
-  | 'display___connectors'
-  | 'display___connectors___type'
-  | 'display___connectors___count'
-  | 'display___monitorCount'
-  | 'display___HDCP'
-  | 'fields___designer';
+  | 'internal___type';
 
-export type ModelsJsonFieldsFilterInput = {
+export type ModelsFieldsFilterInput = {
   designer?: Maybe<StringQueryOperatorInput>;
 };
 
-export type ModelsJsonFilterInput = {
+export type ModelsFilterInput = {
+  series?: Maybe<SeriesFilterInput>;
+  name?: Maybe<StringQueryOperatorInput>;
+  releaseDate?: Maybe<DateQueryOperatorInput>;
+  gpuEngine?: Maybe<GpuEngineSpecFilterInput>;
+  memory?: Maybe<MemorySpecFilterInput>;
+  display?: Maybe<DisplaySpecFilterInput>;
+  monitorCount?: Maybe<IntQueryOperatorInput>;
+  connectors?: Maybe<ConnectorSpecFilterListInput>;
+  HDCP?: Maybe<StringQueryOperatorInput>;
+  fields?: Maybe<ModelsFieldsFilterInput>;
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
   children?: Maybe<NodeFilterListInput>;
   internal?: Maybe<InternalFilterInput>;
-  series?: Maybe<StringQueryOperatorInput>;
-  name?: Maybe<StringQueryOperatorInput>;
-  releaseDate?: Maybe<DateQueryOperatorInput>;
-  gpuEngine?: Maybe<ModelsJsonGpuEngineFilterInput>;
-  memory?: Maybe<ModelsJsonMemoryFilterInput>;
-  display?: Maybe<ModelsJsonDisplayFilterInput>;
-  fields?: Maybe<ModelsJsonFieldsFilterInput>;
 };
 
-export type ModelsJsonGpuEngine = {
-  nvidiaCUDACores?: Maybe<Scalars['Int']>;
-  boostClockGhz?: Maybe<Scalars['Float']>;
+export type ModelsFilterListInput = {
+  elemMatch?: Maybe<ModelsFilterInput>;
 };
 
-export type ModelsJsonGpuEngineFilterInput = {
-  nvidiaCUDACores?: Maybe<IntQueryOperatorInput>;
-  boostClockGhz?: Maybe<FloatQueryOperatorInput>;
-};
-
-export type ModelsJsonGroupConnection = {
+export type ModelsGroupConnection = {
   totalCount: Scalars['Int'];
-  edges: Array<ModelsJsonEdge>;
-  nodes: Array<ModelsJson>;
+  edges: Array<ModelsEdge>;
+  nodes: Array<Models>;
   pageInfo: PageInfo;
   field: Scalars['String'];
   fieldValue?: Maybe<Scalars['String']>;
 };
 
-export type ModelsJsonMemory = {
-  standardConfigSizeGB?: Maybe<Scalars['Int']>;
-  standardConfigSpec?: Maybe<Scalars['String']>;
-  interfaceBandwidthBit?: Maybe<Scalars['Int']>;
-};
-
-export type ModelsJsonMemoryFilterInput = {
-  standardConfigSizeGB?: Maybe<IntQueryOperatorInput>;
-  standardConfigSpec?: Maybe<StringQueryOperatorInput>;
-  interfaceBandwidthBit?: Maybe<IntQueryOperatorInput>;
-};
-
-export type ModelsJsonSortInput = {
-  fields?: Maybe<Array<Maybe<ModelsJsonFieldsEnum>>>;
+export type ModelsSortInput = {
+  fields?: Maybe<Array<Maybe<ModelsFieldsEnum>>>;
   order?: Maybe<Array<Maybe<SortOrderEnum>>>;
 };
 
@@ -1700,10 +2838,12 @@ export type Query = {
   allSite: SiteConnection;
   imageSharp?: Maybe<ImageSharp>;
   allImageSharp: ImageSharpConnection;
-  modelsJson?: Maybe<ModelsJson>;
-  allModelsJson: ModelsJsonConnection;
-  seriesJson?: Maybe<SeriesJson>;
-  allSeriesJson: SeriesJsonConnection;
+  series?: Maybe<Series>;
+  allSeries: SeriesConnection;
+  models?: Maybe<Models>;
+  allModels: ModelsConnection;
+  designer?: Maybe<Designer>;
+  allDesigner: DesignerConnection;
   siteBuildMetadata?: Maybe<SiteBuildMetadata>;
   allSiteBuildMetadata: SiteBuildMetadataConnection;
   sitePlugin?: Maybe<SitePlugin>;
@@ -1751,8 +2891,9 @@ export type QueryFileArgs = {
   parent?: Maybe<NodeFilterInput>;
   children?: Maybe<NodeFilterListInput>;
   internal?: Maybe<InternalFilterInput>;
-  childSeriesJson?: Maybe<SeriesJsonFilterInput>;
-  childModelsJson?: Maybe<ModelsJsonFilterInput>;
+  childDesigner?: Maybe<DesignerFilterInput>;
+  childSeries?: Maybe<SeriesFilterInput>;
+  childModels?: Maybe<ModelsFilterInput>;
 };
 
 
@@ -1843,8 +2984,7 @@ export type QuerySiteArgs = {
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
   port?: Maybe<IntQueryOperatorInput>;
   host?: Maybe<StringQueryOperatorInput>;
-  polyfill?: Maybe<BooleanQueryOperatorInput>;
-  pathPrefix?: Maybe<StringQueryOperatorInput>;
+  mapping?: Maybe<SiteMappingFilterInput>;
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
   children?: Maybe<NodeFilterListInput>;
@@ -1882,45 +3022,71 @@ export type QueryAllImageSharpArgs = {
 };
 
 
-export type QueryModelsJsonArgs = {
+export type QuerySeriesArgs = {
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
   children?: Maybe<NodeFilterListInput>;
   internal?: Maybe<InternalFilterInput>;
-  series?: Maybe<StringQueryOperatorInput>;
   name?: Maybe<StringQueryOperatorInput>;
+  architecture?: Maybe<StringQueryOperatorInput>;
   releaseDate?: Maybe<DateQueryOperatorInput>;
-  gpuEngine?: Maybe<ModelsJsonGpuEngineFilterInput>;
-  memory?: Maybe<ModelsJsonMemoryFilterInput>;
-  display?: Maybe<ModelsJsonDisplayFilterInput>;
-  fields?: Maybe<ModelsJsonFieldsFilterInput>;
+  models?: Maybe<ModelsFilterListInput>;
+  designer?: Maybe<DesignerFilterInput>;
+  website?: Maybe<StringQueryOperatorInput>;
+  fields?: Maybe<SeriesFieldsFilterInput>;
 };
 
 
-export type QueryAllModelsJsonArgs = {
-  filter?: Maybe<ModelsJsonFilterInput>;
-  sort?: Maybe<ModelsJsonSortInput>;
+export type QueryAllSeriesArgs = {
+  filter?: Maybe<SeriesFilterInput>;
+  sort?: Maybe<SeriesSortInput>;
   skip?: Maybe<Scalars['Int']>;
   limit?: Maybe<Scalars['Int']>;
 };
 
 
-export type QuerySeriesJsonArgs = {
+export type QueryModelsArgs = {
+  series?: Maybe<SeriesFilterInput>;
+  name?: Maybe<StringQueryOperatorInput>;
+  releaseDate?: Maybe<DateQueryOperatorInput>;
+  gpuEngine?: Maybe<GpuEngineSpecFilterInput>;
+  memory?: Maybe<MemorySpecFilterInput>;
+  display?: Maybe<DisplaySpecFilterInput>;
+  monitorCount?: Maybe<IntQueryOperatorInput>;
+  connectors?: Maybe<ConnectorSpecFilterListInput>;
+  HDCP?: Maybe<StringQueryOperatorInput>;
+  fields?: Maybe<ModelsFieldsFilterInput>;
+  id?: Maybe<StringQueryOperatorInput>;
+  parent?: Maybe<NodeFilterInput>;
+  children?: Maybe<NodeFilterListInput>;
+  internal?: Maybe<InternalFilterInput>;
+};
+
+
+export type QueryAllModelsArgs = {
+  filter?: Maybe<ModelsFilterInput>;
+  sort?: Maybe<ModelsSortInput>;
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+};
+
+
+export type QueryDesignerArgs = {
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
   children?: Maybe<NodeFilterListInput>;
   internal?: Maybe<InternalFilterInput>;
   name?: Maybe<StringQueryOperatorInput>;
-  releaseDate?: Maybe<DateQueryOperatorInput>;
-  architecture?: Maybe<StringQueryOperatorInput>;
   website?: Maybe<StringQueryOperatorInput>;
-  fields?: Maybe<SeriesJsonFieldsFilterInput>;
+  fullSVG?: Maybe<FileFilterInput>;
+  series?: Maybe<SeriesFilterListInput>;
+  models?: Maybe<ModelsFilterListInput>;
 };
 
 
-export type QueryAllSeriesJsonArgs = {
-  filter?: Maybe<SeriesJsonFilterInput>;
-  sort?: Maybe<SeriesJsonSortInput>;
+export type QueryAllDesignerArgs = {
+  filter?: Maybe<DesignerFilterInput>;
+  sort?: Maybe<DesignerSortInput>;
   skip?: Maybe<Scalars['Int']>;
   limit?: Maybe<Scalars['Int']>;
 };
@@ -1967,58 +3133,60 @@ export type QueryAllSitePluginArgs = {
   limit?: Maybe<Scalars['Int']>;
 };
 
-export type SeriesJson = Node & {
+export type Series = Node & {
   id: Scalars['ID'];
   parent?: Maybe<Node>;
   children: Array<Node>;
   internal: Internal;
   name?: Maybe<Scalars['String']>;
-  releaseDate?: Maybe<Scalars['Date']>;
   architecture?: Maybe<Scalars['String']>;
+  releaseDate?: Maybe<Scalars['Date']>;
+  models?: Maybe<Array<Maybe<Models>>>;
+  designer?: Maybe<Designer>;
   website?: Maybe<Scalars['String']>;
-  fields?: Maybe<SeriesJsonFields>;
+  fields?: Maybe<SeriesFields>;
 };
 
 
-export type SeriesJsonReleaseDateArgs = {
+export type SeriesReleaseDateArgs = {
   formatString?: Maybe<Scalars['String']>;
   fromNow?: Maybe<Scalars['Boolean']>;
   difference?: Maybe<Scalars['String']>;
   locale?: Maybe<Scalars['String']>;
 };
 
-export type SeriesJsonConnection = {
+export type SeriesConnection = {
   totalCount: Scalars['Int'];
-  edges: Array<SeriesJsonEdge>;
-  nodes: Array<SeriesJson>;
+  edges: Array<SeriesEdge>;
+  nodes: Array<Series>;
   pageInfo: PageInfo;
   distinct: Array<Scalars['String']>;
-  group: Array<SeriesJsonGroupConnection>;
+  group: Array<SeriesGroupConnection>;
 };
 
 
-export type SeriesJsonConnectionDistinctArgs = {
-  field: SeriesJsonFieldsEnum;
+export type SeriesConnectionDistinctArgs = {
+  field: SeriesFieldsEnum;
 };
 
 
-export type SeriesJsonConnectionGroupArgs = {
+export type SeriesConnectionGroupArgs = {
   skip?: Maybe<Scalars['Int']>;
   limit?: Maybe<Scalars['Int']>;
-  field: SeriesJsonFieldsEnum;
+  field: SeriesFieldsEnum;
 };
 
-export type SeriesJsonEdge = {
-  next?: Maybe<SeriesJson>;
-  node: SeriesJson;
-  previous?: Maybe<SeriesJson>;
+export type SeriesEdge = {
+  next?: Maybe<Series>;
+  node: Series;
+  previous?: Maybe<Series>;
 };
 
-export type SeriesJsonFields = {
+export type SeriesFields = {
   designer?: Maybe<Scalars['String']>;
 };
 
-export type SeriesJsonFieldsEnum = 
+export type SeriesFieldsEnum = 
   | 'id'
   | 'parent___id'
   | 'parent___parent___id'
@@ -2106,38 +3274,312 @@ export type SeriesJsonFieldsEnum =
   | 'internal___owner'
   | 'internal___type'
   | 'name'
-  | 'releaseDate'
   | 'architecture'
+  | 'releaseDate'
+  | 'models'
+  | 'models___series___id'
+  | 'models___series___parent___id'
+  | 'models___series___parent___children'
+  | 'models___series___children'
+  | 'models___series___children___id'
+  | 'models___series___children___children'
+  | 'models___series___internal___content'
+  | 'models___series___internal___contentDigest'
+  | 'models___series___internal___description'
+  | 'models___series___internal___fieldOwners'
+  | 'models___series___internal___ignoreType'
+  | 'models___series___internal___mediaType'
+  | 'models___series___internal___owner'
+  | 'models___series___internal___type'
+  | 'models___series___name'
+  | 'models___series___architecture'
+  | 'models___series___releaseDate'
+  | 'models___series___models'
+  | 'models___series___models___name'
+  | 'models___series___models___releaseDate'
+  | 'models___series___models___monitorCount'
+  | 'models___series___models___connectors'
+  | 'models___series___models___HDCP'
+  | 'models___series___models___id'
+  | 'models___series___models___children'
+  | 'models___series___designer___id'
+  | 'models___series___designer___children'
+  | 'models___series___designer___name'
+  | 'models___series___designer___website'
+  | 'models___series___designer___series'
+  | 'models___series___designer___models'
+  | 'models___series___website'
+  | 'models___series___fields___designer'
+  | 'models___name'
+  | 'models___releaseDate'
+  | 'models___gpuEngine___nvidiaCUDACores'
+  | 'models___gpuEngine___boostClockGhz'
+  | 'models___memory___standardConfigSizeGB'
+  | 'models___memory___standardConfigSpec'
+  | 'models___memory___interfaceBandwidthBit'
+  | 'models___display___maxResolution___width'
+  | 'models___display___maxResolution___height'
+  | 'models___display___monitorCount'
+  | 'models___monitorCount'
+  | 'models___connectors'
+  | 'models___connectors___name'
+  | 'models___connectors___count'
+  | 'models___HDCP'
+  | 'models___fields___designer'
+  | 'models___id'
+  | 'models___parent___id'
+  | 'models___parent___parent___id'
+  | 'models___parent___parent___children'
+  | 'models___parent___children'
+  | 'models___parent___children___id'
+  | 'models___parent___children___children'
+  | 'models___parent___internal___content'
+  | 'models___parent___internal___contentDigest'
+  | 'models___parent___internal___description'
+  | 'models___parent___internal___fieldOwners'
+  | 'models___parent___internal___ignoreType'
+  | 'models___parent___internal___mediaType'
+  | 'models___parent___internal___owner'
+  | 'models___parent___internal___type'
+  | 'models___children'
+  | 'models___children___id'
+  | 'models___children___parent___id'
+  | 'models___children___parent___children'
+  | 'models___children___children'
+  | 'models___children___children___id'
+  | 'models___children___children___children'
+  | 'models___children___internal___content'
+  | 'models___children___internal___contentDigest'
+  | 'models___children___internal___description'
+  | 'models___children___internal___fieldOwners'
+  | 'models___children___internal___ignoreType'
+  | 'models___children___internal___mediaType'
+  | 'models___children___internal___owner'
+  | 'models___children___internal___type'
+  | 'models___internal___content'
+  | 'models___internal___contentDigest'
+  | 'models___internal___description'
+  | 'models___internal___fieldOwners'
+  | 'models___internal___ignoreType'
+  | 'models___internal___mediaType'
+  | 'models___internal___owner'
+  | 'models___internal___type'
+  | 'designer___id'
+  | 'designer___parent___id'
+  | 'designer___parent___parent___id'
+  | 'designer___parent___parent___children'
+  | 'designer___parent___children'
+  | 'designer___parent___children___id'
+  | 'designer___parent___children___children'
+  | 'designer___parent___internal___content'
+  | 'designer___parent___internal___contentDigest'
+  | 'designer___parent___internal___description'
+  | 'designer___parent___internal___fieldOwners'
+  | 'designer___parent___internal___ignoreType'
+  | 'designer___parent___internal___mediaType'
+  | 'designer___parent___internal___owner'
+  | 'designer___parent___internal___type'
+  | 'designer___children'
+  | 'designer___children___id'
+  | 'designer___children___parent___id'
+  | 'designer___children___parent___children'
+  | 'designer___children___children'
+  | 'designer___children___children___id'
+  | 'designer___children___children___children'
+  | 'designer___children___internal___content'
+  | 'designer___children___internal___contentDigest'
+  | 'designer___children___internal___description'
+  | 'designer___children___internal___fieldOwners'
+  | 'designer___children___internal___ignoreType'
+  | 'designer___children___internal___mediaType'
+  | 'designer___children___internal___owner'
+  | 'designer___children___internal___type'
+  | 'designer___internal___content'
+  | 'designer___internal___contentDigest'
+  | 'designer___internal___description'
+  | 'designer___internal___fieldOwners'
+  | 'designer___internal___ignoreType'
+  | 'designer___internal___mediaType'
+  | 'designer___internal___owner'
+  | 'designer___internal___type'
+  | 'designer___name'
+  | 'designer___website'
+  | 'designer___fullSVG___sourceInstanceName'
+  | 'designer___fullSVG___absolutePath'
+  | 'designer___fullSVG___relativePath'
+  | 'designer___fullSVG___extension'
+  | 'designer___fullSVG___size'
+  | 'designer___fullSVG___prettySize'
+  | 'designer___fullSVG___modifiedTime'
+  | 'designer___fullSVG___accessTime'
+  | 'designer___fullSVG___changeTime'
+  | 'designer___fullSVG___birthTime'
+  | 'designer___fullSVG___root'
+  | 'designer___fullSVG___dir'
+  | 'designer___fullSVG___base'
+  | 'designer___fullSVG___ext'
+  | 'designer___fullSVG___name'
+  | 'designer___fullSVG___relativeDirectory'
+  | 'designer___fullSVG___dev'
+  | 'designer___fullSVG___mode'
+  | 'designer___fullSVG___nlink'
+  | 'designer___fullSVG___uid'
+  | 'designer___fullSVG___gid'
+  | 'designer___fullSVG___rdev'
+  | 'designer___fullSVG___ino'
+  | 'designer___fullSVG___atimeMs'
+  | 'designer___fullSVG___mtimeMs'
+  | 'designer___fullSVG___ctimeMs'
+  | 'designer___fullSVG___atime'
+  | 'designer___fullSVG___mtime'
+  | 'designer___fullSVG___ctime'
+  | 'designer___fullSVG___birthtime'
+  | 'designer___fullSVG___birthtimeMs'
+  | 'designer___fullSVG___blksize'
+  | 'designer___fullSVG___blocks'
+  | 'designer___fullSVG___publicURL'
+  | 'designer___fullSVG___childImageSharp___id'
+  | 'designer___fullSVG___childImageSharp___children'
+  | 'designer___fullSVG___id'
+  | 'designer___fullSVG___parent___id'
+  | 'designer___fullSVG___parent___children'
+  | 'designer___fullSVG___children'
+  | 'designer___fullSVG___children___id'
+  | 'designer___fullSVG___children___children'
+  | 'designer___fullSVG___internal___content'
+  | 'designer___fullSVG___internal___contentDigest'
+  | 'designer___fullSVG___internal___description'
+  | 'designer___fullSVG___internal___fieldOwners'
+  | 'designer___fullSVG___internal___ignoreType'
+  | 'designer___fullSVG___internal___mediaType'
+  | 'designer___fullSVG___internal___owner'
+  | 'designer___fullSVG___internal___type'
+  | 'designer___fullSVG___childDesigner___id'
+  | 'designer___fullSVG___childDesigner___children'
+  | 'designer___fullSVG___childDesigner___name'
+  | 'designer___fullSVG___childDesigner___website'
+  | 'designer___fullSVG___childDesigner___series'
+  | 'designer___fullSVG___childDesigner___models'
+  | 'designer___fullSVG___childSeries___id'
+  | 'designer___fullSVG___childSeries___children'
+  | 'designer___fullSVG___childSeries___name'
+  | 'designer___fullSVG___childSeries___architecture'
+  | 'designer___fullSVG___childSeries___releaseDate'
+  | 'designer___fullSVG___childSeries___models'
+  | 'designer___fullSVG___childSeries___website'
+  | 'designer___fullSVG___childModels___name'
+  | 'designer___fullSVG___childModels___releaseDate'
+  | 'designer___fullSVG___childModels___monitorCount'
+  | 'designer___fullSVG___childModels___connectors'
+  | 'designer___fullSVG___childModels___HDCP'
+  | 'designer___fullSVG___childModels___id'
+  | 'designer___fullSVG___childModels___children'
+  | 'designer___series'
+  | 'designer___series___id'
+  | 'designer___series___parent___id'
+  | 'designer___series___parent___children'
+  | 'designer___series___children'
+  | 'designer___series___children___id'
+  | 'designer___series___children___children'
+  | 'designer___series___internal___content'
+  | 'designer___series___internal___contentDigest'
+  | 'designer___series___internal___description'
+  | 'designer___series___internal___fieldOwners'
+  | 'designer___series___internal___ignoreType'
+  | 'designer___series___internal___mediaType'
+  | 'designer___series___internal___owner'
+  | 'designer___series___internal___type'
+  | 'designer___series___name'
+  | 'designer___series___architecture'
+  | 'designer___series___releaseDate'
+  | 'designer___series___models'
+  | 'designer___series___models___name'
+  | 'designer___series___models___releaseDate'
+  | 'designer___series___models___monitorCount'
+  | 'designer___series___models___connectors'
+  | 'designer___series___models___HDCP'
+  | 'designer___series___models___id'
+  | 'designer___series___models___children'
+  | 'designer___series___designer___id'
+  | 'designer___series___designer___children'
+  | 'designer___series___designer___name'
+  | 'designer___series___designer___website'
+  | 'designer___series___designer___series'
+  | 'designer___series___designer___models'
+  | 'designer___series___website'
+  | 'designer___series___fields___designer'
+  | 'designer___models'
+  | 'designer___models___series___id'
+  | 'designer___models___series___children'
+  | 'designer___models___series___name'
+  | 'designer___models___series___architecture'
+  | 'designer___models___series___releaseDate'
+  | 'designer___models___series___models'
+  | 'designer___models___series___website'
+  | 'designer___models___name'
+  | 'designer___models___releaseDate'
+  | 'designer___models___gpuEngine___nvidiaCUDACores'
+  | 'designer___models___gpuEngine___boostClockGhz'
+  | 'designer___models___memory___standardConfigSizeGB'
+  | 'designer___models___memory___standardConfigSpec'
+  | 'designer___models___memory___interfaceBandwidthBit'
+  | 'designer___models___display___monitorCount'
+  | 'designer___models___monitorCount'
+  | 'designer___models___connectors'
+  | 'designer___models___connectors___name'
+  | 'designer___models___connectors___count'
+  | 'designer___models___HDCP'
+  | 'designer___models___fields___designer'
+  | 'designer___models___id'
+  | 'designer___models___parent___id'
+  | 'designer___models___parent___children'
+  | 'designer___models___children'
+  | 'designer___models___children___id'
+  | 'designer___models___children___children'
+  | 'designer___models___internal___content'
+  | 'designer___models___internal___contentDigest'
+  | 'designer___models___internal___description'
+  | 'designer___models___internal___fieldOwners'
+  | 'designer___models___internal___ignoreType'
+  | 'designer___models___internal___mediaType'
+  | 'designer___models___internal___owner'
+  | 'designer___models___internal___type'
   | 'website'
   | 'fields___designer';
 
-export type SeriesJsonFieldsFilterInput = {
+export type SeriesFieldsFilterInput = {
   designer?: Maybe<StringQueryOperatorInput>;
 };
 
-export type SeriesJsonFilterInput = {
+export type SeriesFilterInput = {
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
   children?: Maybe<NodeFilterListInput>;
   internal?: Maybe<InternalFilterInput>;
   name?: Maybe<StringQueryOperatorInput>;
-  releaseDate?: Maybe<DateQueryOperatorInput>;
   architecture?: Maybe<StringQueryOperatorInput>;
+  releaseDate?: Maybe<DateQueryOperatorInput>;
+  models?: Maybe<ModelsFilterListInput>;
+  designer?: Maybe<DesignerFilterInput>;
   website?: Maybe<StringQueryOperatorInput>;
-  fields?: Maybe<SeriesJsonFieldsFilterInput>;
+  fields?: Maybe<SeriesFieldsFilterInput>;
 };
 
-export type SeriesJsonGroupConnection = {
+export type SeriesFilterListInput = {
+  elemMatch?: Maybe<SeriesFilterInput>;
+};
+
+export type SeriesGroupConnection = {
   totalCount: Scalars['Int'];
-  edges: Array<SeriesJsonEdge>;
-  nodes: Array<SeriesJson>;
+  edges: Array<SeriesEdge>;
+  nodes: Array<Series>;
   pageInfo: PageInfo;
   field: Scalars['String'];
   fieldValue?: Maybe<Scalars['String']>;
 };
 
-export type SeriesJsonSortInput = {
-  fields?: Maybe<Array<Maybe<SeriesJsonFieldsEnum>>>;
+export type SeriesSortInput = {
+  fields?: Maybe<Array<Maybe<SeriesFieldsEnum>>>;
   order?: Maybe<Array<Maybe<SortOrderEnum>>>;
 };
 
@@ -2146,8 +3588,7 @@ export type Site = Node & {
   siteMetadata?: Maybe<SiteSiteMetadata>;
   port?: Maybe<Scalars['Int']>;
   host?: Maybe<Scalars['String']>;
-  polyfill?: Maybe<Scalars['Boolean']>;
-  pathPrefix?: Maybe<Scalars['String']>;
+  mapping?: Maybe<SiteMapping>;
   id: Scalars['ID'];
   parent?: Maybe<Node>;
   children: Array<Node>;
@@ -2350,8 +3791,7 @@ export type SiteFieldsEnum =
   | 'siteMetadata___author'
   | 'port'
   | 'host'
-  | 'polyfill'
-  | 'pathPrefix'
+  | 'mapping___allModelsJson_nodes_series'
   | 'id'
   | 'parent___id'
   | 'parent___parent___id'
@@ -2444,8 +3884,7 @@ export type SiteFilterInput = {
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
   port?: Maybe<IntQueryOperatorInput>;
   host?: Maybe<StringQueryOperatorInput>;
-  polyfill?: Maybe<BooleanQueryOperatorInput>;
-  pathPrefix?: Maybe<StringQueryOperatorInput>;
+  mapping?: Maybe<SiteMappingFilterInput>;
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
   children?: Maybe<NodeFilterListInput>;
@@ -2459,6 +3898,14 @@ export type SiteGroupConnection = {
   pageInfo: PageInfo;
   field: Scalars['String'];
   fieldValue?: Maybe<Scalars['String']>;
+};
+
+export type SiteMapping = {
+  allModelsJson_nodes_series?: Maybe<Scalars['String']>;
+};
+
+export type SiteMappingFilterInput = {
+  allModelsJson_nodes_series?: Maybe<StringQueryOperatorInput>;
 };
 
 export type SitePage = Node & {
@@ -2552,13 +3999,6 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___resolve'
   | 'pluginCreator___name'
   | 'pluginCreator___version'
-  | 'pluginCreator___pluginOptions___plugins'
-  | 'pluginCreator___pluginOptions___plugins___resolve'
-  | 'pluginCreator___pluginOptions___plugins___id'
-  | 'pluginCreator___pluginOptions___plugins___name'
-  | 'pluginCreator___pluginOptions___plugins___version'
-  | 'pluginCreator___pluginOptions___plugins___nodeAPIs'
-  | 'pluginCreator___pluginOptions___plugins___pluginFilepath'
   | 'pluginCreator___pluginOptions___aliases____'
   | 'pluginCreator___pluginOptions___aliases____x'
   | 'pluginCreator___pluginOptions___extensions'
@@ -2853,13 +4293,6 @@ export type SitePluginFieldsEnum =
   | 'resolve'
   | 'name'
   | 'version'
-  | 'pluginOptions___plugins'
-  | 'pluginOptions___plugins___resolve'
-  | 'pluginOptions___plugins___id'
-  | 'pluginOptions___plugins___name'
-  | 'pluginOptions___plugins___version'
-  | 'pluginOptions___plugins___nodeAPIs'
-  | 'pluginOptions___plugins___pluginFilepath'
   | 'pluginOptions___aliases____'
   | 'pluginOptions___aliases____x'
   | 'pluginOptions___extensions'
@@ -2997,7 +4430,6 @@ export type SitePluginPackageJsonPeerDependenciesFilterListInput = {
 };
 
 export type SitePluginPluginOptions = {
-  plugins?: Maybe<Array<Maybe<SitePluginPluginOptionsPlugins>>>;
   aliases?: Maybe<SitePluginPluginOptionsAliases>;
   extensions?: Maybe<Array<Maybe<Scalars['String']>>>;
   name?: Maybe<Scalars['String']>;
@@ -3029,7 +4461,6 @@ export type SitePluginPluginOptionsAliasesFilterInput = {
 };
 
 export type SitePluginPluginOptionsFilterInput = {
-  plugins?: Maybe<SitePluginPluginOptionsPluginsFilterListInput>;
   aliases?: Maybe<SitePluginPluginOptionsAliasesFilterInput>;
   extensions?: Maybe<StringQueryOperatorInput>;
   name?: Maybe<StringQueryOperatorInput>;
@@ -3064,28 +4495,6 @@ export type SitePluginPluginOptionsFontsFilterInput = {
 
 export type SitePluginPluginOptionsFontsFilterListInput = {
   elemMatch?: Maybe<SitePluginPluginOptionsFontsFilterInput>;
-};
-
-export type SitePluginPluginOptionsPlugins = {
-  resolve?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['String']>;
-  name?: Maybe<Scalars['String']>;
-  version?: Maybe<Scalars['String']>;
-  nodeAPIs?: Maybe<Array<Maybe<Scalars['String']>>>;
-  pluginFilepath?: Maybe<Scalars['String']>;
-};
-
-export type SitePluginPluginOptionsPluginsFilterInput = {
-  resolve?: Maybe<StringQueryOperatorInput>;
-  id?: Maybe<StringQueryOperatorInput>;
-  name?: Maybe<StringQueryOperatorInput>;
-  version?: Maybe<StringQueryOperatorInput>;
-  nodeAPIs?: Maybe<StringQueryOperatorInput>;
-  pluginFilepath?: Maybe<StringQueryOperatorInput>;
-};
-
-export type SitePluginPluginOptionsPluginsFilterListInput = {
-  elemMatch?: Maybe<SitePluginPluginOptionsPluginsFilterInput>;
 };
 
 export type SitePluginSortInput = {
@@ -3136,11 +4545,14 @@ export type Unnamed_2_Query = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSit
 export type IndexPageQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type IndexPageQuery = { allSeriesJson: (
-    Pick<SeriesJsonConnection, 'distinct'>
+export type IndexPageQuery = { allSeries: (
+    Pick<SeriesConnection, 'distinct'>
     & { nodes: Array<(
-      Pick<SeriesJson, 'name' | 'releaseDate' | 'architecture' | 'website'>
-      & { fields?: Maybe<Pick<SeriesJsonFields, 'designer'>> }
+      Pick<Series, 'name' | 'releaseDate' | 'architecture' | 'website'>
+      & { designer?: Maybe<(
+        Pick<Designer, 'name' | 'website' | 'id'>
+        & { fullSVG?: Maybe<Pick<File, 'publicURL'>> }
+      )> }
     )> }
   ) };
 

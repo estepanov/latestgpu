@@ -1,5 +1,6 @@
 {
-  "name": "RTX 30 Series",
+  "id": "rtx30",
+  "name": "GeForce RTX 30 Series",
   "releaseDate": "2020-09-17T00:00:00+00:00",
   "architecture": "Ampere",
   "website": "https://www.nvidia.com/en-us/geforce/graphics-cards/30-series/"

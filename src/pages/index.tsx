@@ -10,6 +10,7 @@ import "twin.macro";
 import { IndexPageQuery } from "~/gatsby-graphql";
 import LandingPageSeries from "~/components/LandingPageSeries";
 import SectionHeader from "~/components/SectionHeader";
+import LandingPageDesigners from "~/components/LandingPageDesigner";
 
 interface IndexPageProps {
   data: IndexPageQuery;
@@ -24,8 +25,10 @@ const IndexPage: React.FC<IndexPageProps> = ({ data }) => {
       {/* <Hero /> */}
       {/* <Features /> */}
       <div tw="container">
-        <SectionHeader title="Latest Series" />
+        <SectionHeader title="Latest series" />
         <LandingPageSeries latestSeries={data.allSeries.nodes} />
+        <SectionHeader title="Series by designer" />
+        <LandingPageDesigners allDesigners={data.allDesigner.nodes} />
       </div>
     </Layout>
   );
@@ -50,6 +53,16 @@ export const pageQuery = graphql`
         website
       }
       distinct(field: designer___id)
+    }
+    allDesigner {
+      distinct(field: id)
+      nodes {
+        name
+        fullSVG {
+          publicURL
+        }
+        id
+      }
     }
   }
 `;

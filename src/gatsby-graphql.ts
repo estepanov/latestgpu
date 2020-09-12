@@ -4589,6 +4589,12 @@ export type IndexPageQuery = { allSeries: (
         & { fullSVG?: Maybe<Pick<File, 'publicURL'>> }
       )> }
     )> }
+  ), allDesigner: (
+    Pick<DesignerConnection, 'distinct'>
+    & { nodes: Array<(
+      Pick<Designer, 'name' | 'id'>
+      & { fullSVG?: Maybe<Pick<File, 'publicURL'>> }
+    )> }
   ) };
 
 export type Unnamed_3_QueryVariables = Exact<{ [key: string]: never; }>;

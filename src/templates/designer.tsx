@@ -26,7 +26,7 @@ const IndexPage: React.FC<IndexPageProps> = ({ data }) => {
         <div tw="flex flex-wrap items-center">
           {data.designer?.fullSVG?.publicURL && (
             <img
-              tw="max-w-xs"
+              tw="max-w-24"
               src={data.designer.fullSVG.publicURL}
               alt={data.designer.name}
             />

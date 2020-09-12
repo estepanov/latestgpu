@@ -9,6 +9,7 @@ import "twin.macro";
 
 import { IndexPageQuery } from "~/gatsby-graphql";
 import LandingPageSeries from "~/components/LandingPageSeries";
+import SectionHeader from "~/components/SectionHeader";
 
 interface IndexPageProps {
   data: IndexPageQuery;
@@ -23,6 +24,7 @@ const IndexPage: React.FC<IndexPageProps> = ({ data }) => {
       {/* <Hero /> */}
       {/* <Features /> */}
       <div tw="container">
+        <SectionHeader title="Latest Series" />
         <LandingPageSeries latestSeries={data.allSeries.nodes} />
       </div>
     </Layout>
@@ -41,6 +43,7 @@ export const pageQuery = graphql`
             publicURL
           }
         }
+        id
         name
         releaseDate
         architecture

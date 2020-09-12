@@ -7,7 +7,7 @@ import Hamburger from "./Hamburger";
 import LogoLink from "./LogoLink";
 
 const NavBar = styled.nav`
-  ${tw`bg-gray-900 mb-4`}
+  ${tw`bg-gray-900 mb-4 md:mb-6`}
 `;
 
 interface MobileLinkProps {

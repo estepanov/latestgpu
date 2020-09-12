@@ -34,7 +34,7 @@ const IndexPage: React.FC<IndexPageProps> = ({ data }) => {
         >
           {data.models.series.designer?.fullSVG?.publicURL ? (
             <img
-              tw="max-w-xs"
+              tw="max-w-24"
               src={data.models.series.designer.fullSVG.publicURL}
               alt={data.models.series.designer.name}
             />

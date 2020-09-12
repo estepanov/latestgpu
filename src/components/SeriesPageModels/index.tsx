@@ -2,7 +2,7 @@ import dayjs from "dayjs";
 import React from "react";
 import "twin.macro";
 import { Designer, Models, Series } from "~/gatsby-graphql";
-import { Link } from "gatsby";
+import DataCard from "../DataCard";
 
 interface SeriesPageModelsProps {
   latestModels: Models[];
@@ -29,18 +29,12 @@ const SeriesPageModels: React.FC<SeriesPageModelsProps> = ({
         })
         .map((model) => {
           return (
-            <Link
+            <DataCard
               to={`/${designerId}/${seriesId}/${model.fields.slug}`}
-              tw="col-span-1 flex flex-col justify-center items-center py-8 px-8 bg-gray-100"
               key={model.name}
-            >
-              <div tw="mt-4 lg:text-2xl sm:text-xl text-xl text-center font-bold text-gray-600">
-                {model.name}
-              </div>
-              <div tw="mt-2 text-xl text-center text-gray-500">
-                {dayjs(model.releaseDate).format("MMMM D YYYY")}
-              </div>
-            </Link>
+              title={model.name}
+              subTitle={dayjs(model.releaseDate).format("MMMM D YYYY")}
+            />
           );
         })}
     </div>

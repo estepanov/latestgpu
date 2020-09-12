@@ -7,7 +7,7 @@ import Hamburger from "./Hamburger";
 import LogoLink from "./LogoLink";
 
 const NavBar = styled.nav`
-  /* ${tw`bg-gradient-t-dark-gray`} */
+  ${tw`bg-gray-900 mb-4`}
 `;
 
 interface MobileLinkProps {
@@ -43,7 +43,7 @@ const MainNav: NavLink[] = [
 ];
 const logo = (
   <LogoLink to="/">
-    Latest <span tw="text-gray-500">GPU</span>
+    Latest <span tw="text-white not-italic">GPU</span>
   </LogoLink>
 );
 

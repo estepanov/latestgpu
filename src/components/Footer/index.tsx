@@ -116,7 +116,7 @@ const Footer: React.FC = ({ children }) => {
           </div>
         </div>
       </div> */}
-      {children && <div tw="container pt-10 pb-6">{children}</div>}
+      {children && <div tw="container py-6">{children}</div>}
     </footer>
   );
 };

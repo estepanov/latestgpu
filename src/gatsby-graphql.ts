@@ -447,6 +447,7 @@ export type DesignerFieldsEnum =
   | 'fullSVG___childModels___connectors___name'
   | 'fullSVG___childModels___connectors___count'
   | 'fullSVG___childModels___HDCP'
+  | 'fullSVG___childModels___fields___slug'
   | 'fullSVG___childModels___fields___designer'
   | 'fullSVG___childModels___id'
   | 'fullSVG___childModels___parent___id'
@@ -525,6 +526,7 @@ export type DesignerFieldsEnum =
   | 'series___models___connectors___name'
   | 'series___models___connectors___count'
   | 'series___models___HDCP'
+  | 'series___models___fields___slug'
   | 'series___models___fields___designer'
   | 'series___models___id'
   | 'series___models___parent___id'
@@ -659,6 +661,7 @@ export type DesignerFieldsEnum =
   | 'models___connectors___name'
   | 'models___connectors___count'
   | 'models___HDCP'
+  | 'models___fields___slug'
   | 'models___fields___designer'
   | 'models___id'
   | 'models___parent___id'
@@ -1549,6 +1552,7 @@ export type FileFieldsEnum =
   | 'childDesigner___models___connectors___name'
   | 'childDesigner___models___connectors___count'
   | 'childDesigner___models___HDCP'
+  | 'childDesigner___models___fields___slug'
   | 'childDesigner___models___fields___designer'
   | 'childDesigner___models___id'
   | 'childDesigner___models___parent___id'
@@ -1626,6 +1630,7 @@ export type FileFieldsEnum =
   | 'childSeries___models___connectors___name'
   | 'childSeries___models___connectors___count'
   | 'childSeries___models___HDCP'
+  | 'childSeries___models___fields___slug'
   | 'childSeries___models___fields___designer'
   | 'childSeries___models___id'
   | 'childSeries___models___parent___id'
@@ -1759,6 +1764,7 @@ export type FileFieldsEnum =
   | 'childModels___connectors___name'
   | 'childModels___connectors___count'
   | 'childModels___HDCP'
+  | 'childModels___fields___slug'
   | 'childModels___fields___designer'
   | 'childModels___id'
   | 'childModels___parent___id'
@@ -2485,6 +2491,7 @@ export type ModelsEdge = {
 };
 
 export type ModelsFields = {
+  slug?: Maybe<Scalars['String']>;
   designer?: Maybe<Scalars['String']>;
 };
 
@@ -2551,6 +2558,7 @@ export type ModelsFieldsEnum =
   | 'series___models___connectors___name'
   | 'series___models___connectors___count'
   | 'series___models___HDCP'
+  | 'series___models___fields___slug'
   | 'series___models___fields___designer'
   | 'series___models___id'
   | 'series___models___parent___id'
@@ -2651,6 +2659,7 @@ export type ModelsFieldsEnum =
   | 'connectors___name'
   | 'connectors___count'
   | 'HDCP'
+  | 'fields___slug'
   | 'fields___designer'
   | 'id'
   | 'parent___id'
@@ -2740,6 +2749,7 @@ export type ModelsFieldsEnum =
   | 'internal___type';
 
 export type ModelsFieldsFilterInput = {
+  slug?: Maybe<StringQueryOperatorInput>;
   designer?: Maybe<StringQueryOperatorInput>;
 };
 
@@ -2961,6 +2971,7 @@ export type QuerySitePageArgs = {
   componentChunkName?: Maybe<StringQueryOperatorInput>;
   matchPath?: Maybe<StringQueryOperatorInput>;
   isCreatedByStatefulCreatePages?: Maybe<BooleanQueryOperatorInput>;
+  context?: Maybe<SitePageContextFilterInput>;
   pluginCreator?: Maybe<SitePluginFilterInput>;
   pluginCreatorId?: Maybe<StringQueryOperatorInput>;
   componentPath?: Maybe<StringQueryOperatorInput>;
@@ -2985,6 +2996,8 @@ export type QuerySiteArgs = {
   port?: Maybe<IntQueryOperatorInput>;
   host?: Maybe<StringQueryOperatorInput>;
   mapping?: Maybe<SiteMappingFilterInput>;
+  polyfill?: Maybe<BooleanQueryOperatorInput>;
+  pathPrefix?: Maybe<StringQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
   children?: Maybe<NodeFilterListInput>;
@@ -3325,6 +3338,7 @@ export type SeriesFieldsEnum =
   | 'models___connectors___name'
   | 'models___connectors___count'
   | 'models___HDCP'
+  | 'models___fields___slug'
   | 'models___fields___designer'
   | 'models___id'
   | 'models___parent___id'
@@ -3529,6 +3543,7 @@ export type SeriesFieldsEnum =
   | 'designer___models___connectors___name'
   | 'designer___models___connectors___count'
   | 'designer___models___HDCP'
+  | 'designer___models___fields___slug'
   | 'designer___models___fields___designer'
   | 'designer___models___id'
   | 'designer___models___parent___id'
@@ -3589,6 +3604,8 @@ export type Site = Node & {
   port?: Maybe<Scalars['Int']>;
   host?: Maybe<Scalars['String']>;
   mapping?: Maybe<SiteMapping>;
+  polyfill?: Maybe<Scalars['Boolean']>;
+  pathPrefix?: Maybe<Scalars['String']>;
   id: Scalars['ID'];
   parent?: Maybe<Node>;
   children: Array<Node>;
@@ -3792,6 +3809,8 @@ export type SiteFieldsEnum =
   | 'port'
   | 'host'
   | 'mapping___allModelsJson_nodes_series'
+  | 'polyfill'
+  | 'pathPrefix'
   | 'id'
   | 'parent___id'
   | 'parent___parent___id'
@@ -3885,6 +3904,8 @@ export type SiteFilterInput = {
   port?: Maybe<IntQueryOperatorInput>;
   host?: Maybe<StringQueryOperatorInput>;
   mapping?: Maybe<SiteMappingFilterInput>;
+  polyfill?: Maybe<BooleanQueryOperatorInput>;
+  pathPrefix?: Maybe<StringQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
   children?: Maybe<NodeFilterListInput>;
@@ -3915,6 +3936,7 @@ export type SitePage = Node & {
   componentChunkName: Scalars['String'];
   matchPath?: Maybe<Scalars['String']>;
   isCreatedByStatefulCreatePages?: Maybe<Scalars['Boolean']>;
+  context?: Maybe<SitePageContext>;
   pluginCreator?: Maybe<SitePlugin>;
   pluginCreatorId?: Maybe<Scalars['String']>;
   componentPath?: Maybe<Scalars['String']>;
@@ -3945,6 +3967,16 @@ export type SitePageConnectionGroupArgs = {
   field: SitePageFieldsEnum;
 };
 
+export type SitePageContext = {
+  id?: Maybe<Scalars['String']>;
+  slug?: Maybe<Scalars['String']>;
+};
+
+export type SitePageContextFilterInput = {
+  id?: Maybe<StringQueryOperatorInput>;
+  slug?: Maybe<StringQueryOperatorInput>;
+};
+
 export type SitePageEdge = {
   next?: Maybe<SitePage>;
   node: SitePage;
@@ -3958,6 +3990,8 @@ export type SitePageFieldsEnum =
   | 'componentChunkName'
   | 'matchPath'
   | 'isCreatedByStatefulCreatePages'
+  | 'context___id'
+  | 'context___slug'
   | 'pluginCreator___id'
   | 'pluginCreator___parent___id'
   | 'pluginCreator___parent___parent___id'
@@ -4137,6 +4171,7 @@ export type SitePageFilterInput = {
   componentChunkName?: Maybe<StringQueryOperatorInput>;
   matchPath?: Maybe<StringQueryOperatorInput>;
   isCreatedByStatefulCreatePages?: Maybe<BooleanQueryOperatorInput>;
+  context?: Maybe<SitePageContextFilterInput>;
   pluginCreator?: Maybe<SitePluginFilterInput>;
   pluginCreatorId?: Maybe<StringQueryOperatorInput>;
   componentPath?: Maybe<StringQueryOperatorInput>;
@@ -4560,6 +4595,48 @@ export type Unnamed_3_QueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type Unnamed_3_Query = { site?: Maybe<Pick<Site, 'buildTime'>> };
+
+export type DesignerPageQueryQueryVariables = Exact<{
+  id: Scalars['String'];
+}>;
+
+
+export type DesignerPageQueryQuery = { designer?: Maybe<(
+    Pick<Designer, 'id' | 'name' | 'website'>
+    & { fullSVG?: Maybe<Pick<File, 'publicURL'>>, series?: Maybe<Array<Maybe<Pick<Series, 'id' | 'name' | 'releaseDate'>>>>, models?: Maybe<Array<Maybe<Pick<Models, 'id' | 'name' | 'releaseDate'>>>> }
+  )> };
+
+export type ModelsPageQueryQueryVariables = Exact<{
+  slug: Scalars['String'];
+}>;
+
+
+export type ModelsPageQueryQuery = { models?: Maybe<(
+    Pick<Models, 'id' | 'name' | 'releaseDate' | 'monitorCount'>
+    & { fields?: Maybe<Pick<ModelsFields, 'slug'>>, gpuEngine?: Maybe<Pick<GpuEngineSpec, 'boostClockGhz' | 'nvidiaCUDACores'>>, memory?: Maybe<Pick<MemorySpec, 'interfaceBandwidthBit' | 'standardConfigSizeGB' | 'standardConfigSpec'>>, series?: Maybe<(
+      Pick<Series, 'id' | 'name' | 'releaseDate'>
+      & { designer?: Maybe<(
+        Pick<Designer, 'id' | 'name' | 'website'>
+        & { fullSVG?: Maybe<Pick<File, 'publicURL'>> }
+      )> }
+    )> }
+  )> };
+
+export type SeriesPageQueryQueryVariables = Exact<{
+  id: Scalars['String'];
+}>;
+
+
+export type SeriesPageQueryQuery = { series?: Maybe<(
+    Pick<Series, 'id' | 'name' | 'website' | 'releaseDate'>
+    & { designer?: Maybe<(
+      Pick<Designer, 'id' | 'name' | 'website'>
+      & { fullSVG?: Maybe<Pick<File, 'publicURL'>> }
+    )>, models?: Maybe<Array<Maybe<(
+      Pick<Models, 'id' | 'name' | 'releaseDate'>
+      & { fields?: Maybe<Pick<ModelsFields, 'slug'>> }
+    )>>> }
+  )> };
 
 export type GatsbyImageSharpFixedFragment = Pick<ImageSharpFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
 

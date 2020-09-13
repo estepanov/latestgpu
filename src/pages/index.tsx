@@ -8,8 +8,9 @@ import "twin.macro";
 // import Features from "~/components/Features";
 
 import { IndexPageQuery } from "~/gatsby-graphql";
-import LandingPageSeries from "~/components/LandingPageSeries";
 import SectionHeader from "~/components/SectionHeader";
+import LandingPageModels from "~/components/LandingPageModels";
+import LandingPageSeries from "~/components/LandingPageSeries";
 import LandingPageDesigners from "~/components/LandingPageDesigner";
 
 interface IndexPageProps {
@@ -25,6 +26,8 @@ const IndexPage: React.FC<IndexPageProps> = ({ data }) => {
       {/* <Hero /> */}
       {/* <Features /> */}
       <div tw="container">
+        <SectionHeader title="Latest models" />
+        <LandingPageModels latestModels={data.allModels.nodes} />
         <SectionHeader title="Latest series" />
         <LandingPageSeries latestSeries={data.allSeries.nodes} />
         <SectionHeader title="Series by designer" />
@@ -36,6 +39,24 @@ const IndexPage: React.FC<IndexPageProps> = ({ data }) => {
 
 export const pageQuery = graphql`
   query IndexPage {
+    allModels(sort: { fields: releaseDate, order: DESC }, limit: 2) {
+      nodes {
+        id
+        name
+        releaseDate
+        series {
+          id
+          designer {
+            name
+            website
+            id
+            fullSVG {
+              publicURL
+            }
+          }
+        }
+      }
+    }
     allSeries(sort: { fields: releaseDate, order: DESC }, limit: 2) {
       nodes {
         designer {

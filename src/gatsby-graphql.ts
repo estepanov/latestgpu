@@ -2858,6 +2858,8 @@ export type Query = {
   allSiteBuildMetadata: SiteBuildMetadataConnection;
   sitePlugin?: Maybe<SitePlugin>;
   allSitePlugin: SitePluginConnection;
+  recentModels: Array<Models>;
+  recentSeries: Array<Series>;
 };
 
 
@@ -4580,16 +4582,22 @@ export type Unnamed_2_Query = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSit
 export type IndexPageQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type IndexPageQuery = { allSeries: (
-    Pick<SeriesConnection, 'distinct'>
-    & { nodes: Array<(
-      Pick<Series, 'id' | 'name' | 'releaseDate' | 'architecture' | 'website'>
+export type IndexPageQuery = { recentModels: Array<(
+    Pick<Models, 'id' | 'name' | 'releaseDate'>
+    & { series?: Maybe<(
+      Pick<Series, 'id'>
       & { designer?: Maybe<(
         Pick<Designer, 'name' | 'website' | 'id'>
         & { fullSVG?: Maybe<Pick<File, 'publicURL'>> }
       )> }
     )> }
-  ), allDesigner: (
+  )>, recentSeries: Array<(
+    Pick<Series, 'id' | 'name' | 'releaseDate' | 'architecture' | 'website'>
+    & { designer?: Maybe<(
+      Pick<Designer, 'name' | 'website' | 'id'>
+      & { fullSVG?: Maybe<Pick<File, 'publicURL'>> }
+    )> }
+  )>, allDesigner: (
     Pick<DesignerConnection, 'distinct'>
     & { nodes: Array<(
       Pick<Designer, 'name' | 'id'>

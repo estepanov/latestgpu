@@ -99,14 +99,14 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
           const slashesRegex = new RegExp("/", "g");
           designer = res[0].replace(slashesRegex, "").replace("data", "");
         }
-      // console.log(`Node created field "${designer}"`);
+        // console.log(`Node created field "${designer}"`);
 
         createNodeField({
-        node,
-        name: "designer",
-        value: designer,
-      });
-    }
+          node,
+          name: "designer",
+          value: designer,
+        });
+      }
       break;
     default:
       break;
@@ -173,4 +173,60 @@ exports.createSchemaCustomization = ({ actions }) => {
     }
     `;
   createTypes(typeDefs);
+};
+
+exports.createResolvers = ({ createResolvers }) => {
+  createResolvers({
+    Query: {
+      recentModels: {
+        type: `[Models!]!`,
+        async resolve(source, args, context, info) {
+          // Fetch Most recent Models
+          const foundNodes = await context.nodeModel.runQuery({
+            query: {
+              sort: {
+                fields: ["releaseDate"],
+                order: ["DESC"],
+              },
+            },
+            type: "Models",
+          });
+          const filterObj = {};
+          // Return only most recent first instance of designer Model
+          return foundNodes.filter((node) => {
+            console.log(node.fields.designer, filterObj[node.fields.designer]);
+            if (filterObj[node.fields.designer]) {
+              return false;
+            }
+            filterObj[node.fields.designer] = true;
+            return true;
+          });
+        },
+      },
+      recentSeries: {
+        type: `[Series!]!`,
+        async resolve(source, args, context, info) {
+          // Fetch Most recent Series
+          const foundNodes = await context.nodeModel.runQuery({
+            query: {
+              sort: {
+                fields: ["releaseDate"],
+                order: ["DESC"],
+              },
+            },
+            type: "Series",
+          });
+          const filterObj = {};
+          // Return only most recent first instance of designer Model
+          return foundNodes.filter((node) => {
+            if (filterObj[node.fields.designer]) {
+              return false;
+            }
+            filterObj[node.fields.designer] = true;
+            return true;
+          });
+        },
+      },
+    },
+  });
 };

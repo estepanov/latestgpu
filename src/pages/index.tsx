@@ -8,8 +8,9 @@ import "twin.macro";
 // import Features from "~/components/Features";
 
 import { IndexPageQuery } from "~/gatsby-graphql";
-import LandingPageSeries from "~/components/LandingPageSeries";
 import SectionHeader from "~/components/SectionHeader";
+import LandingPageModels from "~/components/LandingPageModels";
+import LandingPageSeries from "~/components/LandingPageSeries";
 import LandingPageDesigners from "~/components/LandingPageDesigner";
 
 interface IndexPageProps {
@@ -25,8 +26,10 @@ const IndexPage: React.FC<IndexPageProps> = ({ data }) => {
       {/* <Hero /> */}
       {/* <Features /> */}
       <div tw="container">
+        <SectionHeader title="Latest models" />
+        <LandingPageModels latestModels={data.recentModels} />
         <SectionHeader title="Latest series" />
-        <LandingPageSeries latestSeries={data.allSeries.nodes} />
+        <LandingPageSeries latestSeries={data.recentSeries} />
         <SectionHeader title="Series by designer" />
         <LandingPageDesigners allDesigners={data.allDesigner.nodes} />
       </div>
@@ -36,8 +39,12 @@ const IndexPage: React.FC<IndexPageProps> = ({ data }) => {
 
 export const pageQuery = graphql`
   query IndexPage {
-    allSeries(sort: { fields: releaseDate, order: DESC }, limit: 2) {
-      nodes {
+    recentModels {
+      id
+      name
+      releaseDate
+      series {
+        id
         designer {
           name
           website
@@ -46,13 +53,22 @@ export const pageQuery = graphql`
             publicURL
           }
         }
-        id
-        name
-        releaseDate
-        architecture
-        website
       }
-      distinct(field: designer___id)
+    }
+    recentSeries {
+      designer {
+        name
+        website
+        id
+        fullSVG {
+          publicURL
+        }
+      }
+      id
+      name
+      releaseDate
+      architecture
+      website
     }
     allDesigner {
       distinct(field: id)

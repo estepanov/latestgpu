@@ -5,7 +5,7 @@ import { IndexPageQuery } from "~/gatsby-graphql";
 import DataCard from "../DataCard";
 
 interface LandingPageSeriesProps {
-  latestSeries: IndexPageQuery["allSeries"]["nodes"];
+  latestSeries: IndexPageQuery["recentSeries"];
 }
 
 const LandingPageSeries: React.FC<LandingPageSeriesProps> = ({

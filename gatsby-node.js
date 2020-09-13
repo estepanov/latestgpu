@@ -192,9 +192,8 @@ exports.createResolvers = ({ createResolvers }) => {
             type: "Models",
           });
           const filterObj = {};
-          // Return only most recent first instance of designer Model
+          // Return only most recent instance belonging to each designer
           return foundNodes.filter((node) => {
-            console.log(node.fields.designer, filterObj[node.fields.designer]);
             if (filterObj[node.fields.designer]) {
               return false;
             }
@@ -217,7 +216,7 @@ exports.createResolvers = ({ createResolvers }) => {
             type: "Series",
           });
           const filterObj = {};
-          // Return only most recent first instance of designer Model
+          // Return only most recent instance belonging to each designer
           return foundNodes.filter((node) => {
             if (filterObj[node.fields.designer]) {
               return false;

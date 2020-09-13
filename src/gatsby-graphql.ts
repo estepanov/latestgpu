@@ -4584,7 +4584,7 @@ export type IndexPageQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type IndexPageQuery = { recentModels: Array<(
     Pick<Models, 'id' | 'name' | 'releaseDate'>
-    & { series?: Maybe<(
+    & { fields?: Maybe<Pick<ModelsFields, 'slug'>>, series?: Maybe<(
       Pick<Series, 'id'>
       & { designer?: Maybe<(
         Pick<Designer, 'name' | 'website' | 'id'>

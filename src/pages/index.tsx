@@ -43,6 +43,9 @@ export const pageQuery = graphql`
       id
       name
       releaseDate
+      fields {
+        slug
+      }
       series {
         id
         designer {

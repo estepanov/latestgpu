@@ -16,7 +16,7 @@ const LandingPageModels: React.FC<LandingPageModelsProps> = ({
       {latestModels.map((model) => {
         return (
           <DataCard
-            to={`/${model.series?.designer?.id}/${model.id}`}
+            to={`/${model.series?.designer?.id}/${model.series?.id}/${model.fields?.slug}`}
             key={model.name}
             logo={model?.series?.designer?.fullSVG?.publicURL}
             title={model.name}

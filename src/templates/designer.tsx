@@ -7,6 +7,7 @@ import DetailHero from "~/components/DetailHero";
 
 import { DesignerPageQuery } from "~/gatsby-graphql";
 import DesignerPageSeries from "~/components/DesignerPageSeries";
+import LeaderboardAd from "~/components/ads/LeaderboardAd";
 
 interface IndexPageProps {
   data: DesignerPageQuery;
@@ -23,6 +24,7 @@ const IndexPage: React.FC<IndexPageProps> = ({ data }) => {
           designerId={data.designer.id}
           latestSeries={data.designer.series}
         />
+        <LeaderboardAd />
       </div>
     </Layout>
   );

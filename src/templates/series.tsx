@@ -8,6 +8,7 @@ import "twin.macro";
 import { SeriesPageQuery } from "~/gatsby-graphql";
 import SeriesPageModels from "~/components/SeriesPageModels";
 import DetailHero from "~/components/DetailHero";
+import LeaderboardAd from "~/components/ads/LeaderboardAd";
 
 interface IndexPageProps {
   data: SeriesPageQuery;
@@ -32,6 +33,7 @@ const IndexPage: React.FC<IndexPageProps> = ({ data }) => {
           designerId={data.series.designer.id}
           seriesId={data.series.id}
         />
+        <LeaderboardAd />
       </div>
     </Layout>
   );

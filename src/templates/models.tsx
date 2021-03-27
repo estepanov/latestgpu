@@ -12,6 +12,7 @@ import DesignerPageSeries, {
 } from "~/components/DesignerPageSeries";
 import HeadlineStats from "~/components/HeadlineStats";
 import SectionHeader from "~/components/SectionHeader";
+import LeaderboardAd from "~/components/ads/LeaderboardAd";
 
 interface IndexPageProps {
   data: ModelsPageQuery;
@@ -67,6 +68,7 @@ const IndexPage: React.FC<IndexPageProps> = ({ data }) => {
           )}
           designerId={data.models.series.designer.id}
         />
+        <LeaderboardAd />
       </div>
     </Layout>
   );

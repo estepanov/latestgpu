@@ -1,17 +1,15 @@
 import React from "react";
 import { graphql } from "gatsby";
-// import Image from "~/components/Image";
 import Layout from "~/components/Layout";
 import SEO from "~/components/SEO";
 import "twin.macro";
-// import Hero from "~/components/Hero";
-// import Features from "~/components/Features";
 
 import { IndexPageQuery } from "~/gatsby-graphql";
 import SectionHeader from "~/components/SectionHeader";
 import LandingPageModels from "~/components/LandingPageModels";
 import LandingPageSeries from "~/components/LandingPageSeries";
 import LandingPageDesigners from "~/components/LandingPageDesigner";
+import LeaderboardAd from "~/components/ads/LeaderboardAd";
 
 interface IndexPageProps {
   data: IndexPageQuery;
@@ -23,8 +21,7 @@ const IndexPage: React.FC<IndexPageProps> = ({ data }) => {
   return (
     <Layout>
       <SEO title="Home" />
-      {/* <Hero /> */}
-      {/* <Features /> */}
+      <LeaderboardAd />
       <div tw="container">
         <SectionHeader title="Latest models" />
         <LandingPageModels latestModels={data.recentModels} />

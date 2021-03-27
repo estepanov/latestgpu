@@ -33,10 +33,10 @@ const Hero: React.FC<DetailHeroProps> = ({ designer, series }) => {
           </Link>
         </div>
         {series && (
-          <div tw="m-0 inline-block ml-10">
+          <div tw="inline-block ml-10">
             <Link
               to={`/${designer.id}/${series.id}`}
-              tw="text-2xl text-gray-700 font-bold"
+              tw="text-2xl text-gray-700 font-bold leading-6"
             >
               {series.name}
             </Link>

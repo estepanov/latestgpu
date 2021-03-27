@@ -1,0 +1,19 @@
+{
+  "series": "rtx30",
+  "name":"GeForce RTX 3060Ti",
+  "releaseDate": "2020-12-02T00:00:00+00:00",
+  "gpuEngine": {
+    "nvidiaCUDACores": 4864
+  },
+  "clockSpeeds": {
+    "baseCoreClock": 1410,
+    "boostCoreClock": 1665,
+    "memory": 14000
+  },
+  "memory": {
+    "standardConfigSizeGB": 8,
+    "standardConfigSpec": "GDDR6",
+    "interfaceBandwidth": 448,
+    "busWidth": 256
+  }
+}

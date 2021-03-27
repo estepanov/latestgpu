@@ -1,17 +1,13 @@
-import React, { Fragment } from "react";
-import { graphql, Link } from "gatsby";
+import React from "react";
+import { graphql } from "gatsby";
 import dayjs from "dayjs";
-// import Image from "~/components/Image";
 import Layout from "~/components/Layout";
 import SEO from "~/components/SEO";
 import "twin.macro";
-// import Hero from "~/components/Hero";
-// import Features from "~/components/Features";
 
 import { SeriesPageQuery } from "~/gatsby-graphql";
-import DesignerPageSeries from "~/components/DesignerPageSeries";
 import SeriesPageModels from "~/components/SeriesPageModels";
-// import LandingPageSeries from "~/components/LandingPageSeries";
+import DetailHero from "~/components/DetailHero";
 
 interface IndexPageProps {
   data: SeriesPageQuery;
@@ -23,25 +19,10 @@ const IndexPage: React.FC<IndexPageProps> = ({ data }) => {
   return (
     <Layout>
       <SEO title={`${data?.series?.name} - ${data?.series.designer?.name}`} />
-      {/* <Hero /> */}
-      {/* <Features /> */}
+      <DetailHero designer={data.series.designer} />
       <div tw="container">
-        <Link
-          to={`/${data.series.designer.id}`}
-          tw="flex flex-wrap items-center text-3xl text-gray-600 font-bold"
-        >
-          {data.series.designer?.fullSVG?.publicURL ? (
-            <img
-              tw="max-w-24"
-              src={data.series.designer.fullSVG.publicURL}
-              alt={data.series.designer.name}
-            />
-          ) : (
-            <Fragment>{data?.designer?.name}</Fragment>
-          )}
-        </Link>
         <div>
-          <div tw="text-3xl text-gray-800 font-bold">{data?.series?.name}</div>
+          <h1 tw="text-3xl text-gray-800 font-bold">{data?.series?.name}</h1>
           <div tw="text-lg text-gray-600">
             {dayjs(data?.series?.releaseDate).format("MMMM D YYYY")}
           </div>
@@ -51,8 +32,6 @@ const IndexPage: React.FC<IndexPageProps> = ({ data }) => {
           designerId={data.series.designer.id}
           seriesId={data.series.id}
         />
-        {/* <DesignerPageSeries latestSeries={data.designer.series} /> */}
-        {/* <LandingPageSeries latestSeries={data.allSeries.nodes} /> */}
       </div>
     </Layout>
   );

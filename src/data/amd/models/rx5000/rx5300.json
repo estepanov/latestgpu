@@ -1,0 +1,17 @@
+{
+  "series": "rx5000",
+  "name":"Radeon RX 5300",
+  "releaseDate": "2020-08-28T00:00:00+00:00",
+  "gpuEngine": {
+  },
+  "clockSpeeds": {
+    "baseCoreClock": 1327,
+    "boostCoreClock": 1645,
+    "memory": 14000
+  },
+  "memory": {
+    "standardConfigSizeGB": 3,
+    "standardConfigSpec": "GDDR6 96-bit",
+    "interfaceBandwidth": 168
+  }
+}

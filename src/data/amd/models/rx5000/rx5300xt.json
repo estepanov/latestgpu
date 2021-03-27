@@ -1,0 +1,17 @@
+{
+  "series": "rx5000",
+  "name":"Radeon RX 5300 XT",
+  "releaseDate": "2019-10-07T00:00:00+00:00",
+  "gpuEngine": {
+  },
+  "clockSpeeds": {
+    "baseCoreClock": 1670,
+    "boostCoreClock": 1845,
+    "memory": 7000
+  },
+  "memory": {
+    "standardConfigSizeGB": 4,
+    "standardConfigSpec": "GDDR5 128-bit",
+    "interfaceBandwidth": 112
+  }
+}

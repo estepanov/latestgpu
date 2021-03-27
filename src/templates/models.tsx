@@ -1,17 +1,17 @@
-import React, { Fragment } from "react";
-import { graphql, Link } from "gatsby";
+import React from "react";
+import { graphql } from "gatsby";
 import dayjs from "dayjs";
-// import Image from "~/components/Image";
 import Layout from "~/components/Layout";
 import SEO from "~/components/SEO";
 import "twin.macro";
-// import Hero from "~/components/Hero";
-// import Features from "~/components/Features";
+import DetailHero from "~/components/DetailHero";
 
 import { ModelsPageQuery } from "~/gatsby-graphql";
-import DesignerPageSeries from "~/components/DesignerPageSeries";
+import DesignerPageSeries, {
+  DesignerSizes,
+} from "~/components/DesignerPageSeries";
 import HeadlineStats from "~/components/HeadlineStats";
-// import LandingPageSeries from "~/components/LandingPageSeries";
+import SectionHeader from "~/components/SectionHeader";
 
 interface IndexPageProps {
   data: ModelsPageQuery;
@@ -25,31 +25,15 @@ const IndexPage: React.FC<IndexPageProps> = ({ data }) => {
       <SEO
         title={`${data?.models?.name} - ${data.models.series.name} - ${data.models.series.designer.name}`}
       />
-      {/* <Hero /> */}
-      {/* <Features /> */}
+      <DetailHero
+        designer={data?.models?.series?.designer}
+        series={data?.models?.series}
+      />
       <div tw="container">
-        <Link
-          to={`/${data.models.series.designer.id}`}
-          tw="flex flex-wrap items-center text-3xl text-gray-600 font-bold"
-        >
-          {data.models.series.designer?.fullSVG?.publicURL ? (
-            <img
-              tw="max-w-24"
-              src={data.models.series.designer.fullSVG.publicURL}
-              alt={data.models.series.designer.name}
-            />
-          ) : (
-            <Fragment>{data?.models.series.designer?.name}</Fragment>
-          )}
-        </Link>
         <div>
-          <Link
-            to={`/${data.models.series.designer.id}/${data.models.series.id}`}
-            tw="text-2xl text-gray-600 font-bold"
-          >
-            {data?.models?.series.name}
-          </Link>
-          <div tw="text-3xl text-gray-800 font-bold">{data?.models?.name}</div>
+          <h1 tw="text-3xl text-gray-800 font-bold inline-block">
+            {data?.models?.name}
+          </h1>
           <div tw="text-lg text-gray-600">
             {dayjs(data?.models?.releaseDate).format("MMMM D YYYY")}
           </div>
@@ -59,12 +43,12 @@ const IndexPage: React.FC<IndexPageProps> = ({ data }) => {
           subtitle="The details you care about"
           stats={[
             {
-              title: "CUDA Cores",
-              value: data.models.gpuEngine.nvidiaCUDACores,
+              title: `Boost Clock Speed`,
+              value: `${data.models.clockSpeeds.boostCoreClock} GHz`,
             },
             {
-              title: `Clock Speed`,
-              value: `${data.models.gpuEngine.boostClockGhz} GHz`,
+              title: `Base Clock Speed`,
+              value: `${data.models.clockSpeeds.baseCoreClock} GHz`,
             },
             {
               title: `${data.models.memory.standardConfigSpec} Memory`,
@@ -72,8 +56,17 @@ const IndexPage: React.FC<IndexPageProps> = ({ data }) => {
             },
           ]}
         />
-        {/* <DesignerPageSeries latestSeries={data.designer.series} /> */}
-        {/* <LandingPageSeries latestSeries={data.allSeries.nodes} /> */}
+        <div tw="mt-32" />
+        <SectionHeader
+          title={`Other ${data.models.series.designer.name} Series`}
+        />
+        <DesignerPageSeries
+          size={DesignerSizes.mini}
+          latestSeries={data.models.series.designer.series?.filter(
+            ({ id }) => id !== data.models.series.id
+          )}
+          designerId={data.models.series.designer.id}
+        />
       </div>
     </Layout>
   );
@@ -89,11 +82,15 @@ export const pageQuery = graphql`
         slug
       }
       gpuEngine {
-        boostClockGhz
         nvidiaCUDACores
       }
+      clockSpeeds {
+        baseCoreClock
+        boostCoreClock
+        memory
+      }
       memory {
-        interfaceBandwidthBit
+        interfaceBandwidth
         standardConfigSizeGB
         standardConfigSpec
       }
@@ -108,6 +105,11 @@ export const pageQuery = graphql`
           website
           fullSVG {
             publicURL
+          }
+          series {
+            id
+            name
+            releaseDate
           }
         }
       }

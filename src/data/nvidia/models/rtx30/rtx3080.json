@@ -3,13 +3,18 @@
   "name":"GeForce RTX 3080",
   "releaseDate": "2020-09-17T00:00:00+00:00",
   "gpuEngine": {
-    "nvidiaCUDACores": 8704,
-    "boostClockGhz": 1.71
+    "nvidiaCUDACores": 8704
+  },
+  "clockSpeeds": {
+    "baseCoreClock": 1440,
+    "boostCoreClock": 1710,
+    "memory": 19000
   },
   "memory": {
     "standardConfigSizeGB": 10,
     "standardConfigSpec": "GDDR6X",
-    "interfaceBandwidthBit": 320
+    "interfaceBandwidth": 760,
+    "busWidth": 320
   },
   "display": {
     "maxResolution": {

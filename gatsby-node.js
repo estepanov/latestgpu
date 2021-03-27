@@ -131,10 +131,15 @@ exports.createSchemaCustomization = ({ actions }) => {
       name: String!
       count: Int!
     }
+    type ClockSpeeds {
+      baseCoreClock: Int
+      boostCoreClock: Int
+      memory: Int
+    }
     type MemorySpec {
       standardConfigSizeGB: Int
       standardConfigSpec: String
-      interfaceBandwidthBit: Int
+      interfaceBandwidth: Int
     }
     type MaxResolutionSpec {
       width: Int
@@ -146,13 +151,13 @@ exports.createSchemaCustomization = ({ actions }) => {
     }
     type GPUEngineSpec {
       nvidiaCUDACores: Int
-      boostClockGhz: Float
     }
     type Models implements Node {
       series: Series @link
       name: String
       releaseDate: Date
       gpuEngine: GPUEngineSpec
+      clockSpeeds: ClockSpeeds
       memory: MemorySpec
       display: DisplaySpec
       monitorCount: Int

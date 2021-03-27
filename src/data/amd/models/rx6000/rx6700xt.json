@@ -1,0 +1,17 @@
+{
+  "series": "rx6000",
+  "name":"Radeon RX 6700 XT",
+  "releaseDate": "2021-03-18T00:00:00+00:00",
+  "gpuEngine": {
+  },
+  "clockSpeeds": {
+    "baseCoreClock": 1700,
+    "boostCoreClock": 2105,
+    "memory": 16000
+  },
+  "memory": {
+    "standardConfigSizeGB": 12,
+    "standardConfigSpec": "GDDR6 192-bit",
+    "interfaceBandwidth": 384
+  }
+}

@@ -4,14 +4,21 @@ import "twin.macro";
 import { Series, Designer } from "~/gatsby-graphql";
 import DataCard from "../DataCard";
 
+export enum DesignerSizes {
+  large,
+  mini,
+}
+
 interface DesignerPageSeriesProps {
   latestSeries: Series[];
   designerId: Designer["id"];
+  size?: DesignerSizes;
 }
 
 const DesignerPageSeries: React.FC<DesignerPageSeriesProps> = ({
   latestSeries,
   designerId,
+  size = DesignerSizes.large,
 }) => {
   return (
     <div tw="mt-6 grid grid-cols-2 gap-2 md:grid-cols-3 lg:mt-8">
@@ -28,7 +35,11 @@ const DesignerPageSeries: React.FC<DesignerPageSeriesProps> = ({
               to={`/${designerId}/${series.id}`}
               key={series.name}
               title={series.name}
-              subTitle={dayjs(series.releaseDate).format("MMMM D YYYY")}
+              subTitle={
+                size === DesignerSizes.large
+                  ? dayjs(series.releaseDate).format("MMMM D YYYY")
+                  : undefined
+              }
             />
           );
         })}

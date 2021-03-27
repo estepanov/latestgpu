@@ -3,13 +3,18 @@
   "name":"GeForce RTX 3090",
   "releaseDate": "2020-09-20T00:00:00+00:00",
   "gpuEngine": {
-    "nvidiaCUDACores": 10496,
-    "boostClockGhz": 1.7
+    "nvidiaCUDACores": 10496
+  },
+  "clockSpeeds": {
+    "baseCoreClock": 1395,
+    "boostCoreClock": 1695,
+    "memory": 19500
   },
   "memory": {
     "standardConfigSizeGB": 24,
     "standardConfigSpec": "GDDR6X",
-    "interfaceBandwidthBit": 384
+    "interfaceBandwidth": 936,
+    "busWidth": 384
   },
   "display": {
     "maxResolution": {

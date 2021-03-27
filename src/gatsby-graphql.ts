@@ -33,6 +33,18 @@ export type BooleanQueryOperatorInput = {
   nin?: Maybe<Array<Maybe<Scalars['Boolean']>>>;
 };
 
+export type ClockSpeeds = {
+  baseCoreClock?: Maybe<Scalars['Int']>;
+  boostCoreClock?: Maybe<Scalars['Int']>;
+  memory?: Maybe<Scalars['Int']>;
+};
+
+export type ClockSpeedsFilterInput = {
+  baseCoreClock?: Maybe<IntQueryOperatorInput>;
+  boostCoreClock?: Maybe<IntQueryOperatorInput>;
+  memory?: Maybe<IntQueryOperatorInput>;
+};
+
 export type ConnectorSpec = {
   name: Scalars['String'];
   count: Scalars['Int'];
@@ -437,10 +449,13 @@ export type DesignerFieldsEnum =
   | 'fullSVG___childModels___name'
   | 'fullSVG___childModels___releaseDate'
   | 'fullSVG___childModels___gpuEngine___nvidiaCUDACores'
-  | 'fullSVG___childModels___gpuEngine___boostClockGhz'
+  | 'fullSVG___childModels___clockSpeeds___baseCoreClock'
+  | 'fullSVG___childModels___clockSpeeds___boostCoreClock'
+  | 'fullSVG___childModels___clockSpeeds___memory'
   | 'fullSVG___childModels___memory___standardConfigSizeGB'
   | 'fullSVG___childModels___memory___standardConfigSpec'
-  | 'fullSVG___childModels___memory___interfaceBandwidthBit'
+  | 'fullSVG___childModels___memory___interfaceBandwidth'
+  | 'fullSVG___childModels___memory___busWidth'
   | 'fullSVG___childModels___display___monitorCount'
   | 'fullSVG___childModels___monitorCount'
   | 'fullSVG___childModels___connectors'
@@ -516,10 +531,13 @@ export type DesignerFieldsEnum =
   | 'series___models___name'
   | 'series___models___releaseDate'
   | 'series___models___gpuEngine___nvidiaCUDACores'
-  | 'series___models___gpuEngine___boostClockGhz'
+  | 'series___models___clockSpeeds___baseCoreClock'
+  | 'series___models___clockSpeeds___boostCoreClock'
+  | 'series___models___clockSpeeds___memory'
   | 'series___models___memory___standardConfigSizeGB'
   | 'series___models___memory___standardConfigSpec'
-  | 'series___models___memory___interfaceBandwidthBit'
+  | 'series___models___memory___interfaceBandwidth'
+  | 'series___models___memory___busWidth'
   | 'series___models___display___monitorCount'
   | 'series___models___monitorCount'
   | 'series___models___connectors'
@@ -649,10 +667,13 @@ export type DesignerFieldsEnum =
   | 'models___name'
   | 'models___releaseDate'
   | 'models___gpuEngine___nvidiaCUDACores'
-  | 'models___gpuEngine___boostClockGhz'
+  | 'models___clockSpeeds___baseCoreClock'
+  | 'models___clockSpeeds___boostCoreClock'
+  | 'models___clockSpeeds___memory'
   | 'models___memory___standardConfigSizeGB'
   | 'models___memory___standardConfigSpec'
-  | 'models___memory___interfaceBandwidthBit'
+  | 'models___memory___interfaceBandwidth'
+  | 'models___memory___busWidth'
   | 'models___display___maxResolution___width'
   | 'models___display___maxResolution___height'
   | 'models___display___monitorCount'
@@ -1542,10 +1563,13 @@ export type FileFieldsEnum =
   | 'childDesigner___models___name'
   | 'childDesigner___models___releaseDate'
   | 'childDesigner___models___gpuEngine___nvidiaCUDACores'
-  | 'childDesigner___models___gpuEngine___boostClockGhz'
+  | 'childDesigner___models___clockSpeeds___baseCoreClock'
+  | 'childDesigner___models___clockSpeeds___boostCoreClock'
+  | 'childDesigner___models___clockSpeeds___memory'
   | 'childDesigner___models___memory___standardConfigSizeGB'
   | 'childDesigner___models___memory___standardConfigSpec'
-  | 'childDesigner___models___memory___interfaceBandwidthBit'
+  | 'childDesigner___models___memory___interfaceBandwidth'
+  | 'childDesigner___models___memory___busWidth'
   | 'childDesigner___models___display___monitorCount'
   | 'childDesigner___models___monitorCount'
   | 'childDesigner___models___connectors'
@@ -1620,10 +1644,13 @@ export type FileFieldsEnum =
   | 'childSeries___models___name'
   | 'childSeries___models___releaseDate'
   | 'childSeries___models___gpuEngine___nvidiaCUDACores'
-  | 'childSeries___models___gpuEngine___boostClockGhz'
+  | 'childSeries___models___clockSpeeds___baseCoreClock'
+  | 'childSeries___models___clockSpeeds___boostCoreClock'
+  | 'childSeries___models___clockSpeeds___memory'
   | 'childSeries___models___memory___standardConfigSizeGB'
   | 'childSeries___models___memory___standardConfigSpec'
-  | 'childSeries___models___memory___interfaceBandwidthBit'
+  | 'childSeries___models___memory___interfaceBandwidth'
+  | 'childSeries___models___memory___busWidth'
   | 'childSeries___models___display___monitorCount'
   | 'childSeries___models___monitorCount'
   | 'childSeries___models___connectors'
@@ -1752,10 +1779,13 @@ export type FileFieldsEnum =
   | 'childModels___name'
   | 'childModels___releaseDate'
   | 'childModels___gpuEngine___nvidiaCUDACores'
-  | 'childModels___gpuEngine___boostClockGhz'
+  | 'childModels___clockSpeeds___baseCoreClock'
+  | 'childModels___clockSpeeds___boostCoreClock'
+  | 'childModels___clockSpeeds___memory'
   | 'childModels___memory___standardConfigSizeGB'
   | 'childModels___memory___standardConfigSpec'
-  | 'childModels___memory___interfaceBandwidthBit'
+  | 'childModels___memory___interfaceBandwidth'
+  | 'childModels___memory___busWidth'
   | 'childModels___display___maxResolution___width'
   | 'childModels___display___maxResolution___height'
   | 'childModels___display___monitorCount'
@@ -1877,12 +1907,10 @@ export type FloatQueryOperatorInput = {
 
 export type GpuEngineSpec = {
   nvidiaCUDACores?: Maybe<Scalars['Int']>;
-  boostClockGhz?: Maybe<Scalars['Float']>;
 };
 
 export type GpuEngineSpecFilterInput = {
   nvidiaCUDACores?: Maybe<IntQueryOperatorInput>;
-  boostClockGhz?: Maybe<FloatQueryOperatorInput>;
 };
 
 export type ImageCropFocus = 
@@ -2429,13 +2457,15 @@ export type MaxResolutionSpecFilterInput = {
 export type MemorySpec = {
   standardConfigSizeGB?: Maybe<Scalars['Int']>;
   standardConfigSpec?: Maybe<Scalars['String']>;
-  interfaceBandwidthBit?: Maybe<Scalars['Int']>;
+  interfaceBandwidth?: Maybe<Scalars['Int']>;
+  busWidth?: Maybe<Scalars['Int']>;
 };
 
 export type MemorySpecFilterInput = {
   standardConfigSizeGB?: Maybe<IntQueryOperatorInput>;
   standardConfigSpec?: Maybe<StringQueryOperatorInput>;
-  interfaceBandwidthBit?: Maybe<IntQueryOperatorInput>;
+  interfaceBandwidth?: Maybe<IntQueryOperatorInput>;
+  busWidth?: Maybe<IntQueryOperatorInput>;
 };
 
 export type Models = Node & {
@@ -2443,6 +2473,7 @@ export type Models = Node & {
   name?: Maybe<Scalars['String']>;
   releaseDate?: Maybe<Scalars['Date']>;
   gpuEngine?: Maybe<GpuEngineSpec>;
+  clockSpeeds?: Maybe<ClockSpeeds>;
   memory?: Maybe<MemorySpec>;
   display?: Maybe<DisplaySpec>;
   monitorCount?: Maybe<Scalars['Int']>;
@@ -2548,10 +2579,13 @@ export type ModelsFieldsEnum =
   | 'series___models___name'
   | 'series___models___releaseDate'
   | 'series___models___gpuEngine___nvidiaCUDACores'
-  | 'series___models___gpuEngine___boostClockGhz'
+  | 'series___models___clockSpeeds___baseCoreClock'
+  | 'series___models___clockSpeeds___boostCoreClock'
+  | 'series___models___clockSpeeds___memory'
   | 'series___models___memory___standardConfigSizeGB'
   | 'series___models___memory___standardConfigSpec'
-  | 'series___models___memory___interfaceBandwidthBit'
+  | 'series___models___memory___interfaceBandwidth'
+  | 'series___models___memory___busWidth'
   | 'series___models___display___monitorCount'
   | 'series___models___monitorCount'
   | 'series___models___connectors'
@@ -2647,10 +2681,13 @@ export type ModelsFieldsEnum =
   | 'name'
   | 'releaseDate'
   | 'gpuEngine___nvidiaCUDACores'
-  | 'gpuEngine___boostClockGhz'
+  | 'clockSpeeds___baseCoreClock'
+  | 'clockSpeeds___boostCoreClock'
+  | 'clockSpeeds___memory'
   | 'memory___standardConfigSizeGB'
   | 'memory___standardConfigSpec'
-  | 'memory___interfaceBandwidthBit'
+  | 'memory___interfaceBandwidth'
+  | 'memory___busWidth'
   | 'display___maxResolution___width'
   | 'display___maxResolution___height'
   | 'display___monitorCount'
@@ -2758,6 +2795,7 @@ export type ModelsFilterInput = {
   name?: Maybe<StringQueryOperatorInput>;
   releaseDate?: Maybe<DateQueryOperatorInput>;
   gpuEngine?: Maybe<GpuEngineSpecFilterInput>;
+  clockSpeeds?: Maybe<ClockSpeedsFilterInput>;
   memory?: Maybe<MemorySpecFilterInput>;
   display?: Maybe<DisplaySpecFilterInput>;
   monitorCount?: Maybe<IntQueryOperatorInput>;
@@ -3065,6 +3103,7 @@ export type QueryModelsArgs = {
   name?: Maybe<StringQueryOperatorInput>;
   releaseDate?: Maybe<DateQueryOperatorInput>;
   gpuEngine?: Maybe<GpuEngineSpecFilterInput>;
+  clockSpeeds?: Maybe<ClockSpeedsFilterInput>;
   memory?: Maybe<MemorySpecFilterInput>;
   display?: Maybe<DisplaySpecFilterInput>;
   monitorCount?: Maybe<IntQueryOperatorInput>;
@@ -3328,10 +3367,13 @@ export type SeriesFieldsEnum =
   | 'models___name'
   | 'models___releaseDate'
   | 'models___gpuEngine___nvidiaCUDACores'
-  | 'models___gpuEngine___boostClockGhz'
+  | 'models___clockSpeeds___baseCoreClock'
+  | 'models___clockSpeeds___boostCoreClock'
+  | 'models___clockSpeeds___memory'
   | 'models___memory___standardConfigSizeGB'
   | 'models___memory___standardConfigSpec'
-  | 'models___memory___interfaceBandwidthBit'
+  | 'models___memory___interfaceBandwidth'
+  | 'models___memory___busWidth'
   | 'models___display___maxResolution___width'
   | 'models___display___maxResolution___height'
   | 'models___display___monitorCount'
@@ -3535,10 +3577,13 @@ export type SeriesFieldsEnum =
   | 'designer___models___name'
   | 'designer___models___releaseDate'
   | 'designer___models___gpuEngine___nvidiaCUDACores'
-  | 'designer___models___gpuEngine___boostClockGhz'
+  | 'designer___models___clockSpeeds___baseCoreClock'
+  | 'designer___models___clockSpeeds___boostCoreClock'
+  | 'designer___models___clockSpeeds___memory'
   | 'designer___models___memory___standardConfigSizeGB'
   | 'designer___models___memory___standardConfigSpec'
-  | 'designer___models___memory___interfaceBandwidthBit'
+  | 'designer___models___memory___interfaceBandwidth'
+  | 'designer___models___memory___busWidth'
   | 'designer___models___display___monitorCount'
   | 'designer___models___monitorCount'
   | 'designer___models___connectors'
@@ -4627,11 +4672,11 @@ export type ModelsPageQueryQueryVariables = Exact<{
 
 export type ModelsPageQueryQuery = { models?: Maybe<(
     Pick<Models, 'id' | 'name' | 'releaseDate' | 'monitorCount'>
-    & { fields?: Maybe<Pick<ModelsFields, 'slug'>>, gpuEngine?: Maybe<Pick<GpuEngineSpec, 'boostClockGhz' | 'nvidiaCUDACores'>>, memory?: Maybe<Pick<MemorySpec, 'interfaceBandwidthBit' | 'standardConfigSizeGB' | 'standardConfigSpec'>>, series?: Maybe<(
+    & { fields?: Maybe<Pick<ModelsFields, 'slug'>>, gpuEngine?: Maybe<Pick<GpuEngineSpec, 'nvidiaCUDACores'>>, clockSpeeds?: Maybe<Pick<ClockSpeeds, 'baseCoreClock' | 'boostCoreClock' | 'memory'>>, memory?: Maybe<Pick<MemorySpec, 'interfaceBandwidth' | 'standardConfigSizeGB' | 'standardConfigSpec'>>, series?: Maybe<(
       Pick<Series, 'id' | 'name' | 'releaseDate'>
       & { designer?: Maybe<(
         Pick<Designer, 'id' | 'name' | 'website'>
-        & { fullSVG?: Maybe<Pick<File, 'publicURL'>> }
+        & { fullSVG?: Maybe<Pick<File, 'publicURL'>>, series?: Maybe<Array<Maybe<Pick<Series, 'id' | 'name' | 'releaseDate'>>>> }
       )> }
     )> }
   )> };

@@ -1,0 +1,19 @@
+{
+  "series": "rtx30",
+  "name":"GeForce RTX 3060",
+  "releaseDate": "2021-02-25T00:00:00+00:00",
+  "gpuEngine": {
+    "nvidiaCUDACores": 3584
+  },
+  "clockSpeeds": {
+    "baseCoreClock": 1320,
+    "boostCoreClock": 1777,
+    "memory": 15000
+  },
+  "memory": {
+    "standardConfigSizeGB": 12,
+    "standardConfigSpec": "GDDR6",
+    "interfaceBandwidth": 360,
+    "busWidth": 192
+  }
+}

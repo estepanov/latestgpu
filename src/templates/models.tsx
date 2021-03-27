@@ -68,8 +68,8 @@ const IndexPage: React.FC<IndexPageProps> = ({ data }) => {
           )}
           designerId={data.models.series.designer.id}
         />
-        <LeaderboardAd />
       </div>
+      <LeaderboardAd />
     </Layout>
   );
 };

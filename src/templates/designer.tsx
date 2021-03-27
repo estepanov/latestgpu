@@ -24,8 +24,8 @@ const IndexPage: React.FC<IndexPageProps> = ({ data }) => {
           designerId={data.designer.id}
           latestSeries={data.designer.series}
         />
-        <LeaderboardAd />
       </div>
+      <LeaderboardAd />
     </Layout>
   );
 };

@@ -33,8 +33,8 @@ const IndexPage: React.FC<IndexPageProps> = ({ data }) => {
           designerId={data.series.designer.id}
           seriesId={data.series.id}
         />
-        <LeaderboardAd />
       </div>
+      <LeaderboardAd />
     </Layout>
   );
 };

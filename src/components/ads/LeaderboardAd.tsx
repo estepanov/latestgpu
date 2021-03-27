@@ -18,7 +18,7 @@ const LeaderboardAd: React.FC = () => {
             data-cc-site="d1ab5b1a-222c-4977-aee0-01521e92ffcb"
             data-cc-slot="9u0dHZJqz"
             style={{ width: 782, height: 90 }}
-            tw="absolute inset-0"
+            tw="absolute inset-0 bg-white"
           />
           <div tw="absolute inset-0 flex justify-center items-center text-xl font-bold tracking-wide text-gray-700">
             Advertisements!
